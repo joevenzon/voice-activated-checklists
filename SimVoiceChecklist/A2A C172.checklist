@@ -1,0 +1,113 @@
+<checklists>
+	<checklist name="Cabin">
+		<item name="Pitot tube cover removed" vcommand="Removed,Checked" wavfile="C:\Temp\Checklist audio files\Cabin\Pitot tube cover removed.wav"/>
+		<item name="Pilot's Operating Handbook in airplane" vcommand="Checked,Present" wavfile="C:\Temp\Checklist audio files\Cabin\Pilot's Operating Handbook in airplane.wav"/>
+		<item name="Airplane weight and balance checked" instruction="" vcommand="Checked" wavfile="C:\Temp\Checklist audio files\Cabin\Airplane weight and balance checked.wav"/>
+		<item name="Parking brake set on" vcommand="Set,Checked,On"/>
+		<item name="Control wheel lock removed" vcommand="Removed,Checked"/>
+		<item name="Ignition switch set off" vcommand="Set,Checked,Off"/>
+		<item name="Avionics master switch set off" vcommand="Set,Checked,Off"/>
+		<item name="Master switch set on" vcommand="Set,Checked,On"/>
+		<item name="Fuel quantity indicators checked" vcommand="Checked"/>
+		<item name="Fuel quantity annunciators extinguished" vcommand="Checked,Clear"/>
+		<item name="Avionics master switch set on" vcommand="Set,Checked,On"/>
+		<item name="Avionics cooling fan audible?" vcommand="Checked,Audible,Yes"/>
+		<item name="Avionics master switch set off" vcommand="Set,Checked,Off"/>
+		<item name="Static pressure alternate source valve set off" vcommand="Set,Checked,Off"/>
+		<item name="Annunciator panel switch test performed" vcommand="Checked"/>
+		<item name="Fuel selector valve set to both" vcommand="Set,Checked"/>
+		<item name="Fuel shut-off valve pushed in" vcommand="Set,Checked"/>
+		<item name="Flaps fully extended" vcommand="Set,Checked"/>
+		<item name="Pitot heat on and working" vcommand="Checked"/>
+		<item name="Pitot heat set off" vcommand="Set,Checked,Off"/>
+		<item name="Master switch set off" vcommand="Set,Off"/>
+		<item name="Elevator trim set to take-off" vcommand="Set,Checked"/>
+	</checklist>
+	<checklist name="Before Starting Engine">
+		<item name="Preflight inspection complete?" vcommand="Complete"/>
+		<item name="Passenger briefing complete?" vcommand="Complete"/>
+		<item name="Seats and seatbelts?" vcommand="Checked"/>
+		<item name="Brakes tested and set?" vcommand="Set,Checked"/>
+		<item name="Circuit breakers in?" vcommand="Checked"/>
+		<item name="Electrical equipment off?" vcommand="Set,Checked,Off"/>
+		<item name="Avionics master switch set off" vcommand="Set,Checked,Off"/>
+		<item name="Fuel selector valve set to both" vcommand="Set,Checked"/>
+		<item name="Fuel shut-off valve pushed in" vcommand="Set,Checked"/>
+		<item name="Avionics circuit breakers in?" vcommand="Checked"/>
+	</checklist>
+	<checklist name="Starting Engine">
+		<item name="Throttle quarter inch open" vcommand="Set,Checked"/>
+		<item name="Mixture set to idle cut-off" vcommand="Set,Checked"/>
+		<item name="Check propeller area clear" vcommand="Checked,Clear"/>
+		<item name="Master switch set on" vcommand="Set,Checked,On"/>
+		<item name="Flashing beacon set on" vcommand="Set,Checked,On"/>
+		<item name="Auxiliary fuel pump switch set on" vcommand="Set,Checked,On"/>
+		<item name="Prime fuel" vcommand="Checked"/>
+		<item name="Mixture set to idle cut-off" vcommand="Set,Checked,Off"/>
+		<item name="Ignition switch to start" vcommand="Set,Checked"/>
+		<item name="Mixture set to rich" vcommand="Set,Checked"/>
+		<item name="Oil pressure" vcommand="Checked"/>
+		<item name="Navigation lights set on" vcommand="Set,Checked,On"/>
+		<item name="Master switch set off" vcommand="Set,Checked,Off"/>
+		<item name="Taxi and landing lights set on" vcommand="Set,Checked,On"/>
+		<item name="Reduce engine rpm to idle" vcommand="Set,Checked"/>
+		<item name="Master switch set on" vcommand="Set,Checked,On"/>
+		<item name="Alternator output below load requirements" vcommand="Checked"/>
+		<item name="Increase engine rpm to about 1500" vcommand="Set,Checked"/>
+		<item name="Alternator output above load requirements" vcommand="Checked"/>
+		<item name="Low volt annunciators extinguished" vcommand="Checked,Clear"/>
+		<item name="Avionics master switch set on" vcommand="Set,Checked,On"/>
+		<item name="Reduce engine rpm to not below 800" vcommand="Set,Checked"/>
+		<item name="Radios set on" vcommand="Set,Checked,On"/>
+		<item name="Flaps fully retracted" vcommand="Set,Checked"/>
+		<item name="Mixture set to lean" vcommand="Set,Checked"/>
+	</checklist>
+	<checklist name="Before Takeoff">
+		<item name="Parking brake set on" vcommand="Set,Checked,On,Off"/>
+		<item name="Seats upright?" vcommand="Set,Checked"/>
+		<item name="Seats and Seatbelts secure" vcommand="Checked"/>
+		<item name="Cabin doors closed and locked" vcommand="Set,Checked"/>
+		<item name="Flight controls free and correct?" vcommand="Checked"/>
+		<item name="Flight instruments" vcommand="Set,Checked"/>
+		<item name="Fuel quantity" vcommand="Checked"/>
+		<item name="Mixture set to rich" vcommand="Set,Checked"/>
+		<item name="Fuel selector valve set to both" vcommand="Set,Checked"/>
+		<item name="Set throttle to 1800rpm" vcommand="Set"/>
+		<item name="Left magneto ok?" vcommand="Checked"/>
+		<item name="Right magneto ok?" vcommand="Checked"/>
+		<item name="Vacuum gauge" vcommand="Checked"/>
+		<item name="Engine instruments and ammeter" vcommand="Checked"/>
+		<item name="Annunciator panel clear" vcommand="Checked,Clear"/>
+		<item name="Reduce engine rpm to not below 800" vcommand="Set,Checked"/>
+		<item name="Throttle friction lock" vcommand="Set,Checked"/>
+		<item name="Strobe lights" vcommand="Set,Checked,On,Off"/>
+		<item name="Radios and avionics" vcommand="Set,Checked"/>
+		<item name="Nav/GPS switch" vcommand="Set,Checked"/>
+		<item name="Autopilot off" vcommand="Set,Checked,Off"/>
+		<item name="Elevator trim set to take-off" vcommand="Set,Checked"/>
+		<item name="Flaps set to take-off" vcommand="Set,Checked"/>
+		<item name="Brakes released" vcommand="Set,Checked,Off"/>
+	</checklist>
+	<checklist name="Normal Takeoff">
+	</checklist>	
+	<checklist name="Short Field Takeoff">
+	</checklist>
+	<checklist name="Enroute Climb">
+	</checklist>
+	<checklist name="Cruise">
+	</checklist>
+	<checklist name="Descent">
+	</checklist>
+	<checklist name="Before Landing">
+	</checklist>
+	<checklist name="Normal Landing">
+	</checklist>
+	<checklist name="Short Field Landing">
+	</checklist>
+	<checklist name="Balked Landing">
+	</checklist>
+	<checklist name="After Landing">
+	</checklist>
+	<checklist name="Securing Airplane">
+	</checklist>
+</checklists>
