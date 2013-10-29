@@ -24,11 +24,9 @@ namespace SimVoiceChecklists
         private frmChecklist CLForm = null;
         private StatusWindow StatusWin = new StatusWindow();
         private Choices grammarChoices = new Choices();
-        private string ActiveCLFilename = "C:\\Users\\Paul\\Documents\\Visual Studio 2012\\Projects\\WindowsFormsApplication1\\WindowsFormsApplication1\\A2A C172.checklist";
+        private string ActiveCLFilename = "C:\\Dev\\SimVoiceChecklist\\SimVoiceChecklist\\A2A C172.checklist";
         private List<string> AcceptedChecklistCmds = new List<string>();
-        private NotifyIcon  trayIcon;
-        private ContextMenu trayMenu;
-        private MenuItem StartListeningMenuItem;
+        private float ConfidenceThreshold = 98;
         #endregion
 
         protected override void OnLoad(EventArgs e)
@@ -50,11 +48,6 @@ namespace SimVoiceChecklists
             {
                 components.Dispose();
             }
-            if (isDisposing)
-            {
-                // Release the icon resource.
-                trayIcon.Dispose();
-            }
 
             base.Dispose(isDisposing);
         }
@@ -62,23 +55,6 @@ namespace SimVoiceChecklists
         public Form1()
         {
             InitializeComponent();
-            // Create a simple tray menu with only one item.
-            trayMenu = new ContextMenu();
-            StartListeningMenuItem = trayMenu.MenuItems.Add("Listen", btnListen_Click);
-            trayMenu.MenuItems.Add("-");
-            trayMenu.MenuItems.Add("Exit", OnExit);
-
-            // Create a tray icon. In this example we use a
-            // standard system icon for simplicity, but you
-            // can of course use your own custom icon too.
-            trayIcon = new NotifyIcon();
-            trayIcon.Text = "MyTrayApp";
-            trayIcon.Icon = new Icon(SystemIcons.Application, 40, 40);
-
-            // Add menu to tray icon and show it.
-            trayIcon.ContextMenu = trayMenu;
-            trayIcon.Visible = true;
-
             InitSpeechEngine();
         }
 
@@ -107,46 +83,52 @@ namespace SimVoiceChecklists
             }
         }
 
+        private void AddGrammar(string Grammar)
+        {
+            grammarChoices.Add(Grammar);
+            lbxAcceptedCmds.Items.Add(Grammar);
+        }
+
         private void InitSpeechEngine()
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            // Add an Application Setting.
-            config.AppSettings.Settings.Add("ModificationDate", DateTime.Now.ToLongTimeString() + " ");
+            //// Add an Application Setting.
+            //config.AppSettings.Settings.Add("ModificationDate", DateTime.Now.ToLongTimeString() + " ");
 
-            // Save the changes in App.config file.
-            config.Save(ConfigurationSaveMode.Modified);
+            //// Save the changes in App.config file.
+            //config.Save(ConfigurationSaveMode.Modified);
 
-            // Force a reload of a changed section.
-            ConfigurationManager.RefreshSection("appSettings");
+            //// Force a reload of a changed section.
+            //ConfigurationManager.RefreshSection("appSettings");
 
 
-            List<string> list = new List<string>();
-            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
-            {
-                string specName = "(none)";
-                try { specName = CultureInfo.CreateSpecificCulture(ci.Name).Name; }
-                catch { }
-                list.Add(String.Format("{0,-12}{1,-12}{2}", ci.Name, specName, ci.EnglishName));
-            }
+            //List<string> list = new List<string>();
+            //foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
+            //{
+            //    string specName = "(none)";
+            //    try { specName = CultureInfo.CreateSpecificCulture(ci.Name).Name; }
+            //    catch { }
+            //    list.Add(String.Format("{0,-12}{1,-12}{2}", ci.Name, specName, ci.EnglishName));
+            //}
 
-            list.Sort();  // sort by name
+            //list.Sort();  // sort by name
 
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
 
             LoadAcceptedChecklistCmds();
             foreach (string checklistCmd in AcceptedChecklistCmds)
-                grammarChoices.Add(checklistCmd);
+                AddGrammar(checklistCmd);
 
-            grammarChoices.Add("Open Checklist");
-            grammarChoices.Add("Close Checklist");
-            grammarChoices.Add("Abort Checklist");
+            AddGrammar("Open Checklist");
+            AddGrammar("Close Checklist");
+            AddGrammar("Abort Checklist");
 
-            grammarChoices.Add("Cabin Checklist");
-            grammarChoices.Add("Before Starting Engine Checklist");
-            grammarChoices.Add("Starting Engine Checklist");
-            grammarChoices.Add("Before Takeoff Checklist");
+            AddGrammar("Cabin Checklist");
+            AddGrammar("Before Starting Engine Checklist");
+            AddGrammar("Starting Engine Checklist");
+            AddGrammar("Before Takeoff Checklist");
 
             GrammarBuilder gbCurrent = new GrammarBuilder(grammarChoices);
 
@@ -181,15 +163,23 @@ namespace SimVoiceChecklists
         void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             string voiceCommand = e.Result.Text;
-            listBox1.Items.Add("Speech recognized: " + voiceCommand);
-            StatusWin.ShowText(voiceCommand, 2000);
-            if (!ProcessTopLevelVoiceCommand(voiceCommand))
+            float confidence = (e.Result.Confidence * 100);
+
+            ListViewItem lviNew = lvHeardDebug.Items.Insert(0, DateTime.Now.ToString("HH:mm:ss"));
+            lviNew.SubItems.Add(voiceCommand);
+            lviNew.SubItems.Add(confidence.ToString());
+
+            if (confidence > ConfidenceThreshold)
             {
-                foreach (RecognizedPhrase phrase in e.Result.Alternates)
+                StatusWin.ShowText(voiceCommand, 2000);
+                if (!ProcessTopLevelVoiceCommand(voiceCommand))
                 {
-                    voiceCommand = phrase.Text;
-                    if (ProcessTopLevelVoiceCommand(voiceCommand))
-                        break;
+                    foreach (RecognizedPhrase phrase in e.Result.Alternates)
+                    {
+                        voiceCommand = phrase.Text;
+                        if (ProcessTopLevelVoiceCommand(voiceCommand))
+                            break;
+                    }
                 }
             }
         }
@@ -208,23 +198,18 @@ namespace SimVoiceChecklists
         {
             if (Convert.ToInt32(btnListen.Tag) == 0)
             {
-                StartListeningMenuItem.Checked = true;
+                ListenMenuItem.Checked = true;
                 btnListen.Tag = 1;
                 btnListen.Text = "Stop Listening";
                 StartListenening();
             }
             else
             {
-                StartListeningMenuItem.Checked = false;
+                ListenMenuItem.Checked = false;
                 btnListen.Tag = 0;
                 btnListen.Text = "Start Listening";
                 StopListening();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            listBox1.Items.Clear();
         }
         #endregion
 
@@ -261,9 +246,10 @@ namespace SimVoiceChecklists
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
-            OpenChecklists();
+            Show();
+            WindowState = FormWindowState.Normal;
         }
     }
 }
