@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Voice");
             this.btnListen = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -39,34 +41,43 @@
             this.tcStatus = new System.Windows.Forms.TabControl();
             this.tpOptions = new System.Windows.Forms.TabPage();
             this.tabDebug = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lvHeardDebug = new System.Windows.Forms.ListView();
             this.timeHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HeardHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.confidenceHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblAcceptedCommands = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.lbxAcceptedCmds = new System.Windows.Forms.ListBox();
+            this.lblAcceptedCommands = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlOptionDetails = new System.Windows.Forms.Panel();
+            this.pnlVoice = new System.Windows.Forms.Panel();
+            this.cbxCulture = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudConfTHold = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlGeneral = new System.Windows.Forms.Panel();
             this.btnChecklistFilename = new System.Windows.Forms.Button();
             this.lblChecklistFilename = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblConfidenceThreshold = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbChecklistFilename = new System.Windows.Forms.TextBox();
+            this.tvOptions = new System.Windows.Forms.TreeView();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnApply = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
             this.tabDebug.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.pnlOptionDetails.SuspendLayout();
+            this.pnlVoice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).BeginInit();
+            this.pnlGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListen
@@ -131,8 +142,8 @@
             // 
             // tpOptions
             // 
-            this.tpOptions.Controls.Add(this.tabControl1);
-            this.tpOptions.Controls.Add(this.treeView1);
+            this.tpOptions.Controls.Add(this.panel3);
+            this.tpOptions.Controls.Add(this.panel4);
             this.tpOptions.Location = new System.Drawing.Point(4, 22);
             this.tpOptions.Name = "tpOptions";
             this.tpOptions.Padding = new System.Windows.Forms.Padding(3);
@@ -152,17 +163,6 @@
             this.tabDebug.TabIndex = 1;
             this.tabDebug.Text = "Debug";
             this.tabDebug.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lbxAcceptedCmds);
-            this.panel2.Controls.Add(this.lblAcceptedCommands);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.panel2.Size = new System.Drawing.Size(136, 366);
-            this.panel2.TabIndex = 1;
             // 
             // panel1
             // 
@@ -214,15 +214,16 @@
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 9;
             // 
-            // lblAcceptedCommands
+            // panel2
             // 
-            this.lblAcceptedCommands.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblAcceptedCommands.Location = new System.Drawing.Point(0, 0);
-            this.lblAcceptedCommands.Name = "lblAcceptedCommands";
-            this.lblAcceptedCommands.Size = new System.Drawing.Size(133, 23);
-            this.lblAcceptedCommands.TabIndex = 4;
-            this.lblAcceptedCommands.Text = "Accepted Commands";
-            this.lblAcceptedCommands.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel2.Controls.Add(this.lbxAcceptedCmds);
+            this.panel2.Controls.Add(this.lblAcceptedCommands);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.panel2.Size = new System.Drawing.Size(136, 366);
+            this.panel2.TabIndex = 1;
             // 
             // lbxAcceptedCmds
             // 
@@ -235,62 +236,117 @@
             this.lbxAcceptedCmds.Sorted = true;
             this.lbxAcceptedCmds.TabIndex = 13;
             // 
+            // lblAcceptedCommands
+            // 
+            this.lblAcceptedCommands.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblAcceptedCommands.Location = new System.Drawing.Point(0, 0);
+            this.lblAcceptedCommands.Name = "lblAcceptedCommands";
+            this.lblAcceptedCommands.Size = new System.Drawing.Size(133, 23);
+            this.lblAcceptedCommands.TabIndex = 4;
+            this.lblAcceptedCommands.Text = "Accepted Commands";
+            this.lblAcceptedCommands.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ofdChecklistFile
             // 
             this.ofdChecklistFile.DefaultExt = "*.checklist";
             this.ofdChecklistFile.FileName = "openFileDialog1";
             this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
             // 
-            // treeView1
+            // panel4
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeView1.Location = new System.Drawing.Point(3, 3);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(121, 366);
-            this.treeView1.TabIndex = 5;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnApply);
+            this.panel4.Controls.Add(this.btnCancel);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(3, 334);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(585, 35);
+            this.panel4.TabIndex = 1;
             // 
-            // tabControl1
+            // panel3
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(124, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(464, 366);
-            this.tabControl1.TabIndex = 6;
+            this.panel3.Controls.Add(this.pnlOptionDetails);
+            this.panel3.Controls.Add(this.tvOptions);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(585, 331);
+            this.panel3.TabIndex = 2;
             // 
-            // tabPage1
+            // pnlOptionDetails
             // 
-            this.tabPage1.Controls.Add(this.btnChecklistFilename);
-            this.tabPage1.Controls.Add(this.lblChecklistFilename);
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(456, 340);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.pnlOptionDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOptionDetails.Controls.Add(this.pnlVoice);
+            this.pnlOptionDetails.Controls.Add(this.pnlGeneral);
+            this.pnlOptionDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlOptionDetails.Location = new System.Drawing.Point(121, 0);
+            this.pnlOptionDetails.Name = "pnlOptionDetails";
+            this.pnlOptionDetails.Size = new System.Drawing.Size(464, 331);
+            this.pnlOptionDetails.TabIndex = 13;
             // 
-            // tabPage2
+            // pnlVoice
             // 
-            this.tabPage2.Controls.Add(this.lblConfidenceThreshold);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(456, 340);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.pnlVoice.Controls.Add(this.cbxCulture);
+            this.pnlVoice.Controls.Add(this.label2);
+            this.pnlVoice.Controls.Add(this.nudConfTHold);
+            this.pnlVoice.Controls.Add(this.label1);
+            this.pnlVoice.Location = new System.Drawing.Point(187, 77);
+            this.pnlVoice.Name = "pnlVoice";
+            this.pnlVoice.Size = new System.Drawing.Size(239, 231);
+            this.pnlVoice.TabIndex = 5;
+            // 
+            // cbxCulture
+            // 
+            this.cbxCulture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCulture.FormattingEnabled = true;
+            this.cbxCulture.Location = new System.Drawing.Point(135, 61);
+            this.cbxCulture.Name = "cbxCulture";
+            this.cbxCulture.Size = new System.Drawing.Size(101, 21);
+            this.cbxCulture.Sorted = true;
+            this.cbxCulture.TabIndex = 21;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Confidence Threshold";
+            // 
+            // nudConfTHold
+            // 
+            this.nudConfTHold.DecimalPlaces = 2;
+            this.nudConfTHold.Location = new System.Drawing.Point(135, 25);
+            this.nudConfTHold.Name = "nudConfTHold";
+            this.nudConfTHold.Size = new System.Drawing.Size(68, 20);
+            this.nudConfTHold.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Confidence Threshold";
+            // 
+            // pnlGeneral
+            // 
+            this.pnlGeneral.Controls.Add(this.btnChecklistFilename);
+            this.pnlGeneral.Controls.Add(this.lblChecklistFilename);
+            this.pnlGeneral.Controls.Add(this.tbChecklistFilename);
+            this.pnlGeneral.Location = new System.Drawing.Point(16, 15);
+            this.pnlGeneral.Name = "pnlGeneral";
+            this.pnlGeneral.Size = new System.Drawing.Size(417, 160);
+            this.pnlGeneral.TabIndex = 1;
             // 
             // btnChecklistFilename
             // 
-            this.btnChecklistFilename.Location = new System.Drawing.Point(351, 21);
+            this.btnChecklistFilename.Location = new System.Drawing.Point(349, 22);
             this.btnChecklistFilename.Name = "btnChecklistFilename";
             this.btnChecklistFilename.Size = new System.Drawing.Size(25, 23);
-            this.btnChecklistFilename.TabIndex = 7;
+            this.btnChecklistFilename.TabIndex = 16;
             this.btnChecklistFilename.TabStop = false;
             this.btnChecklistFilename.Text = "...";
             this.btnChecklistFilename.UseVisualStyleBackColor = true;
@@ -298,34 +354,53 @@
             // lblChecklistFilename
             // 
             this.lblChecklistFilename.AutoSize = true;
-            this.lblChecklistFilename.Location = new System.Drawing.Point(20, 26);
+            this.lblChecklistFilename.Location = new System.Drawing.Point(18, 27);
             this.lblChecklistFilename.Name = "lblChecklistFilename";
             this.lblChecklistFilename.Size = new System.Drawing.Size(95, 13);
-            this.lblChecklistFilename.TabIndex = 6;
+            this.lblChecklistFilename.TabIndex = 15;
             this.lblChecklistFilename.Text = "Checklist Filename";
             // 
-            // textBox1
+            // tbChecklistFilename
             // 
-            this.textBox1.Location = new System.Drawing.Point(121, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 20);
-            this.textBox1.TabIndex = 5;
+            this.tbChecklistFilename.Location = new System.Drawing.Point(119, 24);
+            this.tbChecklistFilename.Name = "tbChecklistFilename";
+            this.tbChecklistFilename.Size = new System.Drawing.Size(224, 20);
+            this.tbChecklistFilename.TabIndex = 14;
             // 
-            // lblConfidenceThreshold
+            // tvOptions
             // 
-            this.lblConfidenceThreshold.AutoSize = true;
-            this.lblConfidenceThreshold.Location = new System.Drawing.Point(14, 22);
-            this.lblConfidenceThreshold.Name = "lblConfidenceThreshold";
-            this.lblConfidenceThreshold.Size = new System.Drawing.Size(111, 13);
-            this.lblConfidenceThreshold.TabIndex = 11;
-            this.lblConfidenceThreshold.Text = "Confidence Threshold";
+            this.tvOptions.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tvOptions.HideSelection = false;
+            this.tvOptions.Location = new System.Drawing.Point(0, 0);
+            this.tvOptions.Name = "tvOptions";
+            treeNode7.Name = "nodeGeneral";
+            treeNode7.Text = "General";
+            treeNode8.Name = "nodeVoice";
+            treeNode8.Text = "Voice";
+            this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8});
+            this.tvOptions.Size = new System.Drawing.Size(121, 331);
+            this.tvOptions.TabIndex = 12;
+            this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
             // 
-            // textBox2
+            // btnCancel
             // 
-            this.textBox2.Location = new System.Drawing.Point(131, 22);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(224, 20);
-            this.textBox2.TabIndex = 10;
+            this.btnCancel.Location = new System.Drawing.Point(505, 6);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "Close";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnApply
+            // 
+            this.btnApply.Location = new System.Drawing.Point(424, 6);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(75, 23);
+            this.btnApply.TabIndex = 1;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -336,17 +411,21 @@
             this.Controls.Add(this.btnListen);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.VisibleChanged += new System.EventHandler(this.Form1_VisibleChanged);
             this.contextMenuStrip1.ResumeLayout(false);
             this.tcStatus.ResumeLayout(false);
             this.tpOptions.ResumeLayout(false);
             this.tabDebug.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.pnlOptionDetails.ResumeLayout(false);
+            this.pnlVoice.ResumeLayout(false);
+            this.pnlVoice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).EndInit();
+            this.pnlGeneral.ResumeLayout(false);
+            this.pnlGeneral.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -372,15 +451,21 @@
         private System.Windows.Forms.Label lblAcceptedCommands;
         private System.Windows.Forms.ListBox lbxAcceptedCmds;
         private System.Windows.Forms.OpenFileDialog ofdChecklistFile;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlOptionDetails;
+        private System.Windows.Forms.Panel pnlVoice;
+        private System.Windows.Forms.ComboBox cbxCulture;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown nudConfTHold;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlGeneral;
         private System.Windows.Forms.Button btnChecklistFilename;
         private System.Windows.Forms.Label lblChecklistFilename;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label lblConfidenceThreshold;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TextBox tbChecklistFilename;
+        private System.Windows.Forms.TreeView tvOptions;
+        private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
 

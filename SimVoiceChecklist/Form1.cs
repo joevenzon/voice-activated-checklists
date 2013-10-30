@@ -12,6 +12,7 @@ using System.Threading;
 using System.Globalization;
 using System.Xml.Linq;
 using System.Configuration;
+using SimVoiceChecklists.Properties;
 #endregion
 
 namespace SimVoiceChecklists
@@ -24,15 +25,17 @@ namespace SimVoiceChecklists
         private frmChecklist CLForm = null;
         private StatusWindow StatusWin = new StatusWindow();
         private Choices grammarChoices = new Choices();
-        private string ActiveCLFilename = "C:\\Dev\\SimVoiceChecklist\\SimVoiceChecklist\\A2A C172.checklist";
         private List<string> AcceptedChecklistCmds = new List<string>();
-        private float ConfidenceThreshold = 98;
+
+        private string ActiveCLFilename;// = Settings.Default["ChecklistFilename"].ToString();
+        private decimal ConfidenceThreshold;// = Convert.ToDecimal(Settings.Default["ConfidenceThreshold"]);
+        private string Culture;// = Settings.Default["CultureInfo"].ToString();
         #endregion
 
         protected override void OnLoad(EventArgs e)
         {
             Visible = false; // Hide form window.
-            ShowInTaskbar = false; // Remove from taskbar.
+            //ShowInTaskbar = false; // Remove from taskbar.
 
             base.OnLoad(e);
         }
@@ -55,6 +58,7 @@ namespace SimVoiceChecklists
         public Form1()
         {
             InitializeComponent();
+            LoadOptionsSettings();
             InitSpeechEngine();
         }
 
@@ -83,6 +87,16 @@ namespace SimVoiceChecklists
             }
         }
 
+        private void HideAllOptionPanels()
+        {
+            foreach(Control Ctrl in pnlOptionDetails.Controls)
+                if (Ctrl is Panel)
+                {
+                    ((Panel)Ctrl).Visible = false;
+                    ((Panel)Ctrl).Dock = DockStyle.None;
+                }
+        }
+
         private void AddGrammar(string Grammar)
         {
             grammarChoices.Add(Grammar);
@@ -91,31 +105,8 @@ namespace SimVoiceChecklists
 
         private void InitSpeechEngine()
         {
-            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-            //// Add an Application Setting.
-            //config.AppSettings.Settings.Add("ModificationDate", DateTime.Now.ToLongTimeString() + " ");
-
-            //// Save the changes in App.config file.
-            //config.Save(ConfigurationSaveMode.Modified);
-
-            //// Force a reload of a changed section.
-            //ConfigurationManager.RefreshSection("appSettings");
-
-
-            //List<string> list = new List<string>();
-            //foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
-            //{
-            //    string specName = "(none)";
-            //    try { specName = CultureInfo.CreateSpecificCulture(ci.Name).Name; }
-            //    catch { }
-            //    list.Add(String.Format("{0,-12}{1,-12}{2}", ci.Name, specName, ci.EnglishName));
-            //}
-
-            //list.Sort();  // sort by name
-
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-GB");
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(Culture);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(Culture);
 
             LoadAcceptedChecklistCmds();
             foreach (string checklistCmd in AcceptedChecklistCmds)
@@ -163,7 +154,7 @@ namespace SimVoiceChecklists
         void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             string voiceCommand = e.Result.Text;
-            float confidence = (e.Result.Confidence * 100);
+            decimal confidence = Convert.ToDecimal(e.Result.Confidence * 100);
 
             ListViewItem lviNew = lvHeardDebug.Items.Insert(0, DateTime.Now.ToString("HH:mm:ss"));
             lviNew.SubItems.Add(voiceCommand);
@@ -250,6 +241,52 @@ namespace SimVoiceChecklists
         {
             Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void Form1_VisibleChanged(object sender, EventArgs e)
+        {
+            TreeNode tnSelected = tvOptions.Nodes.Find("nodeGeneral", true)[0];
+            tvOptions.SelectedNode = tnSelected;
+            ShowOptionsPage(tnSelected);
+        }
+
+        private void LoadOptionsSettings()
+        {
+            ActiveCLFilename = Settings.Default["ChecklistFilename"].ToString();
+            ConfidenceThreshold = Convert.ToDecimal(Settings.Default["ConfidenceThreshold"]);
+            Culture = Settings.Default["CultureInfo"].ToString();
+
+            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
+            {
+                string specName = "(none)";
+                try { specName = CultureInfo.CreateSpecificCulture(ci.Name).Name; }
+                catch { }
+                cbxCulture.Items.Add(ci.Name);
+            }
+
+            tbChecklistFilename.Text = ActiveCLFilename;
+            nudConfTHold.Value = ConfidenceThreshold;
+            cbxCulture.SelectedIndex = cbxCulture.Items.IndexOf(Culture);
+        }
+
+        private void ShowOptionsPage(TreeNode SelectedNode)
+        {
+            HideAllOptionPanels();
+            if (SelectedNode.Name.Equals("nodeGeneral"))
+            {
+                pnlGeneral.Visible = true;
+                pnlGeneral.Dock = DockStyle.Fill;
+            }
+            else if (SelectedNode.Name.Equals("nodeVoice"))
+            {
+                pnlVoice.Visible = true;
+                pnlVoice.Dock = DockStyle.Fill;
+            }
+        }
+
+        private void tvOptions_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            ShowOptionsPage(e.Node);
         }
     }
 }

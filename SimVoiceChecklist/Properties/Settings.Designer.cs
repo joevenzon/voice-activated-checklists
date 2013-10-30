@@ -22,5 +22,41 @@ namespace SimVoiceChecklists.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Dev\\SimVoiceChecklist\\SimVoiceChecklist\\A2A C172.checklist")]
+        public string ChecklistFilename {
+            get {
+                return ((string)(this["ChecklistFilename"]));
+            }
+            set {
+                this["ChecklistFilename"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("98")]
+        public float ConfidenceThreshold {
+            get {
+                return ((float)(this["ConfidenceThreshold"]));
+            }
+            set {
+                this["ConfidenceThreshold"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("en-GB")]
+        public string CultureInfo {
+            get {
+                return ((string)(this["CultureInfo"]));
+            }
+            set {
+                this["CultureInfo"] = value;
+            }
+        }
     }
 }
