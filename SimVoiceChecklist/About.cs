@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Diagnostics;
+using System.IO;
 
 namespace SimVoiceChecklists
 {
@@ -42,8 +43,9 @@ namespace SimVoiceChecklists
         public About()
         {
             InitializeComponent();
+            
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            richTextBox1.LoadFile("C:\\Users\\Paul\\Google Drive\\Source Archive\\GPL v3.rtf");
+            richTextBox1.Rtf = Properties.Resources.GPLv3;
 
             lblVersion.Parent = pictureBox1;
             lblVersion.BackColor = Color.Transparent;
