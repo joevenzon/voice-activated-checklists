@@ -17,31 +17,27 @@ using SimVoiceChecklists.Properties;
 
 namespace SimVoiceChecklists
 {
-    public partial class Form1 : Form
+    public partial class MainFrm : Form
     {
         #region Vars
+        private bool AllowExit = false;
+        
         private SpeechRecognitionEngine recognizer = null;
         private SpeechProcessing speechProc = new SpeechProcessing();
-        private frmChecklist CLForm = null;
-        private StatusWindow StatusWin = new StatusWindow();
-        private Choices grammarChoices = new Choices();
+        private Choices grammarChoices;
         private List<string> AcceptedChecklistCmds = new List<string>();
 
-        private string ActiveCLFilename;// = Settings.Default["ChecklistFilename"].ToString();
-        private decimal ConfidenceThreshold;// = Convert.ToDecimal(Settings.Default["ConfidenceThreshold"]);
-        private string Culture;// = Settings.Default["CultureInfo"].ToString();
+        private frmChecklist CLForm = null;
+        private StatusWindow StatusWin = new StatusWindow();
+
+        private string ActiveCLFilename;
+        private decimal ConfidenceThreshold;
+        private string Culture;
         #endregion
-
-        protected override void OnLoad(EventArgs e)
-        {
-            Visible = false; // Hide form window.
-            //ShowInTaskbar = false; // Remove from taskbar.
-
-            base.OnLoad(e);
-        }
 
         private void OnExit(object sender, EventArgs e)
         {
+            notifyIcon1.Icon = null;
             Application.Exit();
         }
 
@@ -55,16 +51,18 @@ namespace SimVoiceChecklists
             base.Dispose(isDisposing);
         }
 
-        public Form1()
+        public MainFrm()
         {
+            (new Splash()).ShowSplash(3500);
             InitializeComponent();
             LoadOptionsSettings();
-            InitSpeechEngine();
         }
 
         #region Speech Engine Procs
         private void LoadAcceptedChecklistCmds()
         {
+            AcceptedChecklistCmds.Clear();
+
             foreach (XElement checklist in XElement.Load(ActiveCLFilename).Elements("checklist"))
             {
                 foreach (XElement items in checklist.Elements("item"))
@@ -107,6 +105,7 @@ namespace SimVoiceChecklists
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo(Culture);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(Culture);
+            grammarChoices = new Choices();
 
             LoadAcceptedChecklistCmds();
             foreach (string checklistCmd in AcceptedChecklistCmds)
@@ -123,7 +122,7 @@ namespace SimVoiceChecklists
 
             GrammarBuilder gbCurrent = new GrammarBuilder(grammarChoices);
 
-            recognizer = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("en-GB"));
+            recognizer = new SpeechRecognitionEngine(new System.Globalization.CultureInfo(Culture));
             // Create and load a dictation grammar.
             //recognizer.LoadGrammar(new DictationGrammar());
             recognizer.LoadGrammar(new Grammar(gbCurrent));
@@ -189,10 +188,16 @@ namespace SimVoiceChecklists
         {
             if (Convert.ToInt32(btnListen.Tag) == 0)
             {
-                ListenMenuItem.Checked = true;
-                btnListen.Tag = 1;
-                btnListen.Text = "Stop Listening";
-                StartListenening();
+                if ((!String.IsNullOrEmpty(ActiveCLFilename)) || (System.IO.File.Exists(ActiveCLFilename)))
+                {
+                    ListenMenuItem.Checked = true;
+                    btnListen.Tag = 1;
+                    btnListen.Text = "Stop Listening";
+                    InitSpeechEngine();
+                    StartListenening();
+                }
+                else
+                    MessageBox.Show("No checklist defined", "Error loading checklist", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -240,7 +245,6 @@ namespace SimVoiceChecklists
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             Show();
-            WindowState = FormWindowState.Normal;
         }
 
         private void Form1_VisibleChanged(object sender, EventArgs e)
@@ -252,9 +256,9 @@ namespace SimVoiceChecklists
 
         private void LoadOptionsSettings()
         {
-            ActiveCLFilename = Settings.Default["ChecklistFilename"].ToString();
-            ConfidenceThreshold = Convert.ToDecimal(Settings.Default["ConfidenceThreshold"]);
-            Culture = Settings.Default["CultureInfo"].ToString();
+            ActiveCLFilename = Settings.Default.ChecklistFilename;
+            ConfidenceThreshold = Settings.Default.ConfidenceThreshold;
+            Culture = Settings.Default.CultureInfo;
 
             foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
             {
@@ -267,6 +271,19 @@ namespace SimVoiceChecklists
             tbChecklistFilename.Text = ActiveCLFilename;
             nudConfTHold.Value = ConfidenceThreshold;
             cbxCulture.SelectedIndex = cbxCulture.Items.IndexOf(Culture);
+        }
+
+        private bool SaveOptionSettings()
+        {
+            Settings.Default.ChecklistFilename = tbChecklistFilename.Text;
+            Settings.Default.ConfidenceThreshold = nudConfTHold.Value;
+            Settings.Default.CultureInfo = cbxCulture.Text;
+
+            Settings.Default.Save();
+
+            DialogResult drApply = MessageBox.Show("The application requires a restart for the new settings to take effect. \n\nRestart now?",
+                                                   "Options changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return (drApply == DialogResult.Yes);
         }
 
         private void ShowOptionsPage(TreeNode SelectedNode)
@@ -287,6 +304,40 @@ namespace SimVoiceChecklists
         private void tvOptions_AfterSelect(object sender, TreeViewEventArgs e)
         {
             ShowOptionsPage(e.Node);
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            if (SaveOptionSettings())
+            {
+                AllowExit = true;
+                notifyIcon1.Icon = null;
+                Application.Restart();
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!AllowExit)
+            {
+                this.Hide();
+                e.Cancel = true;
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void OptionsMenuItem_Click(object sender, EventArgs e)
+        {
+            Show();
+        }
+
+        private void AboutMenuItem_Click(object sender, EventArgs e)
+        {
+            (new About()).Show();
         }
     }
 }

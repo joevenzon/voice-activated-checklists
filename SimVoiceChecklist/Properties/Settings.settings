@@ -5,7 +5,7 @@
     <Setting Name="ChecklistFilename" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Dev\SimVoiceChecklist\SimVoiceChecklist\A2A C172.checklist</Value>
     </Setting>
-    <Setting Name="ConfidenceThreshold" Type="System.Single" Scope="User">
+    <Setting Name="ConfidenceThreshold" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">98</Value>
     </Setting>
     <Setting Name="CultureInfo" Type="System.String" Scope="User">

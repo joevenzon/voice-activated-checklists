@@ -1,6 +1,6 @@
 ﻿namespace SimVoiceChecklists
 {
-    partial class Form1
+    partial class MainFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Voice");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
+            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("Voice");
             this.btnListen = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -40,18 +40,6 @@
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcStatus = new System.Windows.Forms.TabControl();
             this.tpOptions = new System.Windows.Forms.TabPage();
-            this.tabDebug = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lvHeardDebug = new System.Windows.Forms.ListView();
-            this.timeHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.HeardHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.confidenceHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lbxAcceptedCmds = new System.Windows.Forms.ListBox();
-            this.lblAcceptedCommands = new System.Windows.Forms.Label();
-            this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlOptionDetails = new System.Windows.Forms.Panel();
             this.pnlVoice = new System.Windows.Forms.Panel();
@@ -64,20 +52,35 @@
             this.lblChecklistFilename = new System.Windows.Forms.Label();
             this.tbChecklistFilename = new System.Windows.Forms.TextBox();
             this.tvOptions = new System.Windows.Forms.TreeView();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.btnApply = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.tabDebug = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lvHeardDebug = new System.Windows.Forms.ListView();
+            this.timeHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HeardHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.confidenceHdr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbxAcceptedCmds = new System.Windows.Forms.ListBox();
+            this.lblAcceptedCommands = new System.Windows.Forms.Label();
+            this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
+            this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
-            this.tabDebug.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlOptionDetails.SuspendLayout();
             this.pnlVoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).BeginInit();
             this.pnlGeneral.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.tabDebug.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListen
@@ -105,27 +108,30 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ListenMenuItem,
+            this.OptionsMenuItem,
+            this.toolStripSeparator2,
+            this.AboutMenuItem,
             this.toolStripSeparator1,
             this.ExitMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(106, 54);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 126);
             // 
             // ListenMenuItem
             // 
             this.ListenMenuItem.Name = "ListenMenuItem";
-            this.ListenMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.ListenMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ListenMenuItem.Text = "Listen";
             this.ListenMenuItem.Click += new System.EventHandler(this.btnListen_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(102, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.ExitMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.Click += new System.EventHandler(this.OnExit);
             // 
@@ -151,117 +157,6 @@
             this.tpOptions.TabIndex = 0;
             this.tpOptions.Text = "Options";
             this.tpOptions.UseVisualStyleBackColor = true;
-            // 
-            // tabDebug
-            // 
-            this.tabDebug.Controls.Add(this.panel1);
-            this.tabDebug.Controls.Add(this.panel2);
-            this.tabDebug.Location = new System.Drawing.Point(4, 22);
-            this.tabDebug.Name = "tabDebug";
-            this.tabDebug.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDebug.Size = new System.Drawing.Size(591, 372);
-            this.tabDebug.TabIndex = 1;
-            this.tabDebug.Text = "Debug";
-            this.tabDebug.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lvHeardDebug);
-            this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(139, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(449, 366);
-            this.panel1.TabIndex = 2;
-            // 
-            // lvHeardDebug
-            // 
-            this.lvHeardDebug.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.timeHdr,
-            this.HeardHdr,
-            this.confidenceHdr});
-            this.lvHeardDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvHeardDebug.Location = new System.Drawing.Point(0, 10);
-            this.lvHeardDebug.Name = "lvHeardDebug";
-            this.lvHeardDebug.Size = new System.Drawing.Size(449, 356);
-            this.lvHeardDebug.TabIndex = 10;
-            this.lvHeardDebug.UseCompatibleStateImageBehavior = false;
-            this.lvHeardDebug.View = System.Windows.Forms.View.Details;
-            // 
-            // timeHdr
-            // 
-            this.timeHdr.Text = "Time";
-            this.timeHdr.Width = 75;
-            // 
-            // HeardHdr
-            // 
-            this.HeardHdr.Text = "Heard";
-            this.HeardHdr.Width = 125;
-            // 
-            // confidenceHdr
-            // 
-            this.confidenceHdr.Text = "Confidence (%)";
-            this.confidenceHdr.Width = 100;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressBar1.Location = new System.Drawing.Point(0, 0);
-            this.progressBar1.Maximum = 1;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(449, 10);
-            this.progressBar1.Step = 1;
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lbxAcceptedCmds);
-            this.panel2.Controls.Add(this.lblAcceptedCommands);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.panel2.Size = new System.Drawing.Size(136, 366);
-            this.panel2.TabIndex = 1;
-            // 
-            // lbxAcceptedCmds
-            // 
-            this.lbxAcceptedCmds.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbxAcceptedCmds.FormattingEnabled = true;
-            this.lbxAcceptedCmds.IntegralHeight = false;
-            this.lbxAcceptedCmds.Location = new System.Drawing.Point(0, 23);
-            this.lbxAcceptedCmds.Name = "lbxAcceptedCmds";
-            this.lbxAcceptedCmds.Size = new System.Drawing.Size(133, 343);
-            this.lbxAcceptedCmds.Sorted = true;
-            this.lbxAcceptedCmds.TabIndex = 13;
-            // 
-            // lblAcceptedCommands
-            // 
-            this.lblAcceptedCommands.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblAcceptedCommands.Location = new System.Drawing.Point(0, 0);
-            this.lblAcceptedCommands.Name = "lblAcceptedCommands";
-            this.lblAcceptedCommands.Size = new System.Drawing.Size(133, 23);
-            this.lblAcceptedCommands.TabIndex = 4;
-            this.lblAcceptedCommands.Text = "Accepted Commands";
-            this.lblAcceptedCommands.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ofdChecklistFile
-            // 
-            this.ofdChecklistFile.DefaultExt = "*.checklist";
-            this.ofdChecklistFile.FileName = "openFileDialog1";
-            this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
-            // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.btnApply);
-            this.panel4.Controls.Add(this.btnCancel);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(3, 334);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(585, 35);
-            this.panel4.TabIndex = 1;
             // 
             // panel3
             // 
@@ -373,25 +268,27 @@
             this.tvOptions.HideSelection = false;
             this.tvOptions.Location = new System.Drawing.Point(0, 0);
             this.tvOptions.Name = "tvOptions";
-            treeNode7.Name = "nodeGeneral";
-            treeNode7.Text = "General";
-            treeNode8.Name = "nodeVoice";
-            treeNode8.Text = "Voice";
+            treeNode51.Name = "nodeGeneral";
+            treeNode51.Text = "General";
+            treeNode52.Name = "nodeVoice";
+            treeNode52.Text = "Voice";
             this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8});
+            treeNode51,
+            treeNode52});
             this.tvOptions.Size = new System.Drawing.Size(121, 331);
             this.tvOptions.TabIndex = 12;
             this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
             // 
-            // btnCancel
+            // panel4
             // 
-            this.btnCancel.Location = new System.Drawing.Point(505, 6);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 0;
-            this.btnCancel.Text = "Close";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnApply);
+            this.panel4.Controls.Add(this.btnCancel);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(3, 334);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(585, 35);
+            this.panel4.TabIndex = 1;
             // 
             // btnApply
             // 
@@ -401,24 +298,156 @@
             this.btnApply.TabIndex = 1;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
-            // Form1
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(505, 6);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "Close";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // tabDebug
+            // 
+            this.tabDebug.Controls.Add(this.panel1);
+            this.tabDebug.Controls.Add(this.panel2);
+            this.tabDebug.Location = new System.Drawing.Point(4, 22);
+            this.tabDebug.Name = "tabDebug";
+            this.tabDebug.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDebug.Size = new System.Drawing.Size(591, 372);
+            this.tabDebug.TabIndex = 1;
+            this.tabDebug.Text = "Debug";
+            this.tabDebug.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lvHeardDebug);
+            this.panel1.Controls.Add(this.progressBar1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(139, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(449, 366);
+            this.panel1.TabIndex = 2;
+            // 
+            // lvHeardDebug
+            // 
+            this.lvHeardDebug.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.timeHdr,
+            this.HeardHdr,
+            this.confidenceHdr});
+            this.lvHeardDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvHeardDebug.Location = new System.Drawing.Point(0, 10);
+            this.lvHeardDebug.Name = "lvHeardDebug";
+            this.lvHeardDebug.Size = new System.Drawing.Size(449, 356);
+            this.lvHeardDebug.TabIndex = 10;
+            this.lvHeardDebug.UseCompatibleStateImageBehavior = false;
+            this.lvHeardDebug.View = System.Windows.Forms.View.Details;
+            // 
+            // timeHdr
+            // 
+            this.timeHdr.Text = "Time";
+            this.timeHdr.Width = 75;
+            // 
+            // HeardHdr
+            // 
+            this.HeardHdr.Text = "Heard";
+            this.HeardHdr.Width = 125;
+            // 
+            // confidenceHdr
+            // 
+            this.confidenceHdr.Text = "Confidence (%)";
+            this.confidenceHdr.Width = 100;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar1.Location = new System.Drawing.Point(0, 0);
+            this.progressBar1.Maximum = 1;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(449, 10);
+            this.progressBar1.Step = 1;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lbxAcceptedCmds);
+            this.panel2.Controls.Add(this.lblAcceptedCommands);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.panel2.Size = new System.Drawing.Size(136, 366);
+            this.panel2.TabIndex = 1;
+            // 
+            // lbxAcceptedCmds
+            // 
+            this.lbxAcceptedCmds.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbxAcceptedCmds.FormattingEnabled = true;
+            this.lbxAcceptedCmds.IntegralHeight = false;
+            this.lbxAcceptedCmds.Location = new System.Drawing.Point(0, 23);
+            this.lbxAcceptedCmds.Name = "lbxAcceptedCmds";
+            this.lbxAcceptedCmds.Size = new System.Drawing.Size(133, 343);
+            this.lbxAcceptedCmds.Sorted = true;
+            this.lbxAcceptedCmds.TabIndex = 13;
+            // 
+            // lblAcceptedCommands
+            // 
+            this.lblAcceptedCommands.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblAcceptedCommands.Location = new System.Drawing.Point(0, 0);
+            this.lblAcceptedCommands.Name = "lblAcceptedCommands";
+            this.lblAcceptedCommands.Size = new System.Drawing.Size(133, 23);
+            this.lblAcceptedCommands.TabIndex = 4;
+            this.lblAcceptedCommands.Text = "Accepted Commands";
+            this.lblAcceptedCommands.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ofdChecklistFile
+            // 
+            this.ofdChecklistFile.DefaultExt = "*.checklist";
+            this.ofdChecklistFile.FileName = "openFileDialog1";
+            this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
+            // 
+            // OptionsMenuItem
+            // 
+            this.OptionsMenuItem.Name = "OptionsMenuItem";
+            this.OptionsMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.OptionsMenuItem.Text = "Options";
+            this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // AboutMenuItem
+            // 
+            this.AboutMenuItem.Name = "AboutMenuItem";
+            this.AboutMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.AboutMenuItem.Text = "About";
+            this.AboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
+            // 
+            // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 398);
             this.Controls.Add(this.tcStatus);
             this.Controls.Add(this.btnListen);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "MainFrm";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Sim Voice Checklist Options";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.Form1_VisibleChanged);
             this.contextMenuStrip1.ResumeLayout(false);
             this.tcStatus.ResumeLayout(false);
             this.tpOptions.ResumeLayout(false);
-            this.tabDebug.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.pnlOptionDetails.ResumeLayout(false);
             this.pnlVoice.ResumeLayout(false);
@@ -426,6 +455,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).EndInit();
             this.pnlGeneral.ResumeLayout(false);
             this.pnlGeneral.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.tabDebug.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -466,6 +499,9 @@
         private System.Windows.Forms.TreeView tvOptions;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
     }
 }
 

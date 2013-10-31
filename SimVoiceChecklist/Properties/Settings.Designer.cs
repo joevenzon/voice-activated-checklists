@@ -38,9 +38,9 @@ namespace SimVoiceChecklists.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("98")]
-        public float ConfidenceThreshold {
+        public decimal ConfidenceThreshold {
             get {
-                return ((float)(this["ConfidenceThreshold"]));
+                return ((decimal)(this["ConfidenceThreshold"]));
             }
             set {
                 this["ConfidenceThreshold"] = value;
