@@ -37,7 +37,7 @@ namespace SimVoiceChecklists.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("98")]
+        [global::System.Configuration.DefaultSettingValueAttribute("97")]
         public decimal ConfidenceThreshold {
             get {
                 return ((decimal)(this["ConfidenceThreshold"]));
@@ -56,6 +56,18 @@ namespace SimVoiceChecklists.Properties {
             }
             set {
                 this["CultureInfo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp\\Checklist audio files")]
+        public string AudioPath {
+            get {
+                return ((string)(this["AudioPath"]));
+            }
+            set {
+                this["AudioPath"] = value;
             }
         }
     }

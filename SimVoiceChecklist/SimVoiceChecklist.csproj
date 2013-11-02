@@ -97,6 +97,12 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChecklistList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChecklistList.Designer.cs">
+      <DependentUpon>ChecklistList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,7 +122,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SpeechProcessing.cs" />
     <Compile Include="Splash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +136,9 @@
     </Compile>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChecklistList.resx">
+      <DependentUpon>ChecklistList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -23,23 +23,18 @@ namespace SimVoiceChecklists
         private bool AllowExit = false;
         
         private SpeechRecognitionEngine recognizer = null;
-        private SpeechProcessing speechProc = new SpeechProcessing();
         private Choices grammarChoices;
         private List<string> AcceptedChecklistCmds = new List<string>();
 
         private frmChecklist CLForm = null;
         private StatusWindow StatusWin = new StatusWindow();
+        private ChecklistList CLListForm;
 
         private string ActiveCLFilename;
+        private string AudioPath;
         private decimal ConfidenceThreshold;
         private string Culture;
         #endregion
-
-        private void OnExit(object sender, EventArgs e)
-        {
-            notifyIcon1.Icon = null;
-            Application.Exit();
-        }
 
         protected override void Dispose(bool isDisposing)
         {
@@ -53,12 +48,37 @@ namespace SimVoiceChecklists
 
         public MainFrm()
         {
-            (new Splash()).ShowSplash(3500);
+            (new Splash()).ShowSplash(3000);
             InitializeComponent();
             LoadOptionsSettings();
         }
 
         #region Speech Engine Procs
+        private bool ProcessTopLevelVoiceCommand(string VoiceCommand)
+        {
+            bool result = false;
+            OpenChecklists();
+            if (VoiceCommand.ToLower().Contains("checklist"))
+            {
+                if (VoiceCommand.ToLower().Contains("open"))
+                {
+                    result = true;
+                    OpenChecklists();
+                }
+                else if (VoiceCommand.ToLower().Contains("show"))
+                {
+                    CLListForm = new ChecklistList();
+                    CLListForm.LoadChecklistFile(ActiveCLFilename);
+                }
+                else if ((CLForm != null) && (CLForm.Visible))
+                    result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
+            }
+            else if ((CLForm != null) && (CLForm.Visible))
+                result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
+
+            return result;
+        }
+
         private void LoadAcceptedChecklistCmds()
         {
             AcceptedChecklistCmds.Clear();
@@ -114,11 +134,12 @@ namespace SimVoiceChecklists
             AddGrammar("Open Checklist");
             AddGrammar("Close Checklist");
             AddGrammar("Abort Checklist");
+            AddGrammar("Show Checklists");
+            AddGrammar("Thankyou");
+            AddGrammar("Thanks");
 
-            AddGrammar("Cabin Checklist");
-            AddGrammar("Before Starting Engine Checklist");
-            AddGrammar("Starting Engine Checklist");
-            AddGrammar("Before Takeoff Checklist");
+            foreach (XElement checklist in XElement.Load(ActiveCLFilename).Elements("checklist"))
+                AddGrammar(checklist.Attribute("name").Value + " Checklist");
 
             GrammarBuilder gbCurrent = new GrammarBuilder(grammarChoices);
 
@@ -207,99 +228,6 @@ namespace SimVoiceChecklists
                 StopListening();
             }
         }
-        #endregion
-
-        private bool ProcessTopLevelVoiceCommand(string VoiceCommand)
-        {
-            bool result = false;
-            if (VoiceCommand.ToLower().Contains("checklist"))
-            {
-                if (VoiceCommand.ToLower().Contains("open"))
-                {
-                    result = true;
-                    OpenChecklists();
-                }
-                else if ((CLForm != null) && (CLForm.Visible))
-                    result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
-            }
-            else if ((CLForm != null) && (CLForm.Visible))
-                result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
-
-            return result;
-        }
-
-        private void OpenChecklists()
-        {
-            if ((CLForm == null) || (!CLForm.Visible))
-            {
-                CLForm = new frmChecklist();
-                CLForm.AcceptedChecklistCmds = AcceptedChecklistCmds;
-                CLForm.Show();
-                if (CLForm.LoadChecklistFile(ActiveCLFilename))
-                  CLForm.ShowActiveChecklist();
-                else
-                  Console.Beep();
-            }
-        }
-
-        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
-        {
-            Show();
-        }
-
-        private void Form1_VisibleChanged(object sender, EventArgs e)
-        {
-            TreeNode tnSelected = tvOptions.Nodes.Find("nodeGeneral", true)[0];
-            tvOptions.SelectedNode = tnSelected;
-            ShowOptionsPage(tnSelected);
-        }
-
-        private void LoadOptionsSettings()
-        {
-            ActiveCLFilename = Settings.Default.ChecklistFilename;
-            ConfidenceThreshold = Settings.Default.ConfidenceThreshold;
-            Culture = Settings.Default.CultureInfo;
-
-            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
-            {
-                string specName = "(none)";
-                try { specName = CultureInfo.CreateSpecificCulture(ci.Name).Name; }
-                catch { }
-                cbxCulture.Items.Add(ci.Name);
-            }
-
-            tbChecklistFilename.Text = ActiveCLFilename;
-            nudConfTHold.Value = ConfidenceThreshold;
-            cbxCulture.SelectedIndex = cbxCulture.Items.IndexOf(Culture);
-        }
-
-        private bool SaveOptionSettings()
-        {
-            Settings.Default.ChecklistFilename = tbChecklistFilename.Text;
-            Settings.Default.ConfidenceThreshold = nudConfTHold.Value;
-            Settings.Default.CultureInfo = cbxCulture.Text;
-
-            Settings.Default.Save();
-
-            DialogResult drApply = MessageBox.Show("The application requires a restart for the new settings to take effect. \n\nRestart now?",
-                                                   "Options changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            return (drApply == DialogResult.Yes);
-        }
-
-        private void ShowOptionsPage(TreeNode SelectedNode)
-        {
-            HideAllOptionPanels();
-            if (SelectedNode.Name.Equals("nodeGeneral"))
-            {
-                pnlGeneral.Visible = true;
-                pnlGeneral.Dock = DockStyle.Fill;
-            }
-            else if (SelectedNode.Name.Equals("nodeVoice"))
-            {
-                pnlVoice.Visible = true;
-                pnlVoice.Dock = DockStyle.Fill;
-            }
-        }
 
         private void tvOptions_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -338,6 +266,128 @@ namespace SimVoiceChecklists
         private void AboutMenuItem_Click(object sender, EventArgs e)
         {
             (new About()).Show();
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            Show();
+        }
+
+        private void Form1_VisibleChanged(object sender, EventArgs e)
+        {
+            TreeNode tnSelected = tvOptions.Nodes.Find("nodeGeneral", true)[0];
+            tvOptions.SelectedNode = tnSelected;
+            ShowOptionsPage(tnSelected);
+        }
+
+        private void OnExit(object sender, EventArgs e)
+        {
+            AllowExit = true;
+            notifyIcon1.Icon = null;
+            Application.Exit();
+        }
+
+        private void btnChecklistFilename_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(tbChecklistFilename.Text))
+            {
+                ofdChecklistFile.InitialDirectory = System.IO.Path.GetDirectoryName(tbChecklistFilename.Text);
+                ofdChecklistFile.FileName = System.IO.Path.GetFileName(tbChecklistFilename.Text);
+            }
+
+            if (ofdChecklistFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                tbChecklistFilename.Text = ofdChecklistFile.FileName;
+        }
+
+        private void btnAudioPath_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(tbAudioPath.Text))
+            {
+                fbdAudioPath.SelectedPath = System.IO.Path.GetDirectoryName(tbChecklistFilename.Text);
+                //ofdChecklistFile.FileName = System.IO.Path.GetFileName(tbChecklistFilename.Text);
+            }
+
+            if (fbdAudioPath.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                tbAudioPath.Text = fbdAudioPath.SelectedPath;
+
+        }
+        #endregion
+
+        #region Options Procs
+        private void LoadOptionsSettings()
+        {
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+            ActiveCLFilename = Settings.Default.ChecklistFilename;
+            ConfidenceThreshold = Settings.Default.ConfidenceThreshold;
+            AudioPath = Settings.Default.AudioPath;
+
+            Culture = Settings.Default.CultureInfo;
+
+            if (String.IsNullOrEmpty(ActiveCLFilename))
+                ActiveCLFilename = baseDir + "A2A C172.checklist";
+            if (String.IsNullOrEmpty(AudioPath))
+                AudioPath = baseDir + "Checklist audio files";
+
+            foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
+            {
+                string specName = "(none)";
+                try { specName = CultureInfo.CreateSpecificCulture(ci.Name).Name; }
+                catch { }
+                cbxCulture.Items.Add(ci.Name);
+            }
+
+            tbChecklistFilename.Text = ActiveCLFilename;
+            tbAudioPath.Text = AudioPath;
+            nudConfTHold.Value = ConfidenceThreshold;
+            cbxCulture.SelectedIndex = cbxCulture.Items.IndexOf(Culture);
+        }
+
+        private bool SaveOptionSettings()
+        {
+            Settings.Default.ChecklistFilename = tbChecklistFilename.Text;
+            Settings.Default.AudioPath = tbAudioPath.Text;
+            Settings.Default.ConfidenceThreshold = nudConfTHold.Value;
+            Settings.Default.CultureInfo = cbxCulture.Text;
+
+            Settings.Default.Save();
+
+            DialogResult drApply = MessageBox.Show("The application requires a restart for the new settings to take effect. \n\nRestart now?",
+                                                   "Options changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return (drApply == DialogResult.Yes);
+        }
+
+        private void ShowOptionsPage(TreeNode SelectedNode)
+        {
+            HideAllOptionPanels();
+            if (SelectedNode.Name.Equals("nodeGeneral"))
+            {
+                pnlGeneral.Visible = true;
+                pnlGeneral.Dock = DockStyle.Fill;
+            }
+            else if (SelectedNode.Name.Equals("nodeVoice"))
+            {
+                pnlVoice.Visible = true;
+                pnlVoice.Dock = DockStyle.Fill;
+            }
+        }
+        #endregion
+
+        private void OpenChecklists()
+        {
+            if ((CLForm == null) || (!CLForm.Visible))
+            {
+                CLForm = new frmChecklist();
+                CLForm.AcceptedChecklistCmds = AcceptedChecklistCmds;
+                CLForm.Show();
+                if (CLForm.LoadChecklistFile(ActiveCLFilename))
+                {
+                    CLForm.SetAudioPath(AudioPath);
+                    CLForm.ShowNoActiveChecklist();
+                }
+                else
+                    Console.Beep();
+            }
         }
     }
 }

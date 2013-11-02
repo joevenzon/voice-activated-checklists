@@ -17,7 +17,8 @@ namespace SimVoiceChecklists
     {
         private System.Speech.Synthesis.SpeechSynthesizer synth = new System.Speech.Synthesis.SpeechSynthesizer();
         private string CheckListFilename;
-        private int ActiveChecklistIndex = 0;
+        private string AudioPath;
+        private int ActiveChecklistIndex = -1;
         private int ChecklistIndex = -1;
 
         public List<string> AcceptedChecklistCmds;
@@ -63,6 +64,11 @@ namespace SimVoiceChecklists
             return result;
         }
 
+        public void SetAudioPath(string AudioPath)
+        {
+            this.AudioPath = AudioPath;
+        }
+
         public bool ProcessPossibleChecklistCommand(string VoiceCommand)
         {
             bool result = false;
@@ -81,9 +87,8 @@ namespace SimVoiceChecklists
                 {
                     string commandText = lvChecklistItems.Items[ChecklistIndex].SubItems[2].Text.ToLower();
                     string[] validCommands = commandText.Split(',').Select(sValue => sValue.Trim()).ToArray();
-                    //List<string> validCommands = commandText.Split(',').ToList<string>();
+
                     if (validCommands.Contains(voiceCmd))
-                    //if (validCommands.IndexOf(voiceCmd) > -1)
                     {
                         AcceptChecklistCommand();
                         result = true;
@@ -97,6 +102,7 @@ namespace SimVoiceChecklists
                 if (checklistCmd == "abort")
                 {
                     CloseActiveChecklist();
+                    ShowNoActiveChecklist();
                     result = true;
                 }
                 else if (checklistCmd == "close")
@@ -130,7 +136,11 @@ namespace SimVoiceChecklists
         {
             if (ChecklistNumber <= lvAvailableChecklists.Items.Count)
                 if (LoadChecklist(ChecklistNumber))
+                {
+                    ActiveChecklistIndex = ChecklistNumber;
+                    ShowActiveChecklist();
                     StartLoadedChecklist();
+                }
         }
 
         public void AcceptChecklistCommand()
@@ -147,6 +157,12 @@ namespace SimVoiceChecklists
         {
             ChecklistIndex = -1;
             lvChecklistItems.Items.Clear();
+        }
+
+        public void ShowNoActiveChecklist()
+        {
+            ActiveChecklistIndex = -1;
+            lblChecklistHeader.Text = "No checklist active";
         }
 
         public void ShowActiveChecklist()
@@ -167,7 +183,14 @@ namespace SimVoiceChecklists
 
         private void Say(string Statement)
         {
-            synth.SpeakAsync(Statement);
+            string wavFile = GetWavFileForText(Statement);
+            if ((wavFile != String.Empty) && (System.IO.File.Exists(wavFile)))
+            {
+                using (SoundPlayer player = new SoundPlayer(wavFile))
+                    player.Play();
+            }
+            else
+                synth.SpeakAsync(Statement);
         }
 
         private bool LoadChecklist(int ChecklistIndex)
@@ -221,14 +244,21 @@ namespace SimVoiceChecklists
 
         private void ReadActiveChecklistItem()
         {
-            string wavFile = lvChecklistItems.Items[ChecklistIndex].SubItems[3].Text;
-            if ((wavFile != String.Empty) && (System.IO.File.Exists(wavFile)))
-            {
-                using (SoundPlayer player = new SoundPlayer(wavFile))
-                    player.Play();
-            }
+            Say(lvChecklistItems.Items[ChecklistIndex].Text);
+        }
+
+        private string GetWavFileForText(string ChecklistText)
+        {
+            string textToCheck = ChecklistText;
+            if (char.IsPunctuation(textToCheck[textToCheck.Length -1]))
+                textToCheck = textToCheck.TrimEnd(textToCheck[textToCheck.Length - 1]);
+
+            string wavFilename = AudioPath + "\\" + textToCheck + ".wav";
+
+            if (System.IO.File.Exists(wavFilename))
+                return wavFilename;
             else
-                Say(lvChecklistItems.Items[ChecklistIndex].Text);
+                return "";
         }
     }
 }

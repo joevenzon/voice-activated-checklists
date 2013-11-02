@@ -6,10 +6,13 @@
       <Value Profile="(Default)">C:\Dev\SimVoiceChecklist\SimVoiceChecklist\A2A C172.checklist</Value>
     </Setting>
     <Setting Name="ConfidenceThreshold" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">98</Value>
+      <Value Profile="(Default)">97</Value>
     </Setting>
     <Setting Name="CultureInfo" Type="System.String" Scope="User">
       <Value Profile="(Default)">en-GB</Value>
+    </Setting>
+    <Setting Name="AudioPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Temp\Checklist audio files</Value>
     </Setting>
   </Settings>
 </SettingsFile>
