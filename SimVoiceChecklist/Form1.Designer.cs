@@ -228,9 +228,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 20;
-            this.label2.Text = "Confidence Threshold";
+            this.label2.Text = "Language Culture";
             // 
             // nudConfTHold
             // 

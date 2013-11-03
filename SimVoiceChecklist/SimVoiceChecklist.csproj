@@ -197,6 +197,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SimVoiceChecklists.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="SimVoiceChecklist.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
