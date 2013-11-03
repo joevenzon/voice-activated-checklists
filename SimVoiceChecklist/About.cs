@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Diagnostics;
 using System.IO;
+using System.Configuration;
 
 namespace SimVoiceChecklists
 {
@@ -63,6 +64,15 @@ namespace SimVoiceChecklists
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void lblVersion_DoubleClick(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+            MessageBox.Show(config.FilePath);
+            Clipboard.SetText(System.IO.Path.GetDirectoryName(config.FilePath));
+
+
         }
     }
 }

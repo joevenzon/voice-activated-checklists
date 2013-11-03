@@ -25,7 +25,7 @@ namespace SimVoiceChecklists.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Dev\\SimVoiceChecklist\\SimVoiceChecklist\\A2A C172.checklist")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ChecklistFilename {
             get {
                 return ((string)(this["ChecklistFilename"]));
@@ -61,7 +61,7 @@ namespace SimVoiceChecklists.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Temp\\Checklist audio files")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string AudioPath {
             get {
                 return ((string)(this["AudioPath"]));

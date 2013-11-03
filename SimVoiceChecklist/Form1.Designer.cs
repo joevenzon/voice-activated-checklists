@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Voice");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Voice");
             this.btnListen = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -45,6 +45,11 @@
             this.tpOptions = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlOptionDetails = new System.Windows.Forms.Panel();
+            this.pnlVoice = new System.Windows.Forms.Panel();
+            this.cbxCulture = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudConfTHold = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlGeneral = new System.Windows.Forms.Panel();
             this.btnAudioPath = new System.Windows.Forms.Button();
             this.tbAudioPath = new System.Windows.Forms.TextBox();
@@ -68,23 +73,18 @@
             this.lblAcceptedCommands = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdAudioPath = new System.Windows.Forms.FolderBrowserDialog();
-            this.pnlVoice = new System.Windows.Forms.Panel();
-            this.cbxCulture = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.nudConfTHold = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlOptionDetails.SuspendLayout();
+            this.pnlVoice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).BeginInit();
             this.pnlGeneral.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabDebug.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.pnlVoice.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).BeginInit();
             this.SuspendLayout();
             // 
             // btnListen
@@ -202,6 +202,53 @@
             this.pnlOptionDetails.Size = new System.Drawing.Size(464, 331);
             this.pnlOptionDetails.TabIndex = 13;
             // 
+            // pnlVoice
+            // 
+            this.pnlVoice.Controls.Add(this.cbxCulture);
+            this.pnlVoice.Controls.Add(this.label2);
+            this.pnlVoice.Controls.Add(this.nudConfTHold);
+            this.pnlVoice.Controls.Add(this.label1);
+            this.pnlVoice.Location = new System.Drawing.Point(119, 197);
+            this.pnlVoice.Name = "pnlVoice";
+            this.pnlVoice.Size = new System.Drawing.Size(239, 231);
+            this.pnlVoice.TabIndex = 7;
+            // 
+            // cbxCulture
+            // 
+            this.cbxCulture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCulture.FormattingEnabled = true;
+            this.cbxCulture.Location = new System.Drawing.Point(21, 90);
+            this.cbxCulture.Name = "cbxCulture";
+            this.cbxCulture.Size = new System.Drawing.Size(101, 21);
+            this.cbxCulture.Sorted = true;
+            this.cbxCulture.TabIndex = 21;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Confidence Threshold";
+            // 
+            // nudConfTHold
+            // 
+            this.nudConfTHold.DecimalPlaces = 2;
+            this.nudConfTHold.Location = new System.Drawing.Point(21, 43);
+            this.nudConfTHold.Name = "nudConfTHold";
+            this.nudConfTHold.Size = new System.Drawing.Size(68, 20);
+            this.nudConfTHold.TabIndex = 19;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Confidence Threshold";
+            // 
             // pnlGeneral
             // 
             this.pnlGeneral.Controls.Add(this.btnAudioPath);
@@ -217,7 +264,7 @@
             // 
             // btnAudioPath
             // 
-            this.btnAudioPath.Location = new System.Drawing.Point(251, 88);
+            this.btnAudioPath.Location = new System.Drawing.Point(368, 88);
             this.btnAudioPath.Name = "btnAudioPath";
             this.btnAudioPath.Size = new System.Drawing.Size(25, 22);
             this.btnAudioPath.TabIndex = 20;
@@ -230,7 +277,7 @@
             // 
             this.tbAudioPath.Location = new System.Drawing.Point(21, 90);
             this.tbAudioPath.Name = "tbAudioPath";
-            this.tbAudioPath.Size = new System.Drawing.Size(224, 20);
+            this.tbAudioPath.Size = new System.Drawing.Size(341, 20);
             this.tbAudioPath.TabIndex = 19;
             // 
             // label3
@@ -244,7 +291,7 @@
             // 
             // btnChecklistFilename
             // 
-            this.btnChecklistFilename.Location = new System.Drawing.Point(251, 41);
+            this.btnChecklistFilename.Location = new System.Drawing.Point(368, 41);
             this.btnChecklistFilename.Name = "btnChecklistFilename";
             this.btnChecklistFilename.Size = new System.Drawing.Size(25, 23);
             this.btnChecklistFilename.TabIndex = 16;
@@ -266,7 +313,7 @@
             // 
             this.tbChecklistFilename.Location = new System.Drawing.Point(21, 43);
             this.tbChecklistFilename.Name = "tbChecklistFilename";
-            this.tbChecklistFilename.Size = new System.Drawing.Size(224, 20);
+            this.tbChecklistFilename.Size = new System.Drawing.Size(341, 20);
             this.tbChecklistFilename.TabIndex = 14;
             // 
             // tvOptions
@@ -275,13 +322,13 @@
             this.tvOptions.HideSelection = false;
             this.tvOptions.Location = new System.Drawing.Point(0, 0);
             this.tvOptions.Name = "tvOptions";
-            treeNode3.Name = "nodeGeneral";
-            treeNode3.Text = "General";
-            treeNode4.Name = "nodeVoice";
-            treeNode4.Text = "Voice";
+            treeNode1.Name = "nodeGeneral";
+            treeNode1.Text = "General";
+            treeNode2.Name = "nodeVoice";
+            treeNode2.Text = "Voice";
             this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode1,
+            treeNode2});
             this.tvOptions.Size = new System.Drawing.Size(121, 331);
             this.tvOptions.TabIndex = 12;
             this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
@@ -417,53 +464,6 @@
             this.ofdChecklistFile.FileName = "openFileDialog1";
             this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
             // 
-            // pnlVoice
-            // 
-            this.pnlVoice.Controls.Add(this.cbxCulture);
-            this.pnlVoice.Controls.Add(this.label2);
-            this.pnlVoice.Controls.Add(this.nudConfTHold);
-            this.pnlVoice.Controls.Add(this.label1);
-            this.pnlVoice.Location = new System.Drawing.Point(112, 49);
-            this.pnlVoice.Name = "pnlVoice";
-            this.pnlVoice.Size = new System.Drawing.Size(239, 231);
-            this.pnlVoice.TabIndex = 7;
-            // 
-            // cbxCulture
-            // 
-            this.cbxCulture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCulture.FormattingEnabled = true;
-            this.cbxCulture.Location = new System.Drawing.Point(21, 90);
-            this.cbxCulture.Name = "cbxCulture";
-            this.cbxCulture.Size = new System.Drawing.Size(101, 21);
-            this.cbxCulture.Sorted = true;
-            this.cbxCulture.TabIndex = 21;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Confidence Threshold";
-            // 
-            // nudConfTHold
-            // 
-            this.nudConfTHold.DecimalPlaces = 2;
-            this.nudConfTHold.Location = new System.Drawing.Point(21, 43);
-            this.nudConfTHold.Name = "nudConfTHold";
-            this.nudConfTHold.Size = new System.Drawing.Size(68, 20);
-            this.nudConfTHold.TabIndex = 19;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Confidence Threshold";
-            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,15 +484,15 @@
             this.tpOptions.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.pnlOptionDetails.ResumeLayout(false);
+            this.pnlVoice.ResumeLayout(false);
+            this.pnlVoice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).EndInit();
             this.pnlGeneral.ResumeLayout(false);
             this.pnlGeneral.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.tabDebug.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.pnlVoice.ResumeLayout(false);
-            this.pnlVoice.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).EndInit();
             this.ResumeLayout(false);
 
         }
