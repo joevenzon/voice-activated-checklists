@@ -54,6 +54,8 @@ namespace SimVoiceChecklists
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             lblVersion.Text = "v" + fileVersionInfo.ProductVersion;
+            if (lblVersion.Right > this.Width)
+                lblVersion.Left = this.Width - lblVersion.Width - 5;
         }
 
         private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)

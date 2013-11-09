@@ -70,5 +70,41 @@ namespace SimVoiceChecklists.Properties {
                 this["AudioPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProgressCLKeyBind {
+            get {
+                return ((string)(this["ProgressCLKeyBind"]));
+            }
+            set {
+                this["ProgressCLKeyBind"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisableSpeechRecogEng {
+            get {
+                return ((bool)(this["DisableSpeechRecogEng"]));
+            }
+            set {
+                this["DisableSpeechRecogEng"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ShowCLKeyBind {
+            get {
+                return ((string)(this["ShowCLKeyBind"]));
+            }
+            set {
+                this["ShowCLKeyBind"] = value;
+            }
+        }
     }
 }

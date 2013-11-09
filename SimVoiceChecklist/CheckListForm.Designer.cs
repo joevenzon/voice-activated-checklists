@@ -112,6 +112,7 @@
             this.lblChecklistHeader.TabIndex = 15;
             this.lblChecklistHeader.Text = "Checklist: <Name>";
             this.lblChecklistHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblChecklistHeader.Click += new System.EventHandler(this.lblChecklistHeader_Click);
             // 
             // frmChecklist
             // 

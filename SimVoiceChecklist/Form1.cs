@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Xml.Linq;
 using System.Configuration;
 using SimVoiceChecklists.Properties;
+using Gma.UserActivityMonitor;
 #endregion
 
 namespace SimVoiceChecklists
@@ -21,6 +22,7 @@ namespace SimVoiceChecklists
     {
         #region Vars
         private bool AllowExit = false;
+        private TextBox ActiveKeyBindTextBox = null;
         
         private SpeechRecognitionEngine recognizer = null;
         private Choices grammarChoices;
@@ -34,6 +36,9 @@ namespace SimVoiceChecklists
         private string AudioPath;
         private decimal ConfidenceThreshold;
         private string Culture;
+        private string ProgressCLKeyBind;
+        private string ShowCLKeyBind;
+        private bool DisableSpeechRecogEng;
         #endregion
 
         protected override void Dispose(bool isDisposing)
@@ -45,11 +50,12 @@ namespace SimVoiceChecklists
 
             base.Dispose(isDisposing);
         }
-
+        
         public MainFrm()
         {
             (new Splash()).ShowSplash(3000);
             InitializeComponent();
+            HookManager.KeyUp += HookManager_KeyUp;
             LoadOptionsSettings();
         }
 
@@ -68,6 +74,7 @@ namespace SimVoiceChecklists
                 else if (VoiceCommand.ToLower().Contains("show"))
                 {
                     CLListForm = new ChecklistList();
+                    CLListForm.CLForm = CLForm;
                     CLListForm.LoadChecklistFile(ActiveCLFilename);
                 }
                 else if ((CLForm != null) && (CLForm.Visible))
@@ -77,6 +84,11 @@ namespace SimVoiceChecklists
                 result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
 
             return result;
+        }
+
+        void CLListForm_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void LoadAcceptedChecklistCmds()
@@ -204,7 +216,7 @@ namespace SimVoiceChecklists
         }
         #endregion
 
-        #region Form Event Handlers
+        #region Event Handlers
         private void btnListen_Click(object sender, EventArgs e)
         {
             if (Convert.ToInt32(btnListen.Tag) == 0)
@@ -216,6 +228,7 @@ namespace SimVoiceChecklists
                     btnListen.Text = "Stop Listening";
                     InitSpeechEngine();
                     StartListenening();
+                    ShowChecklistsMenuItem.Enabled = true;
                 }
                 else
                     MessageBox.Show("No checklist defined", "Error loading checklist", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -226,6 +239,7 @@ namespace SimVoiceChecklists
                 btnListen.Tag = 0;
                 btnListen.Text = "Start Listening";
                 StopListening();
+                ShowChecklistsMenuItem.Enabled = false;
             }
         }
 
@@ -311,6 +325,47 @@ namespace SimVoiceChecklists
                 tbAudioPath.Text = fbdAudioPath.SelectedPath;
 
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tbProgressCLKeyBind.Text = "";
+        }
+
+        private void btnSet_Click(object sender, EventArgs e)
+        {
+            ActiveKeyBindTextBox = tbProgressCLKeyBind;
+        }
+
+        private void ShowChecklistsMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessTopLevelVoiceCommand("show checklist");
+        }
+
+        private void btnSetShowCLKeyBind_Click(object sender, EventArgs e)
+        {
+            ActiveKeyBindTextBox = tbShowCLKeyBind;
+        }
+
+        private void btnClearShowCLKeyBind_Click(object sender, EventArgs e)
+        {
+            tbShowCLKeyBind.Text = "";
+        }
+
+        void HookManager_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (ActiveKeyBindTextBox != null)
+            {
+                ActiveKeyBindTextBox.Text = string.Format("Key: {0}", e.KeyCode);
+                ActiveKeyBindTextBox = null;
+            }
+            else if (e.KeyCode.ToString().Equals(ShowCLKeyBind))
+                ShowChecklistsMenuItem.PerformClick();
+            else if ((CLForm != null) && (CLForm.Visible))
+            {
+                if (e.KeyCode.ToString().Equals(ProgressCLKeyBind))
+                    CLForm.ProgressChecklist();
+            }
+        }
         #endregion
 
         #region Options Procs
@@ -321,6 +376,9 @@ namespace SimVoiceChecklists
             ActiveCLFilename = Settings.Default.ChecklistFilename;
             ConfidenceThreshold = Settings.Default.ConfidenceThreshold;
             AudioPath = Settings.Default.AudioPath;
+            ProgressCLKeyBind = Settings.Default.ProgressCLKeyBind;
+            ShowCLKeyBind = Settings.Default.ShowCLKeyBind;
+            DisableSpeechRecogEng = Settings.Default.DisableSpeechRecogEng;
 
             Culture = Settings.Default.CultureInfo;
 
@@ -328,6 +386,14 @@ namespace SimVoiceChecklists
                 ActiveCLFilename = baseDir + "A2A C172.checklist";
             if (String.IsNullOrEmpty(AudioPath))
                 AudioPath = baseDir + "Checklist audio files";
+            if (DisableSpeechRecogEng)
+            {
+                nudConfTHold.Enabled = false;
+                cbxCulture.Enabled = false;
+                tcStatus.TabPages.Remove(tabDebug);
+                ListenMenuItem.Visible = false;
+                ShowChecklistsMenuItem.Enabled = true;
+            }
 
             foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
             {
@@ -341,6 +407,11 @@ namespace SimVoiceChecklists
             tbAudioPath.Text = AudioPath;
             nudConfTHold.Value = ConfidenceThreshold;
             cbxCulture.SelectedIndex = cbxCulture.Items.IndexOf(Culture);
+            if (!String.IsNullOrEmpty(ProgressCLKeyBind))
+                tbProgressCLKeyBind.Text = string.Format("Key: {0}", ProgressCLKeyBind);
+            if (!String.IsNullOrEmpty(ShowCLKeyBind))
+                tbShowCLKeyBind.Text = string.Format("Key: {0}", ShowCLKeyBind);
+            xbDisableSpeechRecogEng.Checked = DisableSpeechRecogEng;
         }
 
         private bool SaveOptionSettings()
@@ -349,6 +420,9 @@ namespace SimVoiceChecklists
             Settings.Default.AudioPath = tbAudioPath.Text;
             Settings.Default.ConfidenceThreshold = nudConfTHold.Value;
             Settings.Default.CultureInfo = cbxCulture.Text;
+            Settings.Default.ProgressCLKeyBind = tbProgressCLKeyBind.Text.Replace("Key: ", "");
+            Settings.Default.ShowCLKeyBind = tbShowCLKeyBind.Text.Replace("Key: ", "");
+            Settings.Default.DisableSpeechRecogEng = xbDisableSpeechRecogEng.Checked;
 
             Settings.Default.Save();
 

@@ -30,12 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Voice");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Voice");
             this.btnListen = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ListenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShowChecklistsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,10 @@
             this.nudConfTHold = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlGeneral = new System.Windows.Forms.Panel();
+            this.btnClearProgressCLKeyBind = new System.Windows.Forms.Button();
+            this.btnSetProgressCLKeyBind = new System.Windows.Forms.Button();
+            this.tbProgressCLKeyBind = new System.Windows.Forms.TextBox();
+            this.lblProgressCLKeyBind = new System.Windows.Forms.Label();
             this.btnAudioPath = new System.Windows.Forms.Button();
             this.tbAudioPath = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -73,6 +78,11 @@
             this.lblAcceptedCommands = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdAudioPath = new System.Windows.Forms.FolderBrowserDialog();
+            this.xbDisableSpeechRecogEng = new System.Windows.Forms.CheckBox();
+            this.btnClearShowCLKeyBind = new System.Windows.Forms.Button();
+            this.btnSetShowCLKeyBind = new System.Windows.Forms.Button();
+            this.tbShowCLKeyBind = new System.Windows.Forms.TextBox();
+            this.lblShowCLKeyBind = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
@@ -112,49 +122,58 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ListenMenuItem,
+            this.ShowChecklistsMenuItem,
             this.OptionsMenuItem,
             this.toolStripSeparator2,
             this.AboutMenuItem,
             this.toolStripSeparator1,
             this.ExitMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 104);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 126);
             // 
             // ListenMenuItem
             // 
             this.ListenMenuItem.Name = "ListenMenuItem";
-            this.ListenMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.ListenMenuItem.Size = new System.Drawing.Size(159, 22);
             this.ListenMenuItem.Text = "Listen";
             this.ListenMenuItem.Click += new System.EventHandler(this.btnListen_Click);
+            // 
+            // ShowChecklistsMenuItem
+            // 
+            this.ShowChecklistsMenuItem.Enabled = false;
+            this.ShowChecklistsMenuItem.Name = "ShowChecklistsMenuItem";
+            this.ShowChecklistsMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ShowChecklistsMenuItem.Text = "Show Checklists";
+            this.ShowChecklistsMenuItem.Click += new System.EventHandler(this.ShowChecklistsMenuItem_Click);
             // 
             // OptionsMenuItem
             // 
             this.OptionsMenuItem.Name = "OptionsMenuItem";
-            this.OptionsMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.OptionsMenuItem.Size = new System.Drawing.Size(159, 22);
             this.OptionsMenuItem.Text = "Options";
             this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(113, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(156, 6);
             // 
             // AboutMenuItem
             // 
             this.AboutMenuItem.Name = "AboutMenuItem";
-            this.AboutMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.AboutMenuItem.Size = new System.Drawing.Size(159, 22);
             this.AboutMenuItem.Text = "About";
             this.AboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(113, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
             // 
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.ExitMenuItem.Size = new System.Drawing.Size(159, 22);
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.Click += new System.EventHandler(this.OnExit);
             // 
@@ -204,20 +223,21 @@
             // 
             // pnlVoice
             // 
+            this.pnlVoice.Controls.Add(this.xbDisableSpeechRecogEng);
             this.pnlVoice.Controls.Add(this.cbxCulture);
             this.pnlVoice.Controls.Add(this.label2);
             this.pnlVoice.Controls.Add(this.nudConfTHold);
             this.pnlVoice.Controls.Add(this.label1);
-            this.pnlVoice.Location = new System.Drawing.Point(119, 197);
+            this.pnlVoice.Location = new System.Drawing.Point(414, 155);
             this.pnlVoice.Name = "pnlVoice";
-            this.pnlVoice.Size = new System.Drawing.Size(239, 231);
+            this.pnlVoice.Size = new System.Drawing.Size(176, 161);
             this.pnlVoice.TabIndex = 7;
             // 
             // cbxCulture
             // 
             this.cbxCulture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCulture.FormattingEnabled = true;
-            this.cbxCulture.Location = new System.Drawing.Point(21, 90);
+            this.cbxCulture.Location = new System.Drawing.Point(21, 137);
             this.cbxCulture.Name = "cbxCulture";
             this.cbxCulture.Size = new System.Drawing.Size(101, 21);
             this.cbxCulture.Sorted = true;
@@ -226,7 +246,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 74);
+            this.label2.Location = new System.Drawing.Point(18, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 20;
@@ -235,7 +255,7 @@
             // nudConfTHold
             // 
             this.nudConfTHold.DecimalPlaces = 2;
-            this.nudConfTHold.Location = new System.Drawing.Point(21, 43);
+            this.nudConfTHold.Location = new System.Drawing.Point(21, 90);
             this.nudConfTHold.Name = "nudConfTHold";
             this.nudConfTHold.Size = new System.Drawing.Size(68, 20);
             this.nudConfTHold.TabIndex = 19;
@@ -243,7 +263,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 27);
+            this.label1.Location = new System.Drawing.Point(18, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 18;
@@ -251,6 +271,14 @@
             // 
             // pnlGeneral
             // 
+            this.pnlGeneral.Controls.Add(this.btnClearShowCLKeyBind);
+            this.pnlGeneral.Controls.Add(this.btnSetShowCLKeyBind);
+            this.pnlGeneral.Controls.Add(this.tbShowCLKeyBind);
+            this.pnlGeneral.Controls.Add(this.lblShowCLKeyBind);
+            this.pnlGeneral.Controls.Add(this.btnClearProgressCLKeyBind);
+            this.pnlGeneral.Controls.Add(this.btnSetProgressCLKeyBind);
+            this.pnlGeneral.Controls.Add(this.tbProgressCLKeyBind);
+            this.pnlGeneral.Controls.Add(this.lblProgressCLKeyBind);
             this.pnlGeneral.Controls.Add(this.btnAudioPath);
             this.pnlGeneral.Controls.Add(this.tbAudioPath);
             this.pnlGeneral.Controls.Add(this.label3);
@@ -259,8 +287,46 @@
             this.pnlGeneral.Controls.Add(this.tbChecklistFilename);
             this.pnlGeneral.Location = new System.Drawing.Point(16, 15);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(417, 160);
+            this.pnlGeneral.Size = new System.Drawing.Size(350, 282);
             this.pnlGeneral.TabIndex = 1;
+            // 
+            // btnClearProgressCLKeyBind
+            // 
+            this.btnClearProgressCLKeyBind.Location = new System.Drawing.Point(212, 138);
+            this.btnClearProgressCLKeyBind.Name = "btnClearProgressCLKeyBind";
+            this.btnClearProgressCLKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnClearProgressCLKeyBind.TabIndex = 24;
+            this.btnClearProgressCLKeyBind.Text = "Clear";
+            this.btnClearProgressCLKeyBind.UseVisualStyleBackColor = true;
+            this.btnClearProgressCLKeyBind.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSetProgressCLKeyBind
+            // 
+            this.btnSetProgressCLKeyBind.Location = new System.Drawing.Point(160, 138);
+            this.btnSetProgressCLKeyBind.Name = "btnSetProgressCLKeyBind";
+            this.btnSetProgressCLKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnSetProgressCLKeyBind.TabIndex = 23;
+            this.btnSetProgressCLKeyBind.Text = "Set";
+            this.btnSetProgressCLKeyBind.UseVisualStyleBackColor = true;
+            this.btnSetProgressCLKeyBind.Click += new System.EventHandler(this.btnSet_Click);
+            // 
+            // tbProgressCLKeyBind
+            // 
+            this.tbProgressCLKeyBind.Enabled = false;
+            this.tbProgressCLKeyBind.Location = new System.Drawing.Point(21, 140);
+            this.tbProgressCLKeyBind.MaxLength = 0;
+            this.tbProgressCLKeyBind.Name = "tbProgressCLKeyBind";
+            this.tbProgressCLKeyBind.Size = new System.Drawing.Size(132, 20);
+            this.tbProgressCLKeyBind.TabIndex = 22;
+            // 
+            // lblProgressCLKeyBind
+            // 
+            this.lblProgressCLKeyBind.AutoSize = true;
+            this.lblProgressCLKeyBind.Location = new System.Drawing.Point(18, 124);
+            this.lblProgressCLKeyBind.Name = "lblProgressCLKeyBind";
+            this.lblProgressCLKeyBind.Size = new System.Drawing.Size(135, 13);
+            this.lblProgressCLKeyBind.TabIndex = 21;
+            this.lblProgressCLKeyBind.Text = "Progress Checklist Keybind";
             // 
             // btnAudioPath
             // 
@@ -322,13 +388,13 @@
             this.tvOptions.HideSelection = false;
             this.tvOptions.Location = new System.Drawing.Point(0, 0);
             this.tvOptions.Name = "tvOptions";
-            treeNode1.Name = "nodeGeneral";
-            treeNode1.Text = "General";
-            treeNode2.Name = "nodeVoice";
-            treeNode2.Text = "Voice";
+            treeNode9.Name = "nodeGeneral";
+            treeNode9.Text = "General";
+            treeNode10.Name = "nodeVoice";
+            treeNode10.Text = "Voice";
             this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            treeNode9,
+            treeNode10});
             this.tvOptions.Size = new System.Drawing.Size(121, 331);
             this.tvOptions.TabIndex = 12;
             this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
@@ -464,6 +530,54 @@
             this.ofdChecklistFile.FileName = "openFileDialog1";
             this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
             // 
+            // xbDisableSpeechRecogEng
+            // 
+            this.xbDisableSpeechRecogEng.AutoSize = true;
+            this.xbDisableSpeechRecogEng.Location = new System.Drawing.Point(21, 27);
+            this.xbDisableSpeechRecogEng.Name = "xbDisableSpeechRecogEng";
+            this.xbDisableSpeechRecogEng.Size = new System.Drawing.Size(197, 17);
+            this.xbDisableSpeechRecogEng.TabIndex = 22;
+            this.xbDisableSpeechRecogEng.Text = "Disable Speech Recognition Engine";
+            this.xbDisableSpeechRecogEng.UseVisualStyleBackColor = true;
+            // 
+            // btnClearShowCLKeyBind
+            // 
+            this.btnClearShowCLKeyBind.Location = new System.Drawing.Point(212, 190);
+            this.btnClearShowCLKeyBind.Name = "btnClearShowCLKeyBind";
+            this.btnClearShowCLKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnClearShowCLKeyBind.TabIndex = 28;
+            this.btnClearShowCLKeyBind.Text = "Clear";
+            this.btnClearShowCLKeyBind.UseVisualStyleBackColor = true;
+            this.btnClearShowCLKeyBind.Click += new System.EventHandler(this.btnClearShowCLKeyBind_Click);
+            // 
+            // btnSetShowCLKeyBind
+            // 
+            this.btnSetShowCLKeyBind.Location = new System.Drawing.Point(160, 190);
+            this.btnSetShowCLKeyBind.Name = "btnSetShowCLKeyBind";
+            this.btnSetShowCLKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnSetShowCLKeyBind.TabIndex = 27;
+            this.btnSetShowCLKeyBind.Text = "Set";
+            this.btnSetShowCLKeyBind.UseVisualStyleBackColor = true;
+            this.btnSetShowCLKeyBind.Click += new System.EventHandler(this.btnSetShowCLKeyBind_Click);
+            // 
+            // tbShowCLKeyBind
+            // 
+            this.tbShowCLKeyBind.Enabled = false;
+            this.tbShowCLKeyBind.Location = new System.Drawing.Point(21, 192);
+            this.tbShowCLKeyBind.MaxLength = 0;
+            this.tbShowCLKeyBind.Name = "tbShowCLKeyBind";
+            this.tbShowCLKeyBind.Size = new System.Drawing.Size(132, 20);
+            this.tbShowCLKeyBind.TabIndex = 26;
+            // 
+            // lblShowCLKeyBind
+            // 
+            this.lblShowCLKeyBind.AutoSize = true;
+            this.lblShowCLKeyBind.Location = new System.Drawing.Point(18, 176);
+            this.lblShowCLKeyBind.Name = "lblShowCLKeyBind";
+            this.lblShowCLKeyBind.Size = new System.Drawing.Size(121, 13);
+            this.lblShowCLKeyBind.TabIndex = 25;
+            this.lblShowCLKeyBind.Text = "Show Checklist Keybind";
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -540,6 +654,16 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown nudConfTHold;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbProgressCLKeyBind;
+        private System.Windows.Forms.Label lblProgressCLKeyBind;
+        private System.Windows.Forms.Button btnClearProgressCLKeyBind;
+        private System.Windows.Forms.Button btnSetProgressCLKeyBind;
+        private System.Windows.Forms.ToolStripMenuItem ShowChecklistsMenuItem;
+        private System.Windows.Forms.CheckBox xbDisableSpeechRecogEng;
+        private System.Windows.Forms.Button btnClearShowCLKeyBind;
+        private System.Windows.Forms.Button btnSetShowCLKeyBind;
+        private System.Windows.Forms.TextBox tbShowCLKeyBind;
+        private System.Windows.Forms.Label lblShowCLKeyBind;
     }
 }
 

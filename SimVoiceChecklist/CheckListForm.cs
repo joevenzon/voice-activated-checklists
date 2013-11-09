@@ -69,6 +69,12 @@ namespace SimVoiceChecklists
             this.AudioPath = AudioPath;
         }
 
+        public void ProgressChecklist()
+        {
+            if (ChecklistIndex > -1)
+                AcceptChecklistCommand();
+        }
+
         public bool ProcessPossibleChecklistCommand(string VoiceCommand)
         {
             bool result = false;
@@ -259,6 +265,11 @@ namespace SimVoiceChecklists
                 return wavFilename;
             else
                 return "";
+        }
+
+        private void lblChecklistHeader_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
