@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using System.IO;
 using System.Media;
+using SimVoiceChecklists.Properties;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace SimVoiceChecklists
 {
@@ -20,6 +23,8 @@ namespace SimVoiceChecklists
         private string AudioPath;
         private int ActiveChecklistIndex = -1;
         private int ChecklistIndex = -1;
+        private IWavePlayer waveOut;
+        private WaveStream fileWaveStream;
 
         public List<string> AcceptedChecklistCmds;
 
@@ -187,13 +192,78 @@ namespace SimVoiceChecklists
             ShowActiveChecklist();
         }
 
+        private IWavePlayer CreateDevice(int latency)
+        {
+            IWavePlayer device;
+
+            var waveOut = new WaveOutEvent();
+            waveOut.DeviceNumber = Settings.Default.AudioDeviceID;
+            waveOut.DesiredLatency = latency;
+            device = waveOut;
+
+            return device;
+        }
+
+        private void CreateWaveOut()
+        {
+            CloseWaveOut();
+            this.waveOut = CreateDevice(200);
+        }
+
+        private void CloseWaveOut()
+        {
+            if (waveOut != null)
+                waveOut.Stop();
+
+            if (fileWaveStream != null)
+                fileWaveStream.Dispose();
+
+            if (waveOut != null)
+            {
+                waveOut.Dispose();
+                waveOut = null;
+            }
+        }
+
+        private void PlayWavFile(string WAVFilename)
+        {
+            if (waveOut != null)
+                if (waveOut.PlaybackState == PlaybackState.Playing)
+                    waveOut.Stop();
+
+            try
+            {
+                CreateWaveOut();
+            }
+            catch (Exception driverCreateException)
+            {
+                MessageBox.Show(String.Format("{0}", driverCreateException.Message));
+                return;
+            }
+
+            fileWaveStream = new WaveChannel32(new WaveFileReader(WAVFilename));
+
+            try
+            {
+                waveOut.Init(fileWaveStream);
+            }
+            catch (Exception initException)
+            {
+                MessageBox.Show(String.Format("{0}", initException.Message), "Error Initializing Output");
+                return;
+            }
+
+            waveOut.Play();
+        }
+
         private void Say(string Statement)
         {
             string wavFile = GetWavFileForText(Statement);
             if ((wavFile != String.Empty) && (System.IO.File.Exists(wavFile)))
             {
-                using (SoundPlayer player = new SoundPlayer(wavFile))
-                    player.Play();
+                PlayWavFile(wavFile);
+//                using (SoundPlayer player = new SoundPlayer(wavFile))
+//                    player.Play();
             }
             else
                 synth.SpeakAsync(Statement);

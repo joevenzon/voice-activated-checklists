@@ -80,6 +80,9 @@
     <Reference Include="Gma.UserActivityMonitor">
       <HintPath>.\Gma.UserActivityMonitor.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio">
+      <HintPath>.\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />

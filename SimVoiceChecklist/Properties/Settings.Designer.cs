@@ -106,5 +106,17 @@ namespace SimVoiceChecklists.Properties {
                 this["ShowCLKeyBind"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AudioDeviceID {
+            get {
+                return ((int)(this["AudioDeviceID"]));
+            }
+            set {
+                this["AudioDeviceID"] = value;
+            }
+        }
     }
 }

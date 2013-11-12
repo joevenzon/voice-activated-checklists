@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Voice");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Voice Input");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Audio Output");
             this.btnListen = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -47,11 +48,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlOptionDetails = new System.Windows.Forms.Panel();
             this.pnlVoice = new System.Windows.Forms.Panel();
+            this.xbDisableSpeechRecogEng = new System.Windows.Forms.CheckBox();
             this.cbxCulture = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.nudConfTHold = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlGeneral = new System.Windows.Forms.Panel();
+            this.btnClearShowCLKeyBind = new System.Windows.Forms.Button();
+            this.btnSetShowCLKeyBind = new System.Windows.Forms.Button();
+            this.tbShowCLKeyBind = new System.Windows.Forms.TextBox();
+            this.lblShowCLKeyBind = new System.Windows.Forms.Label();
             this.btnClearProgressCLKeyBind = new System.Windows.Forms.Button();
             this.btnSetProgressCLKeyBind = new System.Windows.Forms.Button();
             this.tbProgressCLKeyBind = new System.Windows.Forms.TextBox();
@@ -78,11 +84,9 @@
             this.lblAcceptedCommands = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdAudioPath = new System.Windows.Forms.FolderBrowserDialog();
-            this.xbDisableSpeechRecogEng = new System.Windows.Forms.CheckBox();
-            this.btnClearShowCLKeyBind = new System.Windows.Forms.Button();
-            this.btnSetShowCLKeyBind = new System.Windows.Forms.Button();
-            this.tbShowCLKeyBind = new System.Windows.Forms.TextBox();
-            this.lblShowCLKeyBind = new System.Windows.Forms.Label();
+            this.pnlAudio = new System.Windows.Forms.Panel();
+            this.lblAudioOPDevice = new System.Windows.Forms.Label();
+            this.cbAudioOPDevice = new System.Windows.Forms.ComboBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
@@ -95,6 +99,7 @@
             this.tabDebug.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnlAudio.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListen
@@ -213,6 +218,7 @@
             // pnlOptionDetails
             // 
             this.pnlOptionDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOptionDetails.Controls.Add(this.pnlAudio);
             this.pnlOptionDetails.Controls.Add(this.pnlVoice);
             this.pnlOptionDetails.Controls.Add(this.pnlGeneral);
             this.pnlOptionDetails.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -232,6 +238,16 @@
             this.pnlVoice.Name = "pnlVoice";
             this.pnlVoice.Size = new System.Drawing.Size(176, 161);
             this.pnlVoice.TabIndex = 7;
+            // 
+            // xbDisableSpeechRecogEng
+            // 
+            this.xbDisableSpeechRecogEng.AutoSize = true;
+            this.xbDisableSpeechRecogEng.Location = new System.Drawing.Point(21, 27);
+            this.xbDisableSpeechRecogEng.Name = "xbDisableSpeechRecogEng";
+            this.xbDisableSpeechRecogEng.Size = new System.Drawing.Size(197, 17);
+            this.xbDisableSpeechRecogEng.TabIndex = 22;
+            this.xbDisableSpeechRecogEng.Text = "Disable Speech Recognition Engine";
+            this.xbDisableSpeechRecogEng.UseVisualStyleBackColor = true;
             // 
             // cbxCulture
             // 
@@ -285,10 +301,48 @@
             this.pnlGeneral.Controls.Add(this.btnChecklistFilename);
             this.pnlGeneral.Controls.Add(this.lblChecklistFilename);
             this.pnlGeneral.Controls.Add(this.tbChecklistFilename);
-            this.pnlGeneral.Location = new System.Drawing.Point(16, 15);
+            this.pnlGeneral.Location = new System.Drawing.Point(364, 32);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(350, 282);
+            this.pnlGeneral.Size = new System.Drawing.Size(94, 98);
             this.pnlGeneral.TabIndex = 1;
+            // 
+            // btnClearShowCLKeyBind
+            // 
+            this.btnClearShowCLKeyBind.Location = new System.Drawing.Point(212, 190);
+            this.btnClearShowCLKeyBind.Name = "btnClearShowCLKeyBind";
+            this.btnClearShowCLKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnClearShowCLKeyBind.TabIndex = 28;
+            this.btnClearShowCLKeyBind.Text = "Clear";
+            this.btnClearShowCLKeyBind.UseVisualStyleBackColor = true;
+            this.btnClearShowCLKeyBind.Click += new System.EventHandler(this.btnClearShowCLKeyBind_Click);
+            // 
+            // btnSetShowCLKeyBind
+            // 
+            this.btnSetShowCLKeyBind.Location = new System.Drawing.Point(160, 190);
+            this.btnSetShowCLKeyBind.Name = "btnSetShowCLKeyBind";
+            this.btnSetShowCLKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnSetShowCLKeyBind.TabIndex = 27;
+            this.btnSetShowCLKeyBind.Text = "Set";
+            this.btnSetShowCLKeyBind.UseVisualStyleBackColor = true;
+            this.btnSetShowCLKeyBind.Click += new System.EventHandler(this.btnSetShowCLKeyBind_Click);
+            // 
+            // tbShowCLKeyBind
+            // 
+            this.tbShowCLKeyBind.Enabled = false;
+            this.tbShowCLKeyBind.Location = new System.Drawing.Point(21, 192);
+            this.tbShowCLKeyBind.MaxLength = 0;
+            this.tbShowCLKeyBind.Name = "tbShowCLKeyBind";
+            this.tbShowCLKeyBind.Size = new System.Drawing.Size(132, 20);
+            this.tbShowCLKeyBind.TabIndex = 26;
+            // 
+            // lblShowCLKeyBind
+            // 
+            this.lblShowCLKeyBind.AutoSize = true;
+            this.lblShowCLKeyBind.Location = new System.Drawing.Point(18, 176);
+            this.lblShowCLKeyBind.Name = "lblShowCLKeyBind";
+            this.lblShowCLKeyBind.Size = new System.Drawing.Size(121, 13);
+            this.lblShowCLKeyBind.TabIndex = 25;
+            this.lblShowCLKeyBind.Text = "Show Checklist Keybind";
             // 
             // btnClearProgressCLKeyBind
             // 
@@ -388,13 +442,16 @@
             this.tvOptions.HideSelection = false;
             this.tvOptions.Location = new System.Drawing.Point(0, 0);
             this.tvOptions.Name = "tvOptions";
-            treeNode9.Name = "nodeGeneral";
-            treeNode9.Text = "General";
-            treeNode10.Name = "nodeVoice";
-            treeNode10.Text = "Voice";
+            treeNode7.Name = "nodeGeneral";
+            treeNode7.Text = "General";
+            treeNode8.Name = "nodeVoice";
+            treeNode8.Text = "Voice Input";
+            treeNode9.Name = "nodeAudio";
+            treeNode9.Text = "Audio Output";
             this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10});
+            treeNode7,
+            treeNode8,
+            treeNode9});
             this.tvOptions.Size = new System.Drawing.Size(121, 331);
             this.tvOptions.TabIndex = 12;
             this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
@@ -530,53 +587,32 @@
             this.ofdChecklistFile.FileName = "openFileDialog1";
             this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
             // 
-            // xbDisableSpeechRecogEng
+            // pnlAudio
             // 
-            this.xbDisableSpeechRecogEng.AutoSize = true;
-            this.xbDisableSpeechRecogEng.Location = new System.Drawing.Point(21, 27);
-            this.xbDisableSpeechRecogEng.Name = "xbDisableSpeechRecogEng";
-            this.xbDisableSpeechRecogEng.Size = new System.Drawing.Size(197, 17);
-            this.xbDisableSpeechRecogEng.TabIndex = 22;
-            this.xbDisableSpeechRecogEng.Text = "Disable Speech Recognition Engine";
-            this.xbDisableSpeechRecogEng.UseVisualStyleBackColor = true;
+            this.pnlAudio.Controls.Add(this.cbAudioOPDevice);
+            this.pnlAudio.Controls.Add(this.lblAudioOPDevice);
+            this.pnlAudio.Location = new System.Drawing.Point(70, 32);
+            this.pnlAudio.Name = "pnlAudio";
+            this.pnlAudio.Size = new System.Drawing.Size(273, 202);
+            this.pnlAudio.TabIndex = 8;
             // 
-            // btnClearShowCLKeyBind
+            // lblAudioOPDevice
             // 
-            this.btnClearShowCLKeyBind.Location = new System.Drawing.Point(212, 190);
-            this.btnClearShowCLKeyBind.Name = "btnClearShowCLKeyBind";
-            this.btnClearShowCLKeyBind.Size = new System.Drawing.Size(50, 23);
-            this.btnClearShowCLKeyBind.TabIndex = 28;
-            this.btnClearShowCLKeyBind.Text = "Clear";
-            this.btnClearShowCLKeyBind.UseVisualStyleBackColor = true;
-            this.btnClearShowCLKeyBind.Click += new System.EventHandler(this.btnClearShowCLKeyBind_Click);
+            this.lblAudioOPDevice.AutoSize = true;
+            this.lblAudioOPDevice.Location = new System.Drawing.Point(18, 27);
+            this.lblAudioOPDevice.Name = "lblAudioOPDevice";
+            this.lblAudioOPDevice.Size = new System.Drawing.Size(103, 13);
+            this.lblAudioOPDevice.TabIndex = 17;
+            this.lblAudioOPDevice.Text = "Audio Ouput Device";
             // 
-            // btnSetShowCLKeyBind
+            // cbAudioOPDevice
             // 
-            this.btnSetShowCLKeyBind.Location = new System.Drawing.Point(160, 190);
-            this.btnSetShowCLKeyBind.Name = "btnSetShowCLKeyBind";
-            this.btnSetShowCLKeyBind.Size = new System.Drawing.Size(50, 23);
-            this.btnSetShowCLKeyBind.TabIndex = 27;
-            this.btnSetShowCLKeyBind.Text = "Set";
-            this.btnSetShowCLKeyBind.UseVisualStyleBackColor = true;
-            this.btnSetShowCLKeyBind.Click += new System.EventHandler(this.btnSetShowCLKeyBind_Click);
-            // 
-            // tbShowCLKeyBind
-            // 
-            this.tbShowCLKeyBind.Enabled = false;
-            this.tbShowCLKeyBind.Location = new System.Drawing.Point(21, 192);
-            this.tbShowCLKeyBind.MaxLength = 0;
-            this.tbShowCLKeyBind.Name = "tbShowCLKeyBind";
-            this.tbShowCLKeyBind.Size = new System.Drawing.Size(132, 20);
-            this.tbShowCLKeyBind.TabIndex = 26;
-            // 
-            // lblShowCLKeyBind
-            // 
-            this.lblShowCLKeyBind.AutoSize = true;
-            this.lblShowCLKeyBind.Location = new System.Drawing.Point(18, 176);
-            this.lblShowCLKeyBind.Name = "lblShowCLKeyBind";
-            this.lblShowCLKeyBind.Size = new System.Drawing.Size(121, 13);
-            this.lblShowCLKeyBind.TabIndex = 25;
-            this.lblShowCLKeyBind.Text = "Show Checklist Keybind";
+            this.cbAudioOPDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAudioOPDevice.FormattingEnabled = true;
+            this.cbAudioOPDevice.Location = new System.Drawing.Point(21, 43);
+            this.cbAudioOPDevice.Name = "cbAudioOPDevice";
+            this.cbAudioOPDevice.Size = new System.Drawing.Size(249, 21);
+            this.cbAudioOPDevice.TabIndex = 21;
             // 
             // MainFrm
             // 
@@ -607,6 +643,8 @@
             this.tabDebug.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.pnlAudio.ResumeLayout(false);
+            this.pnlAudio.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -664,6 +702,9 @@
         private System.Windows.Forms.Button btnSetShowCLKeyBind;
         private System.Windows.Forms.TextBox tbShowCLKeyBind;
         private System.Windows.Forms.Label lblShowCLKeyBind;
+        private System.Windows.Forms.Panel pnlAudio;
+        private System.Windows.Forms.ComboBox cbAudioOPDevice;
+        private System.Windows.Forms.Label lblAudioOPDevice;
     }
 }
 

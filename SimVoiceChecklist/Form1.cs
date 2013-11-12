@@ -14,6 +14,8 @@ using System.Xml.Linq;
 using System.Configuration;
 using SimVoiceChecklists.Properties;
 using Gma.UserActivityMonitor;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 #endregion
 
 namespace SimVoiceChecklists
@@ -39,6 +41,7 @@ namespace SimVoiceChecklists
         private string ProgressCLKeyBind;
         private string ShowCLKeyBind;
         private bool DisableSpeechRecogEng;
+        private int AudioDeviceID;
         #endregion
 
         protected override void Dispose(bool isDisposing)
@@ -379,6 +382,7 @@ namespace SimVoiceChecklists
             ProgressCLKeyBind = Settings.Default.ProgressCLKeyBind;
             ShowCLKeyBind = Settings.Default.ShowCLKeyBind;
             DisableSpeechRecogEng = Settings.Default.DisableSpeechRecogEng;
+            AudioDeviceID = Settings.Default.AudioDeviceID;
 
             Culture = Settings.Default.CultureInfo;
 
@@ -403,6 +407,12 @@ namespace SimVoiceChecklists
                 cbxCulture.Items.Add(ci.Name);
             }
 
+            for (int deviceId = 0; deviceId < WaveOut.DeviceCount; deviceId++)
+            {
+                var capabilities = WaveOut.GetCapabilities(deviceId);
+                cbAudioOPDevice.Items.Add(String.Format("{0})", capabilities.ProductName));
+            }
+
             tbChecklistFilename.Text = ActiveCLFilename;
             tbAudioPath.Text = AudioPath;
             nudConfTHold.Value = ConfidenceThreshold;
@@ -412,6 +422,8 @@ namespace SimVoiceChecklists
             if (!String.IsNullOrEmpty(ShowCLKeyBind))
                 tbShowCLKeyBind.Text = string.Format("Key: {0}", ShowCLKeyBind);
             xbDisableSpeechRecogEng.Checked = DisableSpeechRecogEng;
+            if (cbAudioOPDevice.Items.Count > 0)
+                cbAudioOPDevice.SelectedIndex = AudioDeviceID;
         }
 
         private bool SaveOptionSettings()
@@ -423,6 +435,7 @@ namespace SimVoiceChecklists
             Settings.Default.ProgressCLKeyBind = tbProgressCLKeyBind.Text.Replace("Key: ", "");
             Settings.Default.ShowCLKeyBind = tbShowCLKeyBind.Text.Replace("Key: ", "");
             Settings.Default.DisableSpeechRecogEng = xbDisableSpeechRecogEng.Checked;
+            Settings.Default.AudioDeviceID = cbAudioOPDevice.SelectedIndex;
 
             Settings.Default.Save();
 
@@ -443,6 +456,11 @@ namespace SimVoiceChecklists
             {
                 pnlVoice.Visible = true;
                 pnlVoice.Dock = DockStyle.Fill;
+            }
+            else if (SelectedNode.Name.Equals("nodeAudio"))
+            {
+                pnlAudio.Visible = true;
+                pnlAudio.Dock = DockStyle.Fill;
             }
         }
         #endregion
