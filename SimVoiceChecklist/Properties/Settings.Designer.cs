@@ -118,5 +118,17 @@ namespace SimVoiceChecklists.Properties {
                 this["AudioDeviceID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideGUI {
+            get {
+                return ((bool)(this["HideGUI"]));
+            }
+            set {
+                this["HideGUI"] = value;
+            }
+        }
     }
 }

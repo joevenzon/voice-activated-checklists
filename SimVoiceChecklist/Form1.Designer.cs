@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Voice Input");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Audio Output");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Voice Input");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Audio Output");
             this.btnListen = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -47,6 +47,9 @@
             this.tpOptions = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlOptionDetails = new System.Windows.Forms.Panel();
+            this.pnlAudio = new System.Windows.Forms.Panel();
+            this.cbAudioOPDevice = new System.Windows.Forms.ComboBox();
+            this.lblAudioOPDevice = new System.Windows.Forms.Label();
             this.pnlVoice = new System.Windows.Forms.Panel();
             this.xbDisableSpeechRecogEng = new System.Windows.Forms.CheckBox();
             this.cbxCulture = new System.Windows.Forms.ComboBox();
@@ -84,14 +87,13 @@
             this.lblAcceptedCommands = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdAudioPath = new System.Windows.Forms.FolderBrowserDialog();
-            this.pnlAudio = new System.Windows.Forms.Panel();
-            this.lblAudioOPDevice = new System.Windows.Forms.Label();
-            this.cbAudioOPDevice = new System.Windows.Forms.ComboBox();
+            this.xbHideGUI = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlOptionDetails.SuspendLayout();
+            this.pnlAudio.SuspendLayout();
             this.pnlVoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).BeginInit();
             this.pnlGeneral.SuspendLayout();
@@ -99,7 +101,6 @@
             this.tabDebug.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.pnlAudio.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListen
@@ -227,6 +228,33 @@
             this.pnlOptionDetails.Size = new System.Drawing.Size(464, 331);
             this.pnlOptionDetails.TabIndex = 13;
             // 
+            // pnlAudio
+            // 
+            this.pnlAudio.Controls.Add(this.cbAudioOPDevice);
+            this.pnlAudio.Controls.Add(this.lblAudioOPDevice);
+            this.pnlAudio.Location = new System.Drawing.Point(414, 44);
+            this.pnlAudio.Name = "pnlAudio";
+            this.pnlAudio.Size = new System.Drawing.Size(115, 87);
+            this.pnlAudio.TabIndex = 8;
+            // 
+            // cbAudioOPDevice
+            // 
+            this.cbAudioOPDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAudioOPDevice.FormattingEnabled = true;
+            this.cbAudioOPDevice.Location = new System.Drawing.Point(21, 43);
+            this.cbAudioOPDevice.Name = "cbAudioOPDevice";
+            this.cbAudioOPDevice.Size = new System.Drawing.Size(249, 21);
+            this.cbAudioOPDevice.TabIndex = 21;
+            // 
+            // lblAudioOPDevice
+            // 
+            this.lblAudioOPDevice.AutoSize = true;
+            this.lblAudioOPDevice.Location = new System.Drawing.Point(18, 27);
+            this.lblAudioOPDevice.Name = "lblAudioOPDevice";
+            this.lblAudioOPDevice.Size = new System.Drawing.Size(103, 13);
+            this.lblAudioOPDevice.TabIndex = 17;
+            this.lblAudioOPDevice.Text = "Audio Ouput Device";
+            // 
             // pnlVoice
             // 
             this.pnlVoice.Controls.Add(this.xbDisableSpeechRecogEng);
@@ -287,6 +315,7 @@
             // 
             // pnlGeneral
             // 
+            this.pnlGeneral.Controls.Add(this.xbHideGUI);
             this.pnlGeneral.Controls.Add(this.btnClearShowCLKeyBind);
             this.pnlGeneral.Controls.Add(this.btnSetShowCLKeyBind);
             this.pnlGeneral.Controls.Add(this.tbShowCLKeyBind);
@@ -301,9 +330,9 @@
             this.pnlGeneral.Controls.Add(this.btnChecklistFilename);
             this.pnlGeneral.Controls.Add(this.lblChecklistFilename);
             this.pnlGeneral.Controls.Add(this.tbChecklistFilename);
-            this.pnlGeneral.Location = new System.Drawing.Point(364, 32);
+            this.pnlGeneral.Location = new System.Drawing.Point(26, 3);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(94, 98);
+            this.pnlGeneral.Size = new System.Drawing.Size(352, 310);
             this.pnlGeneral.TabIndex = 1;
             // 
             // btnClearShowCLKeyBind
@@ -442,16 +471,16 @@
             this.tvOptions.HideSelection = false;
             this.tvOptions.Location = new System.Drawing.Point(0, 0);
             this.tvOptions.Name = "tvOptions";
-            treeNode7.Name = "nodeGeneral";
-            treeNode7.Text = "General";
-            treeNode8.Name = "nodeVoice";
-            treeNode8.Text = "Voice Input";
-            treeNode9.Name = "nodeAudio";
-            treeNode9.Text = "Audio Output";
+            treeNode1.Name = "nodeGeneral";
+            treeNode1.Text = "General";
+            treeNode2.Name = "nodeVoice";
+            treeNode2.Text = "Voice Input";
+            treeNode3.Name = "nodeAudio";
+            treeNode3.Text = "Audio Output";
             this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8,
-            treeNode9});
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.tvOptions.Size = new System.Drawing.Size(121, 331);
             this.tvOptions.TabIndex = 12;
             this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
@@ -587,32 +616,15 @@
             this.ofdChecklistFile.FileName = "openFileDialog1";
             this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
             // 
-            // pnlAudio
+            // xbHideGUI
             // 
-            this.pnlAudio.Controls.Add(this.cbAudioOPDevice);
-            this.pnlAudio.Controls.Add(this.lblAudioOPDevice);
-            this.pnlAudio.Location = new System.Drawing.Point(70, 32);
-            this.pnlAudio.Name = "pnlAudio";
-            this.pnlAudio.Size = new System.Drawing.Size(273, 202);
-            this.pnlAudio.TabIndex = 8;
-            // 
-            // lblAudioOPDevice
-            // 
-            this.lblAudioOPDevice.AutoSize = true;
-            this.lblAudioOPDevice.Location = new System.Drawing.Point(18, 27);
-            this.lblAudioOPDevice.Name = "lblAudioOPDevice";
-            this.lblAudioOPDevice.Size = new System.Drawing.Size(103, 13);
-            this.lblAudioOPDevice.TabIndex = 17;
-            this.lblAudioOPDevice.Text = "Audio Ouput Device";
-            // 
-            // cbAudioOPDevice
-            // 
-            this.cbAudioOPDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAudioOPDevice.FormattingEnabled = true;
-            this.cbAudioOPDevice.Location = new System.Drawing.Point(21, 43);
-            this.cbAudioOPDevice.Name = "cbAudioOPDevice";
-            this.cbAudioOPDevice.Size = new System.Drawing.Size(249, 21);
-            this.cbAudioOPDevice.TabIndex = 21;
+            this.xbHideGUI.AutoSize = true;
+            this.xbHideGUI.Location = new System.Drawing.Point(21, 242);
+            this.xbHideGUI.Name = "xbHideGUI";
+            this.xbHideGUI.Size = new System.Drawing.Size(70, 17);
+            this.xbHideGUI.TabIndex = 29;
+            this.xbHideGUI.Text = "Hide GUI";
+            this.xbHideGUI.UseVisualStyleBackColor = true;
             // 
             // MainFrm
             // 
@@ -634,6 +646,8 @@
             this.tpOptions.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.pnlOptionDetails.ResumeLayout(false);
+            this.pnlAudio.ResumeLayout(false);
+            this.pnlAudio.PerformLayout();
             this.pnlVoice.ResumeLayout(false);
             this.pnlVoice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudConfTHold)).EndInit();
@@ -643,8 +657,6 @@
             this.tabDebug.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.pnlAudio.ResumeLayout(false);
-            this.pnlAudio.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -705,6 +717,7 @@
         private System.Windows.Forms.Panel pnlAudio;
         private System.Windows.Forms.ComboBox cbAudioOPDevice;
         private System.Windows.Forms.Label lblAudioOPDevice;
+        private System.Windows.Forms.CheckBox xbHideGUI;
     }
 }
 

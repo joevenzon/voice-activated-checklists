@@ -42,6 +42,7 @@ namespace SimVoiceChecklists
         private string ShowCLKeyBind;
         private bool DisableSpeechRecogEng;
         private int AudioDeviceID;
+        private bool HideGUI;
         #endregion
 
         protected override void Dispose(bool isDisposing)
@@ -80,10 +81,10 @@ namespace SimVoiceChecklists
                     CLListForm.CLForm = CLForm;
                     CLListForm.LoadChecklistFile(ActiveCLFilename);
                 }
-                else if ((CLForm != null) && (CLForm.Visible))
+                else if ((CLForm != null) && ((CLForm.Visible) || (HideGUI)))
                     result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
             }
-            else if ((CLForm != null) && (CLForm.Visible))
+            else if ((CLForm != null) && ((CLForm.Visible) || (HideGUI)))
                 result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
 
             return result;
@@ -197,7 +198,9 @@ namespace SimVoiceChecklists
 
             if (confidence > ConfidenceThreshold)
             {
-                StatusWin.ShowText(voiceCommand, 2000);
+                if (!HideGUI)
+                    StatusWin.ShowText(voiceCommand, 2000);
+
                 if (!ProcessTopLevelVoiceCommand(voiceCommand))
                 {
                     foreach (RecognizedPhrase phrase in e.Result.Alternates)
@@ -383,6 +386,7 @@ namespace SimVoiceChecklists
             ShowCLKeyBind = Settings.Default.ShowCLKeyBind;
             DisableSpeechRecogEng = Settings.Default.DisableSpeechRecogEng;
             AudioDeviceID = Settings.Default.AudioDeviceID;
+            HideGUI = Settings.Default.HideGUI;
 
             Culture = Settings.Default.CultureInfo;
 
@@ -424,6 +428,7 @@ namespace SimVoiceChecklists
             xbDisableSpeechRecogEng.Checked = DisableSpeechRecogEng;
             if (cbAudioOPDevice.Items.Count > 0)
                 cbAudioOPDevice.SelectedIndex = AudioDeviceID;
+            xbHideGUI.Checked = HideGUI;
         }
 
         private bool SaveOptionSettings()
@@ -436,6 +441,7 @@ namespace SimVoiceChecklists
             Settings.Default.ShowCLKeyBind = tbShowCLKeyBind.Text.Replace("Key: ", "");
             Settings.Default.DisableSpeechRecogEng = xbDisableSpeechRecogEng.Checked;
             Settings.Default.AudioDeviceID = cbAudioOPDevice.SelectedIndex;
+            Settings.Default.HideGUI = xbHideGUI.Checked;
 
             Settings.Default.Save();
 
@@ -467,11 +473,13 @@ namespace SimVoiceChecklists
 
         private void OpenChecklists()
         {
-            if ((CLForm == null) || (!CLForm.Visible))
+            if ((CLForm == null) || ((!CLForm.Visible) && (!HideGUI)))
             {
                 CLForm = new frmChecklist();
                 CLForm.AcceptedChecklistCmds = AcceptedChecklistCmds;
-                CLForm.Show();
+                if (!HideGUI)
+                    CLForm.Show();
+
                 if (CLForm.LoadChecklistFile(ActiveCLFilename))
                 {
                     CLForm.SetAudioPath(AudioPath);
