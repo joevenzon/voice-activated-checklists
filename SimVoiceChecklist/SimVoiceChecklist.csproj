@@ -77,8 +77,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gma.UserActivityMonitor">
-      <HintPath>.\Gma.UserActivityMonitor.dll</HintPath>
+    <Reference Include="Gma.UserActivityMonitor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Users\Paul\Documents\Visual Studio 2012\Projects\WindowsFormsApplication1\WindowsFormsApplication1\3rd Party\Gma.UserActivityMonitor.dll</HintPath>
     </Reference>
     <Reference Include="NAudio">
       <HintPath>.\NAudio.dll</HintPath>
