@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("General");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Voice Input");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Audio Output");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("General");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Voice Input");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Audio Output");
             this.btnListen = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -57,6 +57,7 @@
             this.nudConfTHold = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlGeneral = new System.Windows.Forms.Panel();
+            this.xbHideGUI = new System.Windows.Forms.CheckBox();
             this.btnClearShowCLKeyBind = new System.Windows.Forms.Button();
             this.btnSetShowCLKeyBind = new System.Windows.Forms.Button();
             this.tbShowCLKeyBind = new System.Windows.Forms.TextBox();
@@ -87,7 +88,10 @@
             this.lblAcceptedCommands = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdAudioPath = new System.Windows.Forms.FolderBrowserDialog();
-            this.xbHideGUI = new System.Windows.Forms.CheckBox();
+            this.btnClearRepeatCLIKeyBind = new System.Windows.Forms.Button();
+            this.btnSetRepeatCLIKeyBind = new System.Windows.Forms.Button();
+            this.tbRepeatCLIKeyBind = new System.Windows.Forms.TextBox();
+            this.lblRepeatCLIKeyBind = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
@@ -315,6 +319,10 @@
             // 
             // pnlGeneral
             // 
+            this.pnlGeneral.Controls.Add(this.btnClearRepeatCLIKeyBind);
+            this.pnlGeneral.Controls.Add(this.btnSetRepeatCLIKeyBind);
+            this.pnlGeneral.Controls.Add(this.tbRepeatCLIKeyBind);
+            this.pnlGeneral.Controls.Add(this.lblRepeatCLIKeyBind);
             this.pnlGeneral.Controls.Add(this.xbHideGUI);
             this.pnlGeneral.Controls.Add(this.btnClearShowCLKeyBind);
             this.pnlGeneral.Controls.Add(this.btnSetShowCLKeyBind);
@@ -334,6 +342,16 @@
             this.pnlGeneral.Name = "pnlGeneral";
             this.pnlGeneral.Size = new System.Drawing.Size(352, 310);
             this.pnlGeneral.TabIndex = 1;
+            // 
+            // xbHideGUI
+            // 
+            this.xbHideGUI.AutoSize = true;
+            this.xbHideGUI.Location = new System.Drawing.Point(21, 289);
+            this.xbHideGUI.Name = "xbHideGUI";
+            this.xbHideGUI.Size = new System.Drawing.Size(70, 17);
+            this.xbHideGUI.TabIndex = 29;
+            this.xbHideGUI.Text = "Hide GUI";
+            this.xbHideGUI.UseVisualStyleBackColor = true;
             // 
             // btnClearShowCLKeyBind
             // 
@@ -471,16 +489,16 @@
             this.tvOptions.HideSelection = false;
             this.tvOptions.Location = new System.Drawing.Point(0, 0);
             this.tvOptions.Name = "tvOptions";
-            treeNode1.Name = "nodeGeneral";
-            treeNode1.Text = "General";
-            treeNode2.Name = "nodeVoice";
-            treeNode2.Text = "Voice Input";
-            treeNode3.Name = "nodeAudio";
-            treeNode3.Text = "Audio Output";
+            treeNode7.Name = "nodeGeneral";
+            treeNode7.Text = "General";
+            treeNode8.Name = "nodeVoice";
+            treeNode8.Text = "Voice Input";
+            treeNode9.Name = "nodeAudio";
+            treeNode9.Text = "Audio Output";
             this.tvOptions.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode7,
+            treeNode8,
+            treeNode9});
             this.tvOptions.Size = new System.Drawing.Size(121, 331);
             this.tvOptions.TabIndex = 12;
             this.tvOptions.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOptions_AfterSelect);
@@ -616,15 +634,43 @@
             this.ofdChecklistFile.FileName = "openFileDialog1";
             this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
             // 
-            // xbHideGUI
+            // btnClearRepeatCLIKeyBind
             // 
-            this.xbHideGUI.AutoSize = true;
-            this.xbHideGUI.Location = new System.Drawing.Point(21, 242);
-            this.xbHideGUI.Name = "xbHideGUI";
-            this.xbHideGUI.Size = new System.Drawing.Size(70, 17);
-            this.xbHideGUI.TabIndex = 29;
-            this.xbHideGUI.Text = "Hide GUI";
-            this.xbHideGUI.UseVisualStyleBackColor = true;
+            this.btnClearRepeatCLIKeyBind.Location = new System.Drawing.Point(212, 242);
+            this.btnClearRepeatCLIKeyBind.Name = "btnClearRepeatCLIKeyBind";
+            this.btnClearRepeatCLIKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnClearRepeatCLIKeyBind.TabIndex = 33;
+            this.btnClearRepeatCLIKeyBind.Text = "Clear";
+            this.btnClearRepeatCLIKeyBind.UseVisualStyleBackColor = true;
+            this.btnClearRepeatCLIKeyBind.Click += new System.EventHandler(this.btnClearRepeatCLIKeyBind_Click);
+            // 
+            // btnSetRepeatCLIKeyBind
+            // 
+            this.btnSetRepeatCLIKeyBind.Location = new System.Drawing.Point(160, 242);
+            this.btnSetRepeatCLIKeyBind.Name = "btnSetRepeatCLIKeyBind";
+            this.btnSetRepeatCLIKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnSetRepeatCLIKeyBind.TabIndex = 32;
+            this.btnSetRepeatCLIKeyBind.Text = "Set";
+            this.btnSetRepeatCLIKeyBind.UseVisualStyleBackColor = true;
+            this.btnSetRepeatCLIKeyBind.Click += new System.EventHandler(this.btnSetRepeatCLIKeyBind_Click);
+            // 
+            // tbRepeatCLIKeyBind
+            // 
+            this.tbRepeatCLIKeyBind.Enabled = false;
+            this.tbRepeatCLIKeyBind.Location = new System.Drawing.Point(21, 244);
+            this.tbRepeatCLIKeyBind.MaxLength = 0;
+            this.tbRepeatCLIKeyBind.Name = "tbRepeatCLIKeyBind";
+            this.tbRepeatCLIKeyBind.Size = new System.Drawing.Size(132, 20);
+            this.tbRepeatCLIKeyBind.TabIndex = 31;
+            // 
+            // lblRepeatCLIKeyBind
+            // 
+            this.lblRepeatCLIKeyBind.AutoSize = true;
+            this.lblRepeatCLIKeyBind.Location = new System.Drawing.Point(18, 228);
+            this.lblRepeatCLIKeyBind.Name = "lblRepeatCLIKeyBind";
+            this.lblRepeatCLIKeyBind.Size = new System.Drawing.Size(152, 13);
+            this.lblRepeatCLIKeyBind.TabIndex = 30;
+            this.lblRepeatCLIKeyBind.Text = "Repeat Checklist Item Keybind";
             // 
             // MainFrm
             // 
@@ -718,6 +764,10 @@
         private System.Windows.Forms.ComboBox cbAudioOPDevice;
         private System.Windows.Forms.Label lblAudioOPDevice;
         private System.Windows.Forms.CheckBox xbHideGUI;
+        private System.Windows.Forms.Button btnClearRepeatCLIKeyBind;
+        private System.Windows.Forms.Button btnSetRepeatCLIKeyBind;
+        private System.Windows.Forms.TextBox tbRepeatCLIKeyBind;
+        private System.Windows.Forms.Label lblRepeatCLIKeyBind;
     }
 }
 

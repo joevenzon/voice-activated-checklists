@@ -40,6 +40,7 @@ namespace SimVoiceChecklists
         private string Culture;
         private string ProgressCLKeyBind;
         private string ShowCLKeyBind;
+        private string RepeatCLIKeyBind;
         private bool DisableSpeechRecogEng;
         private int AudioDeviceID;
         private bool HideGUI;
@@ -153,6 +154,7 @@ namespace SimVoiceChecklists
             AddGrammar("Show Checklists");
             AddGrammar("Thankyou");
             AddGrammar("Thanks");
+            AddGrammar("Repeat");
 
             foreach (XElement checklist in XElement.Load(ActiveCLFilename).Elements("checklist"))
                 AddGrammar(checklist.Attribute("name").Value + " Checklist");
@@ -370,6 +372,8 @@ namespace SimVoiceChecklists
             {
                 if (e.KeyCode.ToString().Equals(ProgressCLKeyBind))
                     CLForm.ProgressChecklist();
+                else if (e.KeyCode.ToString().Equals(RepeatCLIKeyBind))
+                    CLForm.ReadActiveChecklistItem();
             }
         }
         #endregion
@@ -384,6 +388,7 @@ namespace SimVoiceChecklists
             AudioPath = Settings.Default.AudioPath;
             ProgressCLKeyBind = Settings.Default.ProgressCLKeyBind;
             ShowCLKeyBind = Settings.Default.ShowCLKeyBind;
+            RepeatCLIKeyBind = Settings.Default.RepeatCLIKeyBind;
             DisableSpeechRecogEng = Settings.Default.DisableSpeechRecogEng;
             AudioDeviceID = Settings.Default.AudioDeviceID;
             HideGUI = Settings.Default.HideGUI;
@@ -425,6 +430,8 @@ namespace SimVoiceChecklists
                 tbProgressCLKeyBind.Text = string.Format("Key: {0}", ProgressCLKeyBind);
             if (!String.IsNullOrEmpty(ShowCLKeyBind))
                 tbShowCLKeyBind.Text = string.Format("Key: {0}", ShowCLKeyBind);
+            if (!String.IsNullOrEmpty(RepeatCLIKeyBind))
+                tbRepeatCLIKeyBind.Text = string.Format("Key: {0}", RepeatCLIKeyBind);
             xbDisableSpeechRecogEng.Checked = DisableSpeechRecogEng;
             if (cbAudioOPDevice.Items.Count > 0)
                 cbAudioOPDevice.SelectedIndex = AudioDeviceID;
@@ -439,6 +446,7 @@ namespace SimVoiceChecklists
             Settings.Default.CultureInfo = cbxCulture.Text;
             Settings.Default.ProgressCLKeyBind = tbProgressCLKeyBind.Text.Replace("Key: ", "");
             Settings.Default.ShowCLKeyBind = tbShowCLKeyBind.Text.Replace("Key: ", "");
+            Settings.Default.RepeatCLIKeyBind = tbRepeatCLIKeyBind.Text.Replace("Key: ", "");
             Settings.Default.DisableSpeechRecogEng = xbDisableSpeechRecogEng.Checked;
             Settings.Default.AudioDeviceID = cbAudioOPDevice.SelectedIndex;
             Settings.Default.HideGUI = xbHideGUI.Checked;
@@ -488,6 +496,16 @@ namespace SimVoiceChecklists
                 else
                     Console.Beep();
             }
+        }
+
+        private void btnSetRepeatCLIKeyBind_Click(object sender, EventArgs e)
+        {
+            ActiveKeyBindTextBox = tbRepeatCLIKeyBind;
+        }
+
+        private void btnClearRepeatCLIKeyBind_Click(object sender, EventArgs e)
+        {
+            tbRepeatCLIKeyBind.Text = "";
         }
     }
 }
