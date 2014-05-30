@@ -89,26 +89,18 @@ namespace SimVoiceChecklists
 
             if ((ChecklistIndex > -1) && (acceptedChecklistCmd))
             {
-                if (voiceCmd.Equals("repeat"))
+                string commandText = lvChecklistItems.Items[ChecklistIndex].SubItems[2].Text.ToLower();
+                string[] validCommands = commandText.Split(',').Select(sValue => sValue.Trim()).ToArray();
+
+                if (validCommands.Contains(voiceCmd))
                 {
-                    ReadActiveChecklistItem();
+                    AcceptChecklistCommand();
                     result = true;
                 }
-                else
-                {
-                    string commandText = lvChecklistItems.Items[ChecklistIndex].SubItems[2].Text.ToLower();
-                    string[] validCommands = commandText.Split(',').Select(sValue => sValue.Trim()).ToArray();
-
-                    if (validCommands.Contains(voiceCmd))
-                    {
-                        AcceptChecklistCommand();
-                        result = true;
-                    }
-                }
             }
-            else if (VoiceCommand.ToLower().Contains("checklist"))
+            else if (voiceCmd.Contains("checklist"))
             {
-                checklistCmd = VoiceCommand.ToLower().Replace("checklist", "").Trim();
+                checklistCmd = voiceCmd.Replace("checklist", "").Trim();
 
                 if (checklistCmd == "abort")
                 {
@@ -134,11 +126,17 @@ namespace SimVoiceChecklists
                     }
                 }
             }
-            else if ((VoiceCommand.ToLower().Contains("thanks")) || (VoiceCommand.ToLower().Contains("thankyou")))
+            else if ((voiceCmd.Contains("thanks")) || (voiceCmd.Contains("thankyou")))
             {
                 Say("You're welcome!");
                 result = true;
             }
+            else if (voiceCmd.Equals("repeat"))
+            {
+                ReadActiveChecklistItem();
+                result = true;
+            }
+
             
             return result;
         }
@@ -318,9 +316,10 @@ namespace SimVoiceChecklists
             ReadActiveChecklistItem();
         }
 
-        private void ReadActiveChecklistItem()
+        public void ReadActiveChecklistItem()
         {
-            Say(lvChecklistItems.Items[ChecklistIndex].Text);
+            if (ChecklistIndex > -1)
+                Say(lvChecklistItems.Items[ChecklistIndex].Text);
         }
 
         private string GetWavFileForText(string ChecklistText)
