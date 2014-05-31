@@ -1,0 +1,177 @@
+<checklists>
+	<checklist name="Preflight">
+		<item name="Circuit breakers" vcommand="Checked"/>
+		<item name="Gear lever" vcommand="Checked,Down"/>
+		<item name="Radar" vcommand="Checked,Off"/>
+		<item name="Battery master set on" vcommand="Set,Checked,On"/>
+		<item name="Main battery" vcommand="Set,Checked,On"/>
+		<item name="Aux battery" vcommand="Set,Checked,On"/>
+		<item name="Standby battery" vcommand="Set,Checked,On"/>
+		<item name="Main bus tie" vcommand="Set,Checked,Tie,Tied"/>
+		<item name="Position lights set on" vcommand="Set,Checked,On"/>
+		<item name="Flight deck displays set on" vcommand="Set,Checked,On"/>
+		<item name="Standby and P T U pumps set off" vcommand="Set,Checked,Off"/>
+		<item name="Emergency brake set to park" vcommand="Set,Checked,On"/>
+		<item name="External power or A P U" vcommand="Set,Checked,On,Not required"/>
+		<item name="FMS Initialized" vcommand="Set,Checked,Initialized"/>
+	</checklist>
+	<checklist name="Captain's Originating">
+		<item name="Landing gear alternate extension" vcommand="Open,Closed,Checked"/>
+		<item name="Landing gear alternate release" vcommand="Closed,Normal,Checked"/>
+		<item name="Escape hatch check closed" vcommand="Closed,Checked"/>
+		<item name="Oxygen masks" vcommand="Checked"/>
+		<item name="Side vent set open" vcommand="Set,Open,Opened,Checked"/>
+		<item name="Main battery" vcommand="Set,Checked,On,Off"/>
+		<item name="Aux battery" vcommand="Set,Checked,On,Off"/>
+		<item name="Standby battery" vcommand="Set,Checked,On,Off"/>
+		<item name="DC Gen 1 and 2 set on" vcommand="Set,Checked,On"/>
+		<item name="Main bus tie" vcommand="Set,Checked,Tie,Tied"/>
+		<item name="Airframe mode select set off" vcommand="Set,Checked,Off"/>
+		<item name="Engine intake doors closed" vcommand="Set,Checked,Closed"/>
+		<item name="REF speed switch set off" vcommand="Set,Checked,Off"/>
+		<item name="Pitot static switches set off" vcommand="Set,Checked,Off"/>
+		<item name="Propeller ice protection set off" vcommand="Set,Checked,Off"/>
+		<item name="Boot air switch set to norm" vcommand="Set,Checked,Norm,Normal"/>
+		<item name="Window heat set off" vcommand="Set,Checked,Off"/>
+		<item name="Wiper set off" vcommand="Set,Checked,Off"/>
+		<item name="Pilot side window heat set off" vcommand="Set,Checked,Off"/>
+		<item name="Approach, Flare and taxi lights set off" vcommand="Set,Checked,Off"/>
+		<item name="P F D altimeter units" vcommand="Set,Checked"/>
+		<item name="Emergency Locator Transmitter armed" vcommand="Set,Checked,Armed"/>
+		<item name="Flight data recorder switch set to Norm" vcommand="Set,Checked,Norm,Normal"/>
+		<item name="Fuel cut-off handles pushed in" vcommand="Set,Checked,In"/>
+		<item name="Engine 1 and 2 fire test" vcommand="Tested,Checked,Complete"/>
+		<item name="APU fire test" vcommand="Tested,Checked,Complete"/>
+		<item name="Cargo forward and aft fire test" vcommand="Tested,Checked,Complete"/>
+		<item name="APU set as required" vcommand="Checked,Set"/>
+		<item name="Engine ignition switches set to norm" vcommand="Set,Checked,Norm,Normal"/>
+		<item name="Engine start select switch centred" vcommand="Set,Checked"/>
+		<item name="Cabin altitude dump switch set to auto" vcommand="Set,Checked,Auto"/>
+		<item name="Forward outflow knob fully counter clockwise" vcommand="Tested,Checked,Complete"/>
+		<item name="Exterior lights as required" vcommand="Checked,Set"/>
+		<item name="Emergency lights armed" vcommand="Armed,Checked,Set"/>
+		<item name="Fasten seatbelts set on" vcommand="On,Checked,Set"/>
+		<item name="No smoking set on" vcommand="On,Checked,Set"/>
+		<item name="Test caution and advisory lights" vcommand="Checked,Complete"/>
+		<item name="Pack switches set to auto" vcommand="Auto,Checked,Set"/>
+		<item name="Recirculation switch set on" vcommand="On,Checked,Set"/>
+		<item name="Bleeds 1 and 2 set off" vcommand="Off,Checked,Set"/>
+		<item name="Bleed flow controller set to norm" vcommand="Norm,Normal,Checked,Set"/>
+		<item name="E G P W S flaps override set to normal" vcommand="Normal,Checked,Set"/>
+		<item name="ADC tests 1 and 2 performed" vcommand="Complete,Checked"/>
+		<item name="Stall warning test performed" vcommand="Complete,Checked"/>
+		<item name="Nose wheel steering set off" vcommand="Set,Off,Checked"/>
+		<item name="Flight Taxi switch set to taxi" vcommand="Set,Checked"/>
+		<item name="H S I set to pilot flying side" vcommand="Set,Checked"/>
+		<item name="Yaw damper set on" vcommand="Set,Checked,On"/>
+		<item name="Nav source selection set as required" vcommand="Set,Checked"/>
+		<item name="Baro set" vcommand="Set,Checked"/>
+		<item name="Acceleration altitude set" vcommand="Set,Checked"/>
+		<item name="V speeds set" vcommand="Set,Checked"/>
+		<item name="Pitot static isolation switch set to normal" vcommand="Normal,Set,Checked"/>
+		<item name="Integrated standby instrument" vcommand="Set,Checked"/>
+		<item name="Landing gear lever" vcommand="Set,Checked"/>
+		<item name="GPWS landing selector" vcommand="Set,Checked"/>
+		<item name="Hydraulic control switches set off" vcommand="Set,Off,Checked"/>
+		<item name="AHRS panel checked" vcommand="Checked"/>
+		<item name="Pitch and roll disconnect handles are in" vcommand="Set,In,Checked"/>
+		<item name="Aux tank pump switches set off" vcommand="Set,Off,Checked"/>
+		<item name="Fuel transfer switch centred" vcommand="Set,Checked"/>
+		<item name="Auto feather set off" vcommand="Set,Off,Checked"/>
+		<item name="Auto feather test performed" vcommand="Complete,Checked"/>
+		<item name="Emergency brake set as required" vcommand="Set,Checked,On,Off"/>
+		<item name="Control lock engaged" vcommand="Set,Checked,On"/>
+		<item name="Power levers set to disconnect" vcommand="Set,Checked"/>
+		<item name="Condition levers set to cut-off" vcommand="Set,Checked"/>
+		<item name="ARCDU set on" vcommand="Set,On,Checked"/>
+		<item name="Trims tested and set" vcommand="Set,Checked"/>
+		<item name="Efis control panels set" vcommand="Set,Checked"/>
+		<item name="V speeds set" vcommand="Set,Checked"/>
+	</checklist>
+	<checklist name="First Officer's Originating">
+		<item name="ATIS" vcommand="Received,Checked"/>
+		<item name="Oxygen masks" vcommand="Checked"/>
+		<item name="Forward outflow valve guarded and closed" vcommand="Checked"/>
+		<item name="Anti skid tested and set on" vcommand="Set,On,Checked"/>
+		<item name="Ground proximity warning system tested" vcommand="Tested,Complete,Checked"/>
+		<item name="Baro set" vcommand="Set,Checked"/>
+		<item name="Acceleration altitude set" vcommand="Set,Checked"/>
+		<item name="V speeds set" vcommand="Set,Checked"/>
+		<item name="Centre pedestal checked" vcommand="Checked"/>
+		<item name="A H R S checked" vcommand="Checked"/>
+		<item name="Terrain and weather mode set as required" vcommand="Set,Checked"/>
+	</checklist>
+	<checklist name="Before start">
+		<item name="Circuit breakers" vcommand="Checked"/>
+		<item name="Escape hatch closed" vcommand="Closed,Checked"/>
+		<item name="Nose wheel steering set off" vcommand="Set,OffChecked"/>
+		<item name="Flight guidance control panel checked" vcommand="Checked"/>
+		<item name="Fuel quantity checked" vcommand="Checked"/>
+		<item name="Hydraulic pressure checked" vcommand="Checked"/>
+		<item name="Emergency brake checked" vcommand="Checked"/>
+		<item name="Power levers set to disconnect" vcommand="Set,Checked"/>
+		<item name="Condition levers set to cut-off" vcommand="Set,Checked"/>
+		<item name="Emergency lights armed" vcommand="Armed,Checked,Set"/>
+		<item name="Fasten seatbelts set on" vcommand="On,Checked,Set"/>
+		<item name="Departure briefing" vcommand="Complete,Done"/>
+	</checklist>
+	<checklist name="Start">
+		<item name="Doors closed" vcommand="Checked,Set,Closed"/>
+		<item name="Battery switches set on" vcommand="Checked,Set,On"/>
+		<item name="Beacon light set on" vcommand="Checked,Set,On"/>
+		<item name="A P U Bleed air set off" vcommand="Checked,Set,Off"/>
+		<item name="Engine 2 check clear" vcommand="Checked,Clear"/>
+		<item name="Engine start selector to 2" vcommand="Checked,Set"/>
+		<item name="Engine Start pushed" vcommand="Pushed,Checked,Set"/>
+		<item name="Engine 2 condition lever to start" vcommand="Checked,Set"/>
+		<item name="External power switch set off" vcommand="Checked,Set,Off"/>
+		<item name="G P U disconnected" vcommand="Disconnected,Checked,Set"/>
+		<item name="Engine 1 check clear" vcommand="Checked,Clear"/>
+		<item name="Engine start selector to 1" vcommand="Checked,Set"/>
+		<item name="Engine Start pushed" vcommand="Pushed,Checked,Set"/>
+		<item name="Engine 1 condition lever to start" vcommand="Checked,Set"/>
+	</checklist>
+	<checklist name="After Start">
+		<item name="Condition levers to max" vcommand="Checked,Set,Max"/>
+		<item name="A P U set off" vcommand="Checked,Set,Off"/>
+		<item name="Main bus tie set off" vcommand="Set,Checked,Off"/>
+		<item name="Pitot heat switches set on" vcommand="Set,Checked,On"/>
+		<item name="Ice protection as required" vcommand="Set,Checked"/>
+		<item name="Rudder travel checked" vcommand="Checked"/>
+		<item name="Nose wheel steering set on" vcommand="Set,Checked,On"/>
+		<item name="Radar to standby" vcommand="Set,Checked"/>
+	</checklist>
+	<checklist name="First Officer's After Start">
+		<item name="Transponder set on" vcommand="Checked,Set,On"/>
+		<item name="A P U set off" vcommand="Checked,Set,Off"/>
+		<item name="Main bus tie set off" vcommand="Set,Checked,Off"/>
+		<item name="Pitot heat switches set on" vcommand="Set,Checked,On"/>
+		<item name="Logo and taxi lights as required" vcommand="Set,Checked,On"/>
+		<item name="Ice protection as required" vcommand="Set,Checked"/>
+		<item name="Rudder travel checked" vcommand="Checked"/>
+		<item name="Nose wheel steering set on" vcommand="Set,Checked,On"/>
+		<item name="Radar to standby" vcommand="Set,Checked"/>
+		<item name="Flaps set to takeoff" vcommand="Set,Checked"/>
+		<item name="Auto feather set on" vcommand="Set,Checked,On"/>
+		<item name="Engine rating set" vcommand="Set,Checked"/>
+		<item name="Tank aux pumps set on" vcommand="Set,Checked,On"/>
+		<item name="Standby and P T U pumps set on" vcommand="Set,Checked,On"/>
+		<item name="Bleeds 1 and 2 set on" vcommand="On,Checked,Set"/>
+		<item name="Bleed flow controller set to norm" vcommand="Norm,Normal,Checked,Set"/>
+		<item name="De-ice pressure checked" vcommand="Checked"/>
+	</checklist>
+	<checklist name="Before takeoff">
+		<item name="Trims checked" vcommand="Checked,Set"/>
+		<item name="Flight Taxi switch set to flight" vcommand="Set,Checked"/>
+		<item name="Anti collision light set to white" vcommand="Checked,Set"/>
+		<item name="Transponder set on" vcommand="Checked,Set,On"/>
+		<item name="Control lock disengaged" vcommand="Set,Checked"/>
+		<item name="Flight controls checked" vcommand="Checked"/>
+		<item name="Condition levers to max" vcommand="Checked,Set,Max"/>
+		<item name="Radar set as required" vcommand="Set,Checked"/>
+		<item name="T C A S set on alt" vcommand="Set,Checked"/>
+		<item name="Fuel quantity checked" vcommand="Checked"/>
+		<item name="External lights set on" vcommand="Set,Checked,On"/>
+		<item name="Caution panel clear" vcommand="Clear,Checked"/>
+	</checklist>
+</checklists>
