@@ -1,0 +1,566 @@
+<?test?>
+
+<checklists>
+	<checklist name="Pre Flight">
+
+		<item name="Ready to start the pre flight check list when your ready captain" vcommand="Start pre flight check list,Im ready,I am ready,Lets start the check list,Start the pre flight check list,checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Maintenance Logs" vcommand="Maintenance Logs checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel for planned flight" vcommand="Light fuel load,Medium fuel load,Heavy fuel load,Loaded,Fuel ok,Fuel loaded,Gassed up,All gassed up,shes full,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Oxygen contents and test" vcommand="Oxygen tested,Oxygen contents ok and tested,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fire extinguishers" vcommand="Tested,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine oil" vcommand="Engine oil ok,Engine oil checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Hydraulic Fluid Contents" vcommand="Contents checked,Levels ok,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Heating fluid levels" vcommand="Fluid levels checked,Levels ok,Heating fluid checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Batteries" vcommand="Batteries checked,Batteries ok,Batteries check,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel transfer valves and switch off" vcommand="Fuel tranSfer valves and switch off,Off,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Munitions" vcommand="Loaded,Bombs loaded,Munitions loaded,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Met forecast" vcommand="Weather checked,Weather done,Met complete,We have the met,Met obtained,Weather obtained,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flight plan" vcommand="Flight plan complete,Complete,Completed,Flight plan checked,Flight plan filed,Flight plan loaded,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Aircraft inspection" vcommand="Aircraft inspection complete,Aircraft inspection completed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Propellers Intercoolers and Cowl Flaps Manual" vcommand="Propellers Intercoolers and Cowl Flaps Manual,Manual,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Controls unlocked and checked free" vcommand="Unlocked,Unlocked and free,Controls unlocked and checked free,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flight controls check" vcommand="Flight controls checked,Flight controls ok,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Elevator aileron and rudder trim neutral" vcommand="Elevator aileron and rudder trim neutral,Neutral,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Intercoolers" vcommand="Cold,Intercoolers set,Intercoolers cold,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Gyros uncaged" vcommand="Uncaged,Set,Gyros uncaged,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel shut-off switches one to four open" vcommand="Open,One to Four Open,Fuel shut-off switches One to Four Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pumps one to four off" vcommand="Off,One to Four Off,Fuel booster pumps one to four off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing Gear Selector Neutral" vcommand="Neutral,Landing Gear Selector neutral,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flaps Selector switch neutral" vcommand="Neutral,Flaps Selector switch neutral,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set to Zero" vcommand="Turbos zero,Zero,Turbos set to zero,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Mixture engines one to four set to cut off" vcommand="Fuel engines one to four set to cut off,Cut off,One to Four Cut off,Fuel One to Four Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Throttles Closed" vcommand="Closed,Throttles Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Master ignition off" vcommand="Master ignition off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Magnetos engines one to four set off" vcommand="Magnetos one to four off,Off,Set,Magnetos engines one to four set off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Propellers Are Pee Emm High" vcommand="Are Pee Emm High,Set,Propellers Are Pee Emm High,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Autopilot Off" vcommand="Off,Autopilot Off,Done,Ok,Checked,Check,Next,Next item"/> 
+                <item name="De-icers wing and prop off" vcommand="De-icers wing and prop off,Off,De-icers off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Cabin heat off" vcommand="Cabin heat off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators one to four off" vcommand="Off,Generators one to four off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Inverters Off" vcommand="Inverters off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Peetoe heat off" vcommand="Off,Peetoe heat off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing lights off" vcommand="Off,Landing lights off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Strobe lights off" vcommand="Off,Strobe lights off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Beacon light off" vcommand="Off,Beacon light off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Formation lights off" vcommand="Off,Formation lights off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Panel lights off" vcommand="Off,Panel lights off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Navigation lights off" vcommand="Off,Navigation lights off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Intercom set to intercom" vcommand="Intercom,Set to intercom,Intercom set to intercom,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Before Start">
+                <item name="Are you ready to start the pre start check list now skipper" vcommand="Start the before start check list,Im ready,I am ready,Lets start the check list,checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Auxiliary power unit start" vcommand="Auxiliary power unit start,Ay pee you start,On,Starting up,Start up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Battery master switches on" vcommand="Battery master switches on,On,One to three On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Battery voltage test" vcommand="Battery voltage test ok,Battery voltage test complete,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Check Hydraulic pressure emergency system warning light on" vcommand="Hydraulic pressure emergency system warning light on,Hydraulic pressure emergency system warning light checked,On,Hydraulic pressure ok,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Vacuum warning light on" vcommand="Vacuum warning light on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Check Hydraulic pressure minimum two hundred pee ess eye" vcommand="Hydraulic pressure rising,Hydraulic pressure checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing gear green light" vcommand="Landing gear green light,Green light,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Tail wheel un locked" vcommand="Tail wheel unlocked,Unlocked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Parking brake on" vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Verify fuel tank contents" vcommand="Fuel tank contents verified,Fuel tank contents checked,Fuel checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Inverters On" vcommand="Inverters on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Carb filters on" vcommand="Carb filters on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Beacon light on" vcommand="On,Beacon light on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Com Radios on frequency and test" vcommand="Com Radios on frequency and tested,Radios checked,Radios checked and set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Navigation Radios frequency set" vcommand="Navigation Radios frequency set,Frequency set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Direction indicator frequency set" vcommand="Direction indicator frequency set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Altimeter pressure setting" vcommand="Altimeter pressure setting set,Pressure set,Q F E set,Q N H set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Check bomb doors closed" vcommand="Closed,Bomb doors closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Abandon aircraft alarm test" vcommand="Abandon aircraft alarm tested,Abandon aircraft alarm complete,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Crew check in" vcommand="Captain to crew check in,Guys intercom check,Intercom test,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Tail gunner checking in" vcommand="Roger,Thanks,Copied,Tail gunner roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Right waste checking in" vcommand="Roger,Thanks,Copied,Right waste roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Left waste checking in boss" vcommand="Roger,Thanks,Copied,Left waste roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Ball turret checking in cap" vcommand="Roger,Thanks,Copied,Ball turret roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Radio operator checking in captain" vcommand="Roger,Thanks,Copied,Radio operator roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flight engineer hear captain" vcommand="Roger,Thanks,Copied,Flight engineer roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier checking in" vcommand="Roger,Thanks,Copied,Bombardier roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Navigator checking in skipper" vcommand="Roger,Thanks,Copied,Navigator roger,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+       <checklist name=" ">     
+</checklist>
+        <checklist name="Engines Start-up">
+                <item name="I have the engine start check list ready to go when you are ready captain" vcommand="Start engine start check list,Im ready,I am ready,Lets start the check list,Start the engine start check list,checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Parking brake on " vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Beacon light on " vcommand="On,Beacon light on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Navigation lights on" vcommand="On,Navigation lights on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Throttles set for start" vcommand="Set,Throttles cracked,Throttles set for start,Throlles set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Propellers high are pee em" vcommand="Propellers high are pee em,Propellers set,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Intercoolers cold" vcommand="Intercoolers cold,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Cowl Flaps open" vcommand="Cowl Flaps open,Open,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Carb filters on " vcommand="Carb filters on,Carb filters set,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel shut-off switches one to four closed" vcommand="One to Four Closed,Fuel shut-off switches One to Four Closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Mixture engines one to four set auto rich" vcommand="Auto rich,One to Four set auto rich,Fuel One to Four auto rich,Fuel engines one to four set auto rich,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set" vcommand="Turbos checked,Turbos set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine three On and check fuel pressure" vcommand="Fuel booster pump engine three On,On,Three On,Fuel booster pump three on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Prime engines one to four" vcommand="Primed,Engines one to four primed,Engines one two three and four primed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fire extinguisher set for number one" vcommand="Fire extinguisher set for number one,Fire extinguisher number one set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm Cleared to start engines" vcommand="Cleared to start engines,Confirmed to start engines,Confirm,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Master ignition on" vcommand="Master ignition on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one magnetos both" vcommand="Engine number one magnetos both,Engine number one magnetos on,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine one On" vcommand="Fuel booster pump engine one On,On,One On,Fuel booster pump one on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine one" vcommand="Start engine one,Starting engine one,Start engine number one,Starting engine number one,Start one,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one propeller clear captain" vcommand="Engine one started,One started,Started,Engine started,Good start engine one,Good start on one,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number one to one thousand are pee em" vcommand="Set engine number one to one thousand are pee em,Engine number one to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fire extinguisher set for number two" vcommand="Fire extinguisher set for number two,Fire extinguisher number two set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two magnetos both" vcommand="Engine number two magnetos both,Engine number two magnetos on,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine two On and check fuel pressure" vcommand="On,Two On,Fuel booster pump two on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine two" vcommand="Start engine two,Starting engine two,Start engine number two,Starting engine number two,Start two,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine two prop clear skipper" vcommand="Engine two started,Two started,Started,Engine started,Good start engine two,Good start on two,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number two to one thousand are pee em" vcommand="Set engine number two to one thousand are pee em,Engine number two to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fire extinguisher set for number three" vcommand="Fire extinguisher set for number three,Fire extinguisher number three set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three magnetos both" vcommand="Engine number three magnetos both,Engine number three magnetos on,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine three" vcommand="Start engine three,Starting engine three,Start engine number three,Starting engine number three,Start three,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine three propeller clear" vcommand="Engine three started,Three started,Started,Engine started,Good start engine three,Good start on three,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number three to one thousand are pee em" vcommand="Set engine number three to one thousand are pee em,Engine number three to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fire extinguisher set for number four" vcommand="Fire extinguisher set for number four,Fire extinguisher number four set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four magnetos both" vcommand="Engine number four magnetos both,Engine number four magnetos on,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine four On and check fuel pressure" vcommand="On,Four On,Fuel booster pump four on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine four" vcommand="Start engine four,Starting engine four,Start engine number four,Starting engine number four,Start four,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine four prop clear sir" vcommand="Engine four started,Four started,Started,Engine started,Good start engine four,Good start on four,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number four to one thousand are pee em" vcommand="Set engine number four to one thousand are pee em,Engine number four to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fire extinguisher set normal" vcommand="Fire extinguisher set normal,Fire extinguisher normal,Normal,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators engines one two three and four on" vcommand="On,Generators one two three and four on,Generators on,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name="Engine Number One Start Up">
+                <item name="Parking brake on  " vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one throttle set for start" vcommand="Engine number one throttle set for start,Engine number one throttle set,Set,Throttle cracked,Throttle set for start,Throttle set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one propeller high are pee em" vcommand="Engine number one propellers high are pee em,Propellers high are pee em,Propellers set,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one intercoolers cold" vcommand="Engine number one intercoolers cold,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one cowl Flaps open" vcommand="Cowl Flaps open,Open,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one carb filter on" vcommand="Engine number one carb filter on,Carb filter set,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one fuel shut-off switch closed" vcommand="Engine number one fuel shut-off switch closed,Fuel shut-off switch Closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one fuel auto rich" vcommand="Auto rich,One set auto rich,Fuel One auto rich,Fuel engine one set auto rich,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set " vcommand="Turbos checked,Turbos set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine one On and check fuel pressure" vcommand="Fuel booster pump engine one On,On,One On,Fuel booster pump one on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Prime engine one" vcommand="Primed,Engine one primed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm Cleared to start engine one" vcommand="Cleared to start engine one,Confirmed to start engine,Confirm,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Master ignition on " vcommand="Master ignition on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one magnetos both " vcommand="Engine number one magnetos on,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine one " vcommand="Start engine one,Starting engine one,Start engine number one,Starting engine number one,Start one,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one propeller clear captain " vcommand="Engine one started,One started,Started,Engine started,Good start engine one,Good start on one,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number one to one thousand are pee em " vcommand="Set engine number one to one thousand are pee em,Engine number one to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fire extinguisher set normal " vcommand="Set,Checked,Fire extinguisher set normal,Fire extinguisher normal,Normal,next,next item"/>
+                <item name="Generator engine one on" vcommand="On,Generator engine one on,Checked,Set,Generator on,next,next item"/>
+</checklist>
+        <checklist name="Engine Number Two Start Up">
+                <item name="Parking brake on   " vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two throttle set for start" vcommand="Engine number two throttle set for start,Engine number two throttle set,Set,Throttle cracked,Throttle set for start,Throttle set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two propeller high are pee em" vcommand="Engine number two propeller high are pee em,Propellers high are pee em,Propellers set,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two intercoolers cold" vcommand="Engine number two intercoolers cold,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two cowl Flaps open" vcommand="Cowl Flaps open,Open,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two carb filter on" vcommand="Engine number two carb filter on,Carb filter set,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two fuel shut-off switch closed" vcommand="Engine number two fuel shut-off switch closed,Fuel shut-off switch closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two fuel auto rich" vcommand="Auto rich,Two set auto rich,Fuel two auto rich,Fuel engine two set auto rich,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set  " vcommand="Turbos checked,Turbos set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine two On and check fuel pressure " vcommand="Fuel booster pump engine two On,On,Two On,Fuel booster pump two on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Prime engine two" vcommand="Primed,Engine two primed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm Cleared to start engine two" vcommand="Cleared to start engine two,Confirmed to start engine,Confirm,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Master ignition on  " vcommand="Master ignition on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two magnetos both " vcommand="Engine number two magnetos both,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine two " vcommand="Start engine two,Starting engine two,Start engine number two,Starting engine number two,Start two,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two propeller clear captain" vcommand="Engine two started,Two started,Started,Engine started,Good start engine two,Good start on two,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number two to one thousand are pee em " vcommand="Set engine number two to one thousand are pee em,Engine number two to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Fire extinguisher set normal  " vcommand="Set,Checked,Fire extinguisher set normal,Fire extinguisher normal,Normal,next,next item"/>
+                <item name="Generator engine two on" vcommand="On,Generator engine two on,Checked,Set,Generator on,next,next item"/>
+</checklist>
+        <checklist name="Engine Number Three Start Up">
+                <item name="Parking brake on    " vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Engine number three throttle set for start" vcommand="Engine number three throttle set for start,Engine number three throttle set,Set,Throttle cracked,Throttle set for start,Throttle set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three propeller high are pee em" vcommand="Engine number three propeller high are pee em,Propellers high are pee em,Propellers set,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three intercoolers cold" vcommand="Engine number three intercoolers cold,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three cowl Flaps open" vcommand="Cowl Flaps open,Open,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three carb filter on" vcommand="Engine number three carb filter on,Carb filter set,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three fuel shut-off switch closed" vcommand="Engine number three fuel shut-off switch closed,Fuel shut-off switch Closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three fuel auto rich" vcommand="Auto rich,Three set auto rich,Fuel three auto rich,Fuel engine three set auto rich,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set   " vcommand="Turbos checked,Turbos set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine three On and check fuel pressure " vcommand="Fuel booster pump engine three On,On,Three On,Fuel booster pump three on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Prime engine three" vcommand="Primed,Engine three primed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm Cleared to start engine three" vcommand="Cleared to start engine three,Confirmed to start engine,Confirm,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Master ignition on   " vcommand="Master ignition on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three magnetos both " vcommand="Engine number three magnetos both,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine three " vcommand="Start engine three,Starting engine three,Start engine number three,Starting engine number three,Start three,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three propeller clear captain" vcommand="Engine three started,Three started,Started,Engine started,Good start engine three,Good start on three,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number three to one thousand are pee em" vcommand="Set engine number three to one thousand are pee em,Engine number three to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Fire extinguisher set normal   " vcommand="Set,Checked,Fire extinguisher set normal,Fire extinguisher normal,Normal,next,next item"/>
+                <item name="Generator engine three on" vcommand="On,Generator engine three on,Checked,Set,Generator on,next,next item"/>
+</checklist>
+        <checklist name="Engine Number Four Start Up">
+                <item name="Parking brake on     " vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Engine number four throttle set for start" vcommand="Engine number four throttle set for start,Engine number four throttle set,Set,Throttle cracked,Throttle set for start,Throttle set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four propeller high are pee em" vcommand="Engine number four propeller high are pee em,Propellers high are pee em,Propellers set,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four intercoolers cold" vcommand="Engine number four intercoolers cold,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four cowl Flaps open" vcommand="Cowl Flaps open,Open,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four carb filter on" vcommand="Engine number four carb filter on,Carb filter set,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four fuel shut-off switch closed" vcommand="Engine number four fuel shut-off switch closed,Fuel shut-off switch Closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four fuel auto rich" vcommand="Auto rich,Four set auto rich,Fuel four auto rich,Fuel engine four set auto rich,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set    " vcommand="Turbos checked,Turbos set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pump engine four On and check fuel pressure " vcommand="Fuel booster pump engine four On,On,Four On,Fuel booster pump four on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Prime engine four" vcommand="Primed,Engine four primed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm Cleared to start engine four" vcommand="Cleared to start engine four,Confirmed to start engine,Confirm,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Master ignition on    " vcommand="Master ignition on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four magnetos both " vcommand="Engine number four magnetos both,Magnetos on,Mags on,Mags both,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine four " vcommand="Start engine four,Starting engine four,Start engine number four,Starting engine number four,Start four,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four propeller clear captain" vcommand="Engine four started,Four started,Started,Engine started,Good start engine four,Good start on four,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set engine number four to one thousand are pee em " vcommand="Set engine number four to one thousand are pee em,Engine number four to one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Fire extinguisher set normal    " vcommand="Set,Checked,Fire extinguisher set normal,Fire extinguisher normal,Normal,next,next item"/>
+                <item name="Generator engine four on" vcommand="On,Generator engine four on,Checked,Set,Generator on,next,next item"/>
+</checklist>
+	<checklist name="After Start">
+		<item name="Generators" vcommand="On,Generators one two three and four on,Generators on,Generators set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Aye pee you off" vcommand="Aye pee you off,Checked,Off,Closing down,Switching off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine temperatures and pressures" vcommand="Temperatures and pressures checked,Temperatures and pressures ok,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Are pee ems set twelve hundred are pee em for engine warm up" vcommand="Twelve hundred are pee em,Twelve hundred are pee em set,Are pee em Twelve hundred,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flight indicator and vacuum pressure" vcommand="Flight indicator and vacuum pressure checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Select flaps full down and check flap position indicator" vcommand="Flaps down,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Select flaps up and check flap position indicator" vcommand="Flaps up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Instruments" vcommand="Instruments checked,Instruments ok,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Exercise turbos" vcommand="Exercise turbos,Turbos ok,Turbos checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Exercise propellers" vcommand="Exercise propellers,Propellers ok,Propellers checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Peetoe heat on" vcommand="Peetoe heat on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Carb filters on  " vcommand="Carb filters on,Carb filters set,On,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+</checklist>
+	<checklist name="Before Taxi">
+                <item name="Parking brake on" vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Chocks removed" vcommand="Chocks removed,Chocks away,Removed,Checked,Set,next,next item"/>
+		<item name="Tail wheel un-locked" vcommand="Free,Tail wheel free,Tail wheel checked,Tail wheel un-locked,Unlocked,Set,Checked,Check,Next,Next item"/>
+                <item name="Landing lights on" vcommand="On,Landing lights on,Checked,Set,Not required"/>
+                <item name="Ground crew and equipment" vcommand="Ground crew and equipment clear,Clear,Set,Checked,Check,Next,Next item"/>
+		<item name="Clear on the right" vcommand="Clear on the left,Set,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Engine Run Up">
+                <item name="Parking brake on     " vcommand="Parking brake on,Parking brake set,Brakes on,On,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Aye pee you off " vcommand="Aye pee you off,Off,Closing down,Switching off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Trim tabs set" vcommand="Set,Trim tabs set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Hydraulic pressure six to eight hundred pee ess eye" vcommand="Hydraulic pressure six to eight hundred pee ess eye,Hydraulic pressure checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators one to four on" vcommand="On,Generators one to four on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Batteries one two and three on" vcommand="Batteries one two and three on,Batteries on,Done,On,Ok,Checked,Check,Next,Next item"/>
+		<item name="Tail wheel un-locked " vcommand="Free,Tail wheel free,Tail wheel checked,Tail wheel un-locked,Unlocked,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Landing gear green light " vcommand="Landing gear green light,Green light,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Set propellers set high are pee em" vcommand="Set propellers high are pee em,Propellers set high RPM,Propellers high are pee em,High are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Check fuel quantities" vcommand="Fuel quantities checked,Fuel checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Intercoolers cold " vcommand="Cold,Intercoolers set,Intercoolers cold,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flight controls unlocked" vcommand="Flight controls unlocked,Unlocked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flaps up" vcommand="Flaps up,Up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Mixture auto rich" vcommand="Mixture auto rich,Auto rich,Mixture set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators one to four off" vcommand="Off,Generators one to four off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set two thousand are pee em" vcommand="Set two thousand are pee em,Two thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Mag check no more than two hundred are pee em drop from mag one and two" vcommand="Mags checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel pressures twelve to sixteen P S I" vcommand="Fuel pressures twelve to sixteen pee ess eye,Fuel pressures checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Oil pressures seventy to eightey P S I" vcommand="Oil pressures seventy to eighty pee ess eye,Oil pressures checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Oil temperatures maximum eightey eight degrees centigrade" vcommand="Oil temperatures checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Cylinder head temperatures maximum two hundred and thirty five degrees" vcommand="Cylinder head temperatures checked,Up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engines one thousand are pee em" vcommand="Engines one thousand are pee em,One thousand are pee em set,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set to eight" vcommand="Turbos set to eight,Turbos set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Check each engine in turn and verify fourty five inches manifold pressure on each engine and adjust turbo trim pot as required" vcommand="Engine run up complete,Complete,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set as required" vcommand="Turbos set as required,Turbos set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators one to four on" vcommand="On,Generators one to four on,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Before Take-off">
+		<item name="Tail wheel locked" vcommand="Locked,Tail wheel locked,Tail wheel checked,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Gyro set for runway heading" vcommand="Gyro set,Gyro checked,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Altimeter pressure setting " vcommand="Altimeter pressure setting set,Pressure set,Q F E set,Q N H set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators engines one two three and four on " vcommand="On,Generators one two three and four on,Generators on,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Aye pee you off  " vcommand="Aye pee you off,Off,Closing down,Switching off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Peetoe heat on " vcommand="On,Peetoe heat on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Elevator aileron and rudder trim set" vcommand="Elevator aileron and rudder trim set,Trims set,Trim set,set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set     " vcommand="Turbos checked,Turbos set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flaps set as required" vcommand="Flaps set as required,Flaps set,No flaps required,No flaps required today,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Strobe light on" vcommand="On,Strobe light on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing lights on " vcommand="On,Landing lights on,Not required,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pumps one to four on and fuel pressure checked" vcommand="On,One to Four on,Fuel booster pumps one to four on,Fuel booster pumps one to four on and pressure checked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Windows closed" vcommand="Windows closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew take your positions for take off" vcommand="Here we go guys,Take off,Lets go,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Lets make this our best one yet skipper" vcommand="Ok,I'll try,Like always,Lets do this,Roger,Roger that,Berlin here we come,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="After Take-off">
+		<item name="Landing gear check your side" vcommand="Up,Gear up,Moving,Travelling,Ok on the left,Gear up my side,ok my side,My side checked,Landing gear ok on the left,Checked,Check,Next,Next item"/>
+		<item name="Landing gear ok on the right" vcommand="Thanks,Cheers,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Tail wheel confirm up" vcommand="Up,Confirm up,Tail wheel up,Tail wheel confirm up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing Gear Selector Neutral " vcommand="Neutral,Set,Landing Gear Selector Neutral,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Set climb power" vcommand="Set climb power,Climb power set,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Cowl flaps" vcommand="As required,Auto,You have them,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pumps as required" vcommand="Fuel booster pumps as required,Done,Fuel booster pumps on,Ok,Checked,Check,Next,Next item"/>
+                <item name="Lights set as required" vcommand="Lights set as required,Lights set,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+	</checklist>
+	<checklist name="Before Landing">
+		<item name="Altimeter confirm set" vcommand="Altimeter set,Q N H Set,Q F E set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Autopilot Off " vcommand="Off,Autopilot Off,Done,Ok,Checked,Check,Next,Next item"/>  
+                <item name="Fuel booster pumps one to four on" vcommand="On,One to four on,Fuel booster pumps one to four on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Mixtures set to auto rich" vcommand="Auto rich,Mixtures set,Mixtures set auto rich,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Propellers high are pee em " vcommand="High are pee em,Propellers high are pee em,Propellers high are pee em checked,Propellers high are pee em set,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Intercoolers " vcommand="Intercoolers set,Auto,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Carb filters open" vcommand="Carb filters open,Carb filters set,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Wing de-icers off" vcommand="Off,Wing de-icers off,De-icers off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm ball turret secure" vcommand="Confirm ball turret secure,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Ball turret is secure captain" vcommand="Roger,Thanks,Copied,Ball turret roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing gear down check air speed below one fifty nots" vcommand="Gear down,Gear coming down,Gear down selected,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Beacon light on  " vcommand="On,Beacon light on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Strobe light on " vcommand="On,Strobe light on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing lights on  " vcommand="On,Landing lights on,Not required,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing gear down on the right" vcommand="Landing gear down on the left,Wheels down,Gear down,Gear down on the left,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Tail wheel down" vcommand="Tail wheel down,Tail wheel checked,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Landing gear green light  " vcommand="Landing gear green light,Green light,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Hydraulic pressure" vcommand="Hydraulic pressure checked,Hydraulic pressure in the green,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Are pee ems twenty one hundred" vcommand="Twenty one hundred set,Are pee em twenty one hundred,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set as required" vcommand="Turbos set as required,Turbos set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flaps down one third check speed below one four seven nots" vcommand="Flaps down one third,Flaps down one third set,Flaps down,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Tail wheel un-locked  " vcommand="Free,Unlocked,Tail wheel free,Tail wheel checked,Tail wheel un-locked,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew prepare for landing secure all loose equipment and confirm all guns are safe" vcommand="Airfield in sight,Two minutes guys,Where on finals,Where on final guys,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Final Approach">
+                <item name="Check speed and set flaps full down" vcommand="Flaps down,Flaps set full down,Full flaps,Flaps full down,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Are pee ems twenty two hundred" vcommand="twenty two hundred set,Are pee em twenty two hundred,Set,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Landing gear green light   " vcommand="Landing gear green light,Green light,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Clearance to land" vcommand="Cleared to land,Obtained,Towers cleared us to land,Set,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+
+</checklist>
+	<checklist name="Go Around">
+                <item name="Propellers high are pee em check" vcommand="Propellers high are pee em checked,Propellers high are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set flaps up" vcommand="Flaps up,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Gear selected up" vcommand="Gear selected up,Gear up,Gears moving,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Set power go around as required" vcommand="Power set,Going around,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Landing gear check your side " vcommand="Up,Gear up,Moving,Travelling,Ok on the left,Gear up my side,Ok my side,My side checked,Landing gear ok on the left,Checked,Check,Next,Next item"/>
+		<item name="Landing gear ok on the right " vcommand="Thanks,Cheers,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Tail wheel confirm up " vcommand="Up,Confirm up,Tail wheel up,Tail wheel confirm up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing Gear Selector Neutral  " vcommand="Neutral,Set,Landing Gear Selector Neutral,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Co pilot to crew where going around" vcommand="Going around,Sorry guys,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Captain i have a hot date with this british gal at the prince of waterloo pub and shes swell are we going to be up here all day" vcommand="Cut it out,Sorry guys,Bit of cross wind there i will get it next time,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Rolling Take-off">
+                <item name="Flaps up" vcommand="Flaps up,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Set climb power" vcommand="Power set,Climb power set,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Landing gear check your side" vcommand="Up,Gear up,moving,travelling,Ok on the left,Gear up my side,ok my side,My side checked,Landing gear ok on the left,Checked,Check,Next,Next item"/>
+		<item name="Landing gear ok on the right" vcommand="Thanks,Cheers,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Tail wheel confirm up" vcommand="Up,Confirm up,Tail wheel up,Tail wheel confirm up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing Gear Selector Neutral " vcommand="Neutral,Set,Landing Gear Selector Neutral,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Cowl flaps" vcommand="As required,Auto,You have them,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pumps as required" vcommand="Fuel booster pumps as required,Fuel booster pumps on,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Lights set as required" vcommand="Lights set as required,Lights set,Not required,Lights on,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+
+</checklist>
+	<checklist name="After Landing">
+		<item name="Hydraulic pressure " vcommand="Hydraulic pressure checked,Pressure ok,Hydraulic pressure ok,Hydraulic pressure in the green,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Cowl flaps open " vcommand="Cowl flaps open,Auto,You have them,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel booster pumps one to four off " vcommand="Off,One to Four Off,Fuel booster pumps one to four off,Fuel booster pumps off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Turbos set to zero " vcommand="Turbos zero,Zero,Zero set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set flaps up " vcommand="Flaps up,Done,Ok,Checked,Check,Next,Next item"/>
+		<item name="Tail wheel un-locked   " vcommand="Free,Tail wheel free,Tail wheel checked,Tail wheel unlocked,Unlocked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators one to four off " vcommand="Off,Generators one to four off,Generators off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Strobe lights off " vcommand="Off,Strobe light off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew you can relax we are home sweet home" vcommand="Another one in the bag,Another on for uncle sam,Thanks,Thank god,Yep,yea,Sure am,Checked,Set"/>
+</checklist>
+	<checklist name="Shut Down">
+                <item name="Engines one thousand are pee em " vcommand="Engines one thousand are pee em,One thousand are pee em,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Mixture engines one to four cut off" vcommand="Cut off,One to four closed,Mixture One to four cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel shut-off switches one to four open " vcommand="Open,One to four open,Fuel shut-off switches one to four open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Master ignition off " vcommand="Master ignition off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Magnetos engines one to four set off " vcommand="Magnetos one to four off,Mags off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Throttles closed " vcommand="Closed,Throttles Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Cowl flaps open  " vcommand="Cowl flaps open,Auto,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="De-icers wing and prop off " vcommand="Off,De icers off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Cabin heat off " vcommand="Off,Cabin heat off,Cabin heat is off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing lights off " vcommand="Off,Landing lights off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Beacon light off " vcommand="Off,Beacon light off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Navigation lights off " vcommand="Off,Navigation lights off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generators one to four confirm off" vcommand="Off,Generators one to four off,Generators off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Inverters off " vcommand="Inverters off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Landing Gear Selector Neutral   " vcommand="Landing Gear Selector Neutral,Neutral,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flaps selector switch neutral " vcommand="Flaps selector switch neutral,Neutral,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Gyros caged" vcommand="Gyros caged,Caged,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Intercoolers cold  " vcommand="Intercoolers cold,Cold,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Fuel transfer valves and switch off " vcommand="Fuel transfer valves and switch off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Voltage selector off" vcommand="Voltage selector off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Batteries one two and three off" vcommand="Batteries off,Batteries one two and three off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Controls locked" vcommand="Controls locked,Locked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Hey fellas the captain said the beers are on him tonight after that landing" vcommand="No chance,On you,Johns buying tonight,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+</checklist>
+	<checklist name="Engine Number One Shutdown">
+                <item name="Engine number one throttle closed" vcommand="Engine number one throttle closed,Throttle closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one mixture to cut off" vcommand="Engine number one mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number one" vcommand="Feather Engine number one,Number one feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number one propeller feathered" vcommand="Confirmed engine number one feathered,Engine number one feathered,Number one feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one fuel booster pump off" vcommand="Engine number one fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one fuel shut-off switch open" vcommand="Engine number one fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one magneto off" vcommand="Engine number one magneto off,Magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one generator off" vcommand="Engine number one generator off,Generator Off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number one" vcommand="Close cowl flaps engine number one,Cowl flaps engine number one closed,Cowl flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight" vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Engine Number Two Shutdown">
+                <item name="Engine number two throttle closed" vcommand="Engine number two throttle closed,Closed,throttle closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two mixture to cut off" vcommand="Engine number two mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number two" vcommand="Feather Engine number two,Number two feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number two propeller feathered" vcommand="Confirmed engine number two feathered,Engine number two feathered,Number two feathererd,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two fuel booster pump off" vcommand="Engine number two fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two fuel shut-off switch open" vcommand="Engine number two fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two magneto off" vcommand="Engine number two magneto off,Magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two generator off" vcommand="Engine number two generator off,Generator 0ff,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number two" vcommand="Close cowl flaps engine number two,Cowl flaps engine number two closed,Cowl flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Engine Number Three Shutdown">
+                <item name="Engine number three throttle closed" vcommand="Engine number three throttle closed,Closed,Throttle closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three mixture to cut off" vcommand="Engine number three mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number three" vcommand="Feather Engine number three,Number three feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number three propeller feathered" vcommand="Confirmed engine number three feathered,Engine number three feathered,Number three feathererd,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three fuel booster pump off" vcommand="Engine number three fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three fuel shut-off switch open" vcommand="Engine number three fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three magneto off" vcommand="Engine number three magneto off,Magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three generator off" vcommand="Engine number three generator off,Generator off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number three" vcommand="Close cowl flaps engine number three,Cowl flaps engine number three closed,Cowl flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight  " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Engine Number Four Shutdown">
+                <item name="Engine number four throttle closed" vcommand="Engine number four throttle closed,Closed,Throttle closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four mixture to cut off" vcommand="Engine number four mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number four" vcommand="Feather Engine number four,Number four feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number four propeller feathered" vcommand="Confirmed engine number four feathered,Engine number four feathered,Number four feathererd,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four fuel booster pump off" vcommand="Engine number four fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four fuel shut-off switch open" vcommand="Engine number four fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four magneto off" vcommand="Engine number four magneto off,Magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four generator off" vcommand="Engine number four generator off,Generator off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number four" vcommand="Close cowl flaps engine number four,Cowl flaps engine number four closed,Cowl flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight   " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+</checklist>
+	<checklist name="Un-feathering and Engine Start-up">
+                <item name="Fuel shut-off switch closed " vcommand="Fuel shut-off switch closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Magneto on" vcommand="Magneto on,magneto set,Done,On,Ok,Checked,Check,Next,Next item"/>
+                <item name="Propeller set to low are pee em" vcommand="Propeller set to low are pee em,Low are pee em set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Throttle cracked open" vcommand="Throttle cracked open,Throttle set,Cracked,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Select un-feather and wait for propeller to un-feather" vcommand="Un-feathered,Engine un-feathered,Propeller un-feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Mixture set auto rich " vcommand="Mixture set auto rich,Auto rich,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Start engine as required and warm up engine" vcommand="Engine started,Engine warmed up,Engine at normal temperature,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Generator on" vcommand="Generator on,On,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight        " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+</checklist>
+	<checklist name="Engine Fire Number One">
+                <item name="Engine number one throttle closed " vcommand="Engine number one throttle closed,Throttle closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one mixture to cut off " vcommand="Engine number one mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number one " vcommand="Feather Engine number one,Number one feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number one propeller feathered " vcommand="Confirmed engine number one feathered,Engine number one feathered,Number one feathererd,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one fuel booster pump off " vcommand="Engine number one fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one fuel shut-off switch open " vcommand="Engine number one fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one magneto off " vcommand="Engine number one magneto off,magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number one generator off " vcommand="Engine number one generator off,Generator Off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number one " vcommand="Close cowel flaps engine number one,Cowel flaps engine number one closed,Cowel flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set fire extinguisher engine one" vcommand="Fire extinguisher engine one,Extinguisher set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Activate Engine one fire extinguisher bottle one" vcommand="Fire extinguisher bottle one activated,Activated,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm fire extinguished engine number one if fire present activate fire extinguisher bottle two" vcommand="Fire extinguished,The fires out,Fire out engine one,Fire out engine number one,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight    " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Transfer fuel from fuel tank supplying engine one" vcommand="Fuel transferred,Fuel transfer complete,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+	<checklist name="Engine Fire Number Two">
+                <item name="Engine number two throttle closed " vcommand="Engine number two throttle closed,Throttle closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two mixture to cut off " vcommand="Engine number two mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number two " vcommand="Feather Engine number two,Number two feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number two propeller feathered " vcommand="Confirmed engine number two feathered,Engine number two feathered,Number two feathererd,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two fuel booster pump off " vcommand="Engine number two fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two fuel shut-off switch open " vcommand="Engine number two fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two magneto off " vcommand="Engine number two magneto off,magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number two generator off " vcommand="Engine number two generator off,Generator Off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number two " vcommand="Close cowel flaps engine number two,Cowel flaps engine number two closed,Cowel flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set fire extinguisher engine two" vcommand="Fire extinguisher engine two,Extinguisher set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Activate Engine two fire extinguisher bottle one" vcommand="Fire extinguisher bottle one activated,Activated,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm fire extinguished engine number two if fire present activate fire extinguisher bottle two" vcommand="Fire extinguished,The fires out,Fire out engine one,Fire out engine number two,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight     " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Transfer fuel from fuel tank supplying engine two" vcommand="Fuel transferred,Fuel transfer complete,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name="Engine Fire Number Three">
+                <item name="Engine number three throttle closed " vcommand="Engine number three throttle closed,Closed,Throttle closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three mixture to cut off " vcommand="Engine number three mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number three " vcommand="Feather Engine number three,Number three feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number three propeller feathered " vcommand="Confirmed engine number three feathered,Engine number three feathered,Number two feathererd,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three fuel booster pump off " vcommand="Engine number three fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three fuel shut-off switch open " vcommand="Engine number three fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three magneto off " vcommand="Engine number three magneto off,magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number three generator off " vcommand="Engine number three generator off,Generator Off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number three " vcommand="Close cowel flaps engine number three,Cowel flaps engine number three closed,Cowel flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set fire extinguisher engine three" vcommand="Fire extinguisher engine three,Extinguisher set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Activate Engine three fire extinguisher bottle one" vcommand="Fire extinguisher bottle one activated,Activated,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm fire extinguished engine number three if fire present activate fire extinguisher bottle two" vcommand="Fire extinguished,The fires out,Fire out engine one,Fire out engine number three,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight      " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Transfer fuel from fuel tank supplying engine three" vcommand="Fuel transferred,Fuel transfer complete,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name="Engine Fire Number Four">
+                <item name="Engine number four throttle closed " vcommand="Engine number four throttle closed,Throttle closed,Closed,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four mixture to cut off " vcommand="Engine number four mixture to cut off,Fuel off,Cut off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Feather Engine number four " vcommand="Feather Engine number four,Number four feathered,Feathered,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm engine number four propeller feathered " vcommand="Confirmed engine number four feathered,Engine number four feathered,Number two feathererd,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four fuel booster pump off " vcommand="Engine number four fuel booster pump off,Booster pump off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four fuel shut-off switch open " vcommand="Engine number four fuel shut-off switch open,Open,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four magneto off " vcommand="Engine number four magneto off,magneto off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Engine number four generator off " vcommand="Engine number four generator off,Generator Off,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Close cowel flaps engine number four " vcommand="Close cowel flaps engine number four,Cowel flaps engine number four closed,Cowel flaps closed,Off,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set fire extinguisher engine four" vcommand="Fire extinguisher engine four,Extinguisher set,Set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Activate Engine four fire extinguisher bottle one" vcommand="Fire extinguisher bottle one activated,Activated,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm fire extinguished engine number four if fire present activate fire extinguisher bottle two" vcommand="Fire extinguished,The fires out,Fire out engine four,Fire out engine number one,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Set trims as required for straight and level flight       " vcommand="Set trims as required for straight and level flight,Trims set,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Transfer fuel from fuel tank supplying engine four" vcommand="Fuel transferred,Fuel transfer complete,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name=" ">     
+</checklist>
+        <checklist name="Abandon Aircraft">
+                <item name="Confirm abandon aircraft check list captain" vcommand="Confirm abandon aircraft check list,Confirmed,Yes,Afirm, Aye firm,Aye fermitive,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew emergency emergency emergency prepare to abandon aircraft check your parachutes" vcommand="Start the check list,Start the abandon aircraft check list,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier diss able the bomb sight   " vcommand="Bombardier disable the bomb sight,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Aircraft away from civilian population" vcommand="Aircraft away from civilian population,Confirmed,Yes,Afirm, Aye firm,Aye fermitive,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Jettison all bombs if safe to do so" vcommand="Bombs jettisoned,Jettison all bombs,Emergency jettison bombs,No bombs on board,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier to captain bomb sight disabled sir" vcommand="Bombardier roger,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm safe altitude to abandon aircraft" vcommand="Confirmed safe altitude to abandon aircraft,Confirmed,Yes,Afirm, Aye firm,Aye fermitive,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Issue order to abandon aircraft and sound abandon aircraft alarm" vcommand="Captain to crew abandon aircraft abandon aircraft abandon aircraft,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Tail gunners out of here" vcommand="Roger,Good luck,Copied,Tail gunner roger,Good luck jay,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Right waste bail ing out" vcommand="Roger,Good luck,Copied,Right waste roger,Good luck kat,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Left waste bail ing out see you on the deck boss" vcommand="Roger,Good luck,Copied,Left waste roger,Good luck marvin,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Ball turret jumping now captain" vcommand="Roger,Good luck,Copied,Ball turret roger,Good luck andy,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Radio operator I managed to get a call out I'm bail ing out now captain" vcommand="Roger,Thanks,Good luck,Radio operator roger,Good luck robert,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Flight engineer exit ing the aircraft now" vcommand="Good luck cam,Roger,Good luck,Copied,Flight engineer roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier at the front hatch bail ing out" vcommand="Roger,Thanks,Good luck,Bombardier roger,Good luck beau,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Navigator I'm off skipper" vcommand="Roger,Thanks,Good luck,Navigator roger,Good luck lee,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Its been swell flying with you sir" vcommand="John bail out,Ok john bail out,Get out of here,Roger,Thanks,Good luck,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="We have done all our missions together captain so if you dont mind im staying with you" vcommand="Grab the yoke and help me gain control,Is that the end of the checklist,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name="Ditching">
+                <item name="Confirm ditching list captain" vcommand="Confirmed ditching check list,Confirmed,Aye firm,Aye fermitive,Done,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew emergency prepare to ditch check your life vests" vcommand="Start the check list,Start the ditching checklist,Done,Checked,Check,Next,Next item"/>
+                <item name="Jettison all bombs" vcommand="Bombs jettisoned,Jettison all bombs,Emergency jettison bombs,No bombs on board,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier diss able the bomb sight" vcommand="Bombardier disable the bomb sight,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm ball turret up and gunner evacuated" vcommand="Ball turret are you out of there,Raise the ball turret,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Im out captain and turret up" vcommand="Ball turret roger,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier to captain bomb sight diss abled sir" vcommand="Bombardier roger,Roger,Copied,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="De clair may day and ditching and radio position if possible" vcommand="Radio our position,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to radio operator radio our position and de clair we are ditching ten crew on board" vcommand="Roger,Ok whats next,Done,Checked,Check,Next,Next item"/>
+                <item name="Confirm wheels up" vcommand="Confirm wheels up,Up,Wheels up,Gear up,Done,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew do not use belly or side escape hatches until the aircraft has come to a stop use the upper escape hatches if possible to avoid flooding" vcommand="Captain to crew ditching,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+        <checklist name="Forced Landing">
+                <item name="Confirm forced landing check list captain" vcommand="Confirmed forced landing check list,Confirmed,Aye firm,Aye fermitive,Done,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew prepare for forced landing secure all loose items and make guns safe" vcommand="Start the check list,Done,Checked,Check,Next,Next item"/>
+                <item name="Jettison all bombs " vcommand="Bombs jettisoned,Jettison all bombs,Emergency jettison bombs,No bombs on board,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier diss able the bomb sight " vcommand="Bombardier disable the bomb sight,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Confirm ball turret up and gunner evacuated " vcommand="Ball turret are you out of there,Ball turret up,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Im out captain and turret up " vcommand="Ball turret roger,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Bombardier to captain bomb sight diss abled skipper" vcommand="Bombardier roger,Roger,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="De clair may day and forced landing and radio position if possible" vcommand="Radio our position,Radio base of our position,Done,Ok,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to radio operator radio our position and de clair we are making a forced landing ten crew on board" vcommand="Roger,Whats next,Done,Checked,Check,Next,Next item"/>
+                <item name="Confirm wheels up " vcommand="Confirm wheels up,Up,Wheels up,Gear up,Done,Checked,Check,Next,Next item"/>
+                <item name="Co pilot to crew take your positions for forced landing" vcommand="Captain to crew forced landing,Done,Ok,Checked,Check,Next,Next item"/>
+</checklist>
+
+
+</checklists>
