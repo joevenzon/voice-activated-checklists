@@ -229,17 +229,35 @@ namespace SimVoiceChecklists
         {
             if (Convert.ToInt32(btnListen.Tag) == 0)
             {
-                if ((!String.IsNullOrEmpty(ActiveCLFilename)) || (System.IO.File.Exists(ActiveCLFilename)))
+                bool success = false;
+
+                try
+                {
+                    if ((!String.IsNullOrEmpty(ActiveCLFilename)) || (System.IO.File.Exists(ActiveCLFilename)))
+                    {
+                        InitSpeechEngine();
+                        StartListenening();
+                        success = true;
+                    }
+                    else
+                        success = false;
+                }
+                catch (Exception)
+                {
+                    success = false;
+                }
+
+                if (success)
                 {
                     ListenMenuItem.Checked = true;
                     btnListen.Tag = 1;
                     btnListen.Text = "Stop Listening";
-                    InitSpeechEngine();
-                    StartListenening();
                     ShowChecklistsMenuItem.Enabled = true;
                 }
                 else
-                    MessageBox.Show("No checklist defined", "Error loading checklist", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                {
+                    MessageBox.Show("Unable to open checklist file", "Error loading checklist", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
