@@ -60,7 +60,25 @@ namespace SimVoiceChecklists
         {
             (new Splash()).ShowSplash(3000);
             InitializeComponent();
-            HookManager.KeyUp += HookManager_KeyUp;
+            try
+            {
+                HookManager.KeyUp += HookManager_KeyUp;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There was a problem with Gma.UserActivityMonitor.dll", "Keyboard Shortcuts");
+
+                if (System.Windows.Forms.Application.MessageLoop)
+                {
+                    // WinForms app
+                    System.Windows.Forms.Application.Exit();
+                }
+                else
+                {
+                    // Console app
+                    System.Environment.Exit(1);
+                }
+            }
             LoadOptionsSettings();
         }
 
