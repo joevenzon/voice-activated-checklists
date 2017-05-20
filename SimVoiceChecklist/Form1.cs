@@ -170,8 +170,8 @@ namespace SimVoiceChecklists
             AddGrammar("Close Checklist");
             AddGrammar("Abort Checklist");
             AddGrammar("Show Checklists");
-            AddGrammar("Thankyou");
-            AddGrammar("Thanks");
+            //AddGrammar("Thankyou");
+            //AddGrammar("Thanks");
             AddGrammar("Repeat");
 
             foreach (XElement checklist in XElement.Load(ActiveCLFilename).Elements("checklist"))
