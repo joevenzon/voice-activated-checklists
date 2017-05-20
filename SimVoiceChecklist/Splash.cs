@@ -46,6 +46,8 @@ namespace SimVoiceChecklists
 
             lblVersion.Parent = pictureBox1;
             lblVersion.BackColor = Color.Transparent;
+            lblMessage.Parent = pictureBox1;
+            lblMessage.BackColor = Color.Transparent;
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);

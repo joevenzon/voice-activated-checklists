@@ -58,15 +58,15 @@ namespace SimVoiceChecklists
         
         public MainFrm()
         {
-            (new Splash()).ShowSplash(3000);
+            (new Splash()).ShowSplash(6000);
             InitializeComponent();
             try
             {
                 HookManager.KeyUp += HookManager_KeyUp;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show("There was a problem with Gma.UserActivityMonitor.dll", "Keyboard Shortcuts");
+                MessageBox.Show(e.Message, e.Source);
 
                 if (System.Windows.Forms.Application.MessageLoop)
                 {
@@ -300,6 +300,12 @@ namespace SimVoiceChecklists
                 notifyIcon1.Icon = null;
                 Application.Restart();
             }
+            else
+            {
+                ReloadOptionsSettings();
+            }
+
+            this.Hide();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -309,11 +315,6 @@ namespace SimVoiceChecklists
                 this.Hide();
                 e.Cancel = true;
             }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Hide();
         }
 
         private void OptionsMenuItem_Click(object sender, EventArgs e)
@@ -420,7 +421,6 @@ namespace SimVoiceChecklists
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
 
             ActiveCLFilename = Settings.Default.ChecklistFilename;
-            ConfidenceThreshold = Settings.Default.ConfidenceThreshold;
             AudioPath = Settings.Default.AudioPath;
             ProgressCLKeyBind = Settings.Default.ProgressCLKeyBind;
             ShowCLKeyBind = Settings.Default.ShowCLKeyBind;
@@ -460,7 +460,6 @@ namespace SimVoiceChecklists
 
             tbChecklistFilename.Text = ActiveCLFilename;
             tbAudioPath.Text = AudioPath;
-            nudConfTHold.Value = ConfidenceThreshold;
             cbxCulture.SelectedIndex = cbxCulture.Items.IndexOf(Culture);
             if (!String.IsNullOrEmpty(ProgressCLKeyBind))
                 tbProgressCLKeyBind.Text = string.Format("Key: {0}", ProgressCLKeyBind);
@@ -472,26 +471,82 @@ namespace SimVoiceChecklists
             if (cbAudioOPDevice.Items.Count > 0)
                 cbAudioOPDevice.SelectedIndex = AudioDeviceID;
             xbHideGUI.Checked = HideGUI;
+
+            ReloadOptionsSettings();
         }
 
+        // reload only options/settings that can be adjusted without restarting
+        private void ReloadOptionsSettings()
+        {
+            ConfidenceThreshold = Settings.Default.ConfidenceThreshold;
+            nudConfTHold.Value = ConfidenceThreshold;
+        }
+
+        // returns true if a restart is required
         private bool SaveOptionSettings()
         {
-            Settings.Default.ChecklistFilename = tbChecklistFilename.Text;
-            Settings.Default.AudioPath = tbAudioPath.Text;
-            Settings.Default.ConfidenceThreshold = nudConfTHold.Value;
-            Settings.Default.CultureInfo = cbxCulture.Text;
-            Settings.Default.ProgressCLKeyBind = tbProgressCLKeyBind.Text.Replace("Key: ", "");
-            Settings.Default.ShowCLKeyBind = tbShowCLKeyBind.Text.Replace("Key: ", "");
-            Settings.Default.RepeatCLIKeyBind = tbRepeatCLIKeyBind.Text.Replace("Key: ", "");
-            Settings.Default.DisableSpeechRecogEng = xbDisableSpeechRecogEng.Checked;
-            Settings.Default.AudioDeviceID = cbAudioOPDevice.SelectedIndex;
-            Settings.Default.HideGUI = xbHideGUI.Checked;
+            bool restartRequired = false;
+
+            if (Settings.Default.ChecklistFilename != tbChecklistFilename.Text)
+            {
+                Settings.Default.ChecklistFilename = tbChecklistFilename.Text;
+                restartRequired = true;
+            }
+            if (Settings.Default.AudioPath != tbAudioPath.Text)
+            {
+                Settings.Default.AudioPath = tbAudioPath.Text;
+                restartRequired = true;
+            }
+            if (Settings.Default.ConfidenceThreshold != nudConfTHold.Value)
+            {
+                Settings.Default.ConfidenceThreshold = nudConfTHold.Value;
+            }
+            if (Settings.Default.CultureInfo != cbxCulture.Text)
+            {
+                Settings.Default.CultureInfo = cbxCulture.Text;
+                restartRequired = true;
+            }
+            if (Settings.Default.ProgressCLKeyBind != tbProgressCLKeyBind.Text.Replace("Key: ", ""))
+            {
+                Settings.Default.ProgressCLKeyBind = tbProgressCLKeyBind.Text.Replace("Key: ", "");
+                restartRequired = true;
+            }
+            if (Settings.Default.ShowCLKeyBind != tbShowCLKeyBind.Text.Replace("Key: ", ""))
+            {
+                Settings.Default.ShowCLKeyBind = tbShowCLKeyBind.Text.Replace("Key: ", "");
+                restartRequired = true;
+            }
+            if (Settings.Default.RepeatCLIKeyBind != tbRepeatCLIKeyBind.Text.Replace("Key: ", ""))
+            {
+                Settings.Default.RepeatCLIKeyBind = tbRepeatCLIKeyBind.Text.Replace("Key: ", "");
+                restartRequired = true;
+            }
+            if (Settings.Default.DisableSpeechRecogEng != xbDisableSpeechRecogEng.Checked)
+            {
+                Settings.Default.DisableSpeechRecogEng = xbDisableSpeechRecogEng.Checked;
+                restartRequired = true;
+            }
+            if (Settings.Default.AudioDeviceID != cbAudioOPDevice.SelectedIndex)
+            {
+                Settings.Default.AudioDeviceID = cbAudioOPDevice.SelectedIndex;
+                restartRequired = true;
+            }
+            if (Settings.Default.HideGUI != xbHideGUI.Checked)
+            {
+                Settings.Default.HideGUI = xbHideGUI.Checked;
+                restartRequired = true;
+            }
 
             Settings.Default.Save();
 
-            DialogResult drApply = MessageBox.Show("The application requires a restart for the new settings to take effect. \n\nRestart now?",
-                                                   "Options changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            return (drApply == DialogResult.Yes);
+            if (restartRequired)
+            {
+                DialogResult drApply = MessageBox.Show("The application requires a restart for the new settings to take effect. \n\nRestart now?",
+                                   "Options changed", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                return (drApply == DialogResult.Yes);
+            }
+            else
+                return false;
         }
 
         private void ShowOptionsPage(TreeNode SelectedNode)
