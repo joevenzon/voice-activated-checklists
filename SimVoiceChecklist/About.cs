@@ -44,7 +44,7 @@ namespace SimVoiceChecklists
         public About()
         {
             InitializeComponent();
-            
+
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             richTextBox1.Rtf = Properties.Resources.GPLv3;
 

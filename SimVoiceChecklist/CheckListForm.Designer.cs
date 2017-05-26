@@ -53,6 +53,7 @@
             this.lvAvailableChecklists.TabIndex = 14;
             this.lvAvailableChecklists.UseCompatibleStateImageBehavior = false;
             this.lvAvailableChecklists.View = System.Windows.Forms.View.Details;
+            this.lvAvailableChecklists.SelectedIndexChanged += new System.EventHandler(this.lvAvailableChecklists_SelectedIndexChanged);
             // 
             // columnHeader4
             // 
@@ -79,6 +80,7 @@
             this.lvChecklistItems.TabIndex = 13;
             this.lvChecklistItems.UseCompatibleStateImageBehavior = false;
             this.lvChecklistItems.View = System.Windows.Forms.View.Details;
+            this.lvChecklistItems.SelectedIndexChanged += new System.EventHandler(this.lvChecklistItems_SelectedIndexChanged);
             // 
             // columnHeader1
             // 

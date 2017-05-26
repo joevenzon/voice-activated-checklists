@@ -31,6 +31,7 @@ namespace SimVoiceChecklists
         private List<string> AcceptedChecklistCmds = new List<string>();
 
         private frmChecklist CLForm = null;
+        private frmProcedure ProcForm = null;
         private StatusWindow StatusWin = new StatusWindow();
         private ChecklistList CLListForm;
 
@@ -41,6 +42,7 @@ namespace SimVoiceChecklists
         private string ProgressCLKeyBind;
         private string ShowCLKeyBind;
         private string RepeatCLIKeyBind;
+        private string ShowProcKeyBind;
         private bool DisableSpeechRecogEng;
         private int AudioDeviceID;
         private bool HideGUI;
@@ -86,7 +88,9 @@ namespace SimVoiceChecklists
         private bool ProcessTopLevelVoiceCommand(string VoiceCommand)
         {
             bool result = false;
+
             OpenChecklists();
+
             if (VoiceCommand.ToLower().Contains("checklist"))
             {
                 if (VoiceCommand.ToLower().Contains("open"))
@@ -98,13 +102,38 @@ namespace SimVoiceChecklists
                 {
                     CLListForm = new ChecklistList();
                     CLListForm.CLForm = CLForm;
-                    CLListForm.LoadChecklistFile(ActiveCLFilename);
+                    CLListForm.LoadChecklistFile(ActiveCLFilename, "checklist");
+                    result = true;
                 }
-                else if ((CLForm != null) && ((CLForm.Visible) || (HideGUI)))
-                    result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
             }
-            else if ((CLForm != null) && ((CLForm.Visible) || (HideGUI)))
+            else if (VoiceCommand.ToLower().Contains("procedure"))
+            {
+                if (VoiceCommand.ToLower().Contains("show"))
+                {
+                    CLListForm = new ChecklistList();
+                    CLListForm.ProcForm = ProcForm;
+                    CLListForm.LoadChecklistFile(ActiveCLFilename, "procedure");
+                    result = true;
+                }
+                else
+                {
+                    string procedure = VoiceCommand.ToLower().Replace("procedure", "").Trim();
+                    ProcForm.StartProcedure(procedure);
+                }
+            }
+
+            if (!result && CLForm != null && (CLForm.Visible || HideGUI))
                 result = CLForm.ProcessPossibleChecklistCommand(VoiceCommand);
+
+            if (!result)
+            {
+                // it could be a procedure that doesn't have the word procedure in it (gear up, etc)
+                string procedure = VoiceCommand.ToLower();
+                if (procedure.Contains("gear") || procedure.Contains("flaps"))
+                {
+                    result = ProcForm.StartProcedure(procedure);
+                }
+            }
 
             return result;
         }
@@ -170,12 +199,21 @@ namespace SimVoiceChecklists
             AddGrammar("Close Checklist");
             AddGrammar("Abort Checklist");
             AddGrammar("Show Checklists");
+            AddGrammar("Show Procedures");
             //AddGrammar("Thankyou");
             //AddGrammar("Thanks");
             AddGrammar("Repeat");
 
             foreach (XElement checklist in XElement.Load(ActiveCLFilename).Elements("checklist"))
                 AddGrammar(checklist.Attribute("name").Value + " Checklist");
+
+            foreach (XElement procedure in XElement.Load(ActiveCLFilename).Elements("procedure"))
+            {
+                string grammar = procedure.Attribute("name").Value;
+                if (!grammar.ToLower().Contains("gear") && !grammar.ToLower().Contains("flaps"))
+                    grammar += " Procedure";
+                AddGrammar(grammar);
+            }
 
             GrammarBuilder gbCurrent = new GrammarBuilder(grammarChoices);
 
@@ -319,6 +357,7 @@ namespace SimVoiceChecklists
 
         private void OptionsMenuItem_Click(object sender, EventArgs e)
         {
+            UpdateConnectionsLabel();
             Show();
         }
 
@@ -329,6 +368,7 @@ namespace SimVoiceChecklists
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
+            UpdateConnectionsLabel();
             Show();
         }
 
@@ -405,6 +445,8 @@ namespace SimVoiceChecklists
             }
             else if (e.KeyCode.ToString().Equals(ShowCLKeyBind))
                 ShowChecklistsMenuItem.PerformClick();
+            else if (e.KeyCode.ToString().Equals(ShowProcKeyBind))
+                ProcessTopLevelVoiceCommand("show procedures");
             else if ((CLForm != null) && (CLForm.Visible))
             {
                 if (e.KeyCode.ToString().Equals(ProgressCLKeyBind))
@@ -424,6 +466,7 @@ namespace SimVoiceChecklists
             AudioPath = Settings.Default.AudioPath;
             ProgressCLKeyBind = Settings.Default.ProgressCLKeyBind;
             ShowCLKeyBind = Settings.Default.ShowCLKeyBind;
+            ShowProcKeyBind = Settings.Default.ShowProcKeyBind;
             RepeatCLIKeyBind = Settings.Default.RepeatCLIKeyBind;
             DisableSpeechRecogEng = Settings.Default.DisableSpeechRecogEng;
             AudioDeviceID = Settings.Default.AudioDeviceID;
@@ -465,6 +508,8 @@ namespace SimVoiceChecklists
                 tbProgressCLKeyBind.Text = string.Format("Key: {0}", ProgressCLKeyBind);
             if (!String.IsNullOrEmpty(ShowCLKeyBind))
                 tbShowCLKeyBind.Text = string.Format("Key: {0}", ShowCLKeyBind);
+            if (!String.IsNullOrEmpty(ShowProcKeyBind))
+                tbShowProcKeyBind.Text = string.Format("Key: {0}", ShowProcKeyBind);
             if (!String.IsNullOrEmpty(RepeatCLIKeyBind))
                 tbRepeatCLIKeyBind.Text = string.Format("Key: {0}", RepeatCLIKeyBind);
             xbDisableSpeechRecogEng.Checked = DisableSpeechRecogEng;
@@ -514,6 +559,11 @@ namespace SimVoiceChecklists
             if (Settings.Default.ShowCLKeyBind != tbShowCLKeyBind.Text.Replace("Key: ", ""))
             {
                 Settings.Default.ShowCLKeyBind = tbShowCLKeyBind.Text.Replace("Key: ", "");
+                restartRequired = true;
+            }
+            if (Settings.Default.ShowProcKeyBind != tbShowProcKeyBind.Text.Replace("Key: ", ""))
+            {
+                Settings.Default.ShowProcKeyBind = tbShowProcKeyBind.Text.Replace("Key: ", "");
                 restartRequired = true;
             }
             if (Settings.Default.RepeatCLIKeyBind != tbRepeatCLIKeyBind.Text.Replace("Key: ", ""))
@@ -587,6 +637,30 @@ namespace SimVoiceChecklists
                 else
                     Console.Beep();
             }
+            if ((ProcForm == null) || ((!ProcForm.Visible) && (!HideGUI)))
+            {
+                ProcForm = new frmProcedure();
+                UpdateConnectionsLabel();
+                ProcForm.checklistForm = CLForm;
+                if (!HideGUI)
+                    ProcForm.Show();
+                ProcForm.ShowNoActiveProcedure();
+                if (ProcForm.LoadChecklistFile(ActiveCLFilename))
+                {
+                    ProcForm.ShowNoActiveProcedure();
+                }
+                else
+                    Console.Beep();
+            }
+        }
+
+        private void UpdateConnectionsLabel()
+        {
+            if (ProcForm != null)
+            {
+                lblConnectionFS.Text = "XPUIPC connection: " + ProcForm.fsInitMessage;
+                lblConnectionXP.Text = "XPLM connection: " + ProcForm.xpInitMessage;
+            }
         }
 
         private void btnSetRepeatCLIKeyBind_Click(object sender, EventArgs e)
@@ -597,6 +671,21 @@ namespace SimVoiceChecklists
         private void btnClearRepeatCLIKeyBind_Click(object sender, EventArgs e)
         {
             tbRepeatCLIKeyBind.Text = "";
+        }
+
+        private void btnSetShowProcKeyBind_Click(object sender, EventArgs e)
+        {
+            ActiveKeyBindTextBox = tbShowProcKeyBind;
+        }
+
+        private void btnClearShowProcKeyBind_Click(object sender, EventArgs e)
+        {
+            tbShowProcKeyBind.Text = "";
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

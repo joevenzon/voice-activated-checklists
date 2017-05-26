@@ -57,6 +57,10 @@
             this.nudConfTHold = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlGeneral = new System.Windows.Forms.Panel();
+            this.btnClearShowProcKeyBind = new System.Windows.Forms.Button();
+            this.btnSetShowProcKeyBind = new System.Windows.Forms.Button();
+            this.tbShowProcKeyBind = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnClearRepeatCLIKeyBind = new System.Windows.Forms.Button();
             this.btnSetRepeatCLIKeyBind = new System.Windows.Forms.Button();
             this.tbRepeatCLIKeyBind = new System.Windows.Forms.TextBox();
@@ -91,6 +95,9 @@
             this.lblAcceptedCommands = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdAudioPath = new System.Windows.Forms.FolderBrowserDialog();
+            this.tpConnections = new System.Windows.Forms.TabPage();
+            this.lblConnectionFS = new System.Windows.Forms.Label();
+            this.lblConnectionXP = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
@@ -104,6 +111,7 @@
             this.tabDebug.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tpConnections.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListen
@@ -190,6 +198,7 @@
             // 
             this.tcStatus.Controls.Add(this.tpOptions);
             this.tcStatus.Controls.Add(this.tabDebug);
+            this.tcStatus.Controls.Add(this.tpConnections);
             this.tcStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcStatus.Location = new System.Drawing.Point(0, 0);
             this.tcStatus.Name = "tcStatus";
@@ -318,6 +327,10 @@
             // 
             // pnlGeneral
             // 
+            this.pnlGeneral.Controls.Add(this.btnClearShowProcKeyBind);
+            this.pnlGeneral.Controls.Add(this.btnSetShowProcKeyBind);
+            this.pnlGeneral.Controls.Add(this.tbShowProcKeyBind);
+            this.pnlGeneral.Controls.Add(this.label4);
             this.pnlGeneral.Controls.Add(this.btnClearRepeatCLIKeyBind);
             this.pnlGeneral.Controls.Add(this.btnSetRepeatCLIKeyBind);
             this.pnlGeneral.Controls.Add(this.tbRepeatCLIKeyBind);
@@ -341,6 +354,44 @@
             this.pnlGeneral.Name = "pnlGeneral";
             this.pnlGeneral.Size = new System.Drawing.Size(352, 310);
             this.pnlGeneral.TabIndex = 1;
+            // 
+            // btnClearShowProcKeyBind
+            // 
+            this.btnClearShowProcKeyBind.Location = new System.Drawing.Point(212, 287);
+            this.btnClearShowProcKeyBind.Name = "btnClearShowProcKeyBind";
+            this.btnClearShowProcKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnClearShowProcKeyBind.TabIndex = 37;
+            this.btnClearShowProcKeyBind.Text = "Clear";
+            this.btnClearShowProcKeyBind.UseVisualStyleBackColor = true;
+            this.btnClearShowProcKeyBind.Click += new System.EventHandler(this.btnClearShowProcKeyBind_Click);
+            // 
+            // btnSetShowProcKeyBind
+            // 
+            this.btnSetShowProcKeyBind.Location = new System.Drawing.Point(160, 287);
+            this.btnSetShowProcKeyBind.Name = "btnSetShowProcKeyBind";
+            this.btnSetShowProcKeyBind.Size = new System.Drawing.Size(50, 23);
+            this.btnSetShowProcKeyBind.TabIndex = 36;
+            this.btnSetShowProcKeyBind.Text = "Set";
+            this.btnSetShowProcKeyBind.UseVisualStyleBackColor = true;
+            this.btnSetShowProcKeyBind.Click += new System.EventHandler(this.btnSetShowProcKeyBind_Click);
+            // 
+            // tbShowProcKeyBind
+            // 
+            this.tbShowProcKeyBind.Enabled = false;
+            this.tbShowProcKeyBind.Location = new System.Drawing.Point(21, 289);
+            this.tbShowProcKeyBind.MaxLength = 0;
+            this.tbShowProcKeyBind.Name = "tbShowProcKeyBind";
+            this.tbShowProcKeyBind.Size = new System.Drawing.Size(132, 20);
+            this.tbShowProcKeyBind.TabIndex = 35;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 273);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(132, 13);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Show Procedures Keybind";
             // 
             // btnClearRepeatCLIKeyBind
             // 
@@ -383,7 +434,7 @@
             // xbHideGUI
             // 
             this.xbHideGUI.AutoSize = true;
-            this.xbHideGUI.Location = new System.Drawing.Point(21, 289);
+            this.xbHideGUI.Location = new System.Drawing.Point(21, 3);
             this.xbHideGUI.Name = "xbHideGUI";
             this.xbHideGUI.Size = new System.Drawing.Size(70, 17);
             this.xbHideGUI.TabIndex = 29;
@@ -660,6 +711,37 @@
             this.ofdChecklistFile.FileName = "openFileDialog1";
             this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
             // 
+            // tpConnections
+            // 
+            this.tpConnections.Controls.Add(this.lblConnectionXP);
+            this.tpConnections.Controls.Add(this.lblConnectionFS);
+            this.tpConnections.Location = new System.Drawing.Point(4, 22);
+            this.tpConnections.Name = "tpConnections";
+            this.tpConnections.Padding = new System.Windows.Forms.Padding(3);
+            this.tpConnections.Size = new System.Drawing.Size(591, 372);
+            this.tpConnections.TabIndex = 2;
+            this.tpConnections.Text = "Connections";
+            this.tpConnections.UseVisualStyleBackColor = true;
+            // 
+            // lblConnectionFS
+            // 
+            this.lblConnectionFS.AutoSize = true;
+            this.lblConnectionFS.Location = new System.Drawing.Point(9, 7);
+            this.lblConnectionFS.Name = "lblConnectionFS";
+            this.lblConnectionFS.Size = new System.Drawing.Size(161, 13);
+            this.lblConnectionFS.TabIndex = 0;
+            this.lblConnectionFS.Text = "FSUIPC connection: uninitialized";
+            this.lblConnectionFS.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // lblConnectionXP
+            // 
+            this.lblConnectionXP.AutoSize = true;
+            this.lblConnectionXP.Location = new System.Drawing.Point(9, 165);
+            this.lblConnectionXP.Name = "lblConnectionXP";
+            this.lblConnectionXP.Size = new System.Drawing.Size(152, 13);
+            this.lblConnectionXP.TabIndex = 1;
+            this.lblConnectionXP.Text = "XPLM connection: uninitialized";
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -691,6 +773,8 @@
             this.tabDebug.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tpConnections.ResumeLayout(false);
+            this.tpConnections.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -755,6 +839,13 @@
         private System.Windows.Forms.Button btnSetRepeatCLIKeyBind;
         private System.Windows.Forms.TextBox tbRepeatCLIKeyBind;
         private System.Windows.Forms.Label lblRepeatCLIKeyBind;
+        private System.Windows.Forms.Button btnClearShowProcKeyBind;
+        private System.Windows.Forms.Button btnSetShowProcKeyBind;
+        private System.Windows.Forms.TextBox tbShowProcKeyBind;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage tpConnections;
+        private System.Windows.Forms.Label lblConnectionFS;
+        private System.Windows.Forms.Label lblConnectionXP;
     }
 }
 

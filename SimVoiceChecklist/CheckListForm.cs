@@ -136,7 +136,6 @@ namespace SimVoiceChecklists
                 ReadActiveChecklistItem();
                 result = true;
             }
-
             
             return result;
         }
@@ -254,7 +253,7 @@ namespace SimVoiceChecklists
             waveOut.Play();
         }
 
-        private void Say(string Statement)
+        public void Say(string Statement)
         {
             string wavFile = GetWavFileForText(Statement);
             if ((wavFile != String.Empty) && (System.IO.File.Exists(wavFile)))
@@ -339,6 +338,16 @@ namespace SimVoiceChecklists
         private void lblChecklistHeader_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void lvChecklistItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvAvailableChecklists_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -31,6 +31,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(12, 145);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(515, 287);
+            this.richTextBox1.Size = new System.Drawing.Size(515, 229);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             this.richTextBox1.ZoomFactor = 0.5F;
@@ -69,9 +70,21 @@
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lblVersion.DoubleClick += new System.EventHandler(this.lblVersion_DoubleClick);
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.Location = new System.Drawing.Point(13, 381);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(514, 50);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "Uses the FSUIPC client DLL for .NET by Paul Henty";
+            // 
             // About
             // 
             this.ClientSize = new System.Drawing.Size(721, 443);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.pictureBox1);
@@ -93,6 +106,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label lblVersion;
-
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

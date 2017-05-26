@@ -15,7 +15,9 @@ namespace SimVoiceChecklists
     public partial class ChecklistList : Form
     {
         public frmChecklist CLForm;
+        public frmProcedure ProcForm;
         private const int CS_DROPSHADOW = 0x00020000;
+        private string mode = "checklist";
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -44,14 +46,17 @@ namespace SimVoiceChecklists
             InitializeComponent();
         }
 
-        public void LoadChecklistFile(string CheckListFilename)
+        public void LoadChecklistFile(string CheckListFilename, string elementType)
         {
             string LongestText = "";
             int LabelHeight = 0;
             int ItemCount = 0;
 
             if (System.IO.File.Exists(CheckListFilename))
-                foreach (XElement checklist in XElement.Load(CheckListFilename).Elements("checklist"))
+            {
+                mode = elementType;
+
+                foreach (XElement checklist in XElement.Load(CheckListFilename).Elements(elementType))
                 {
                     ItemCount += 1;
                     Label lblNew = new Label();
@@ -68,6 +73,7 @@ namespace SimVoiceChecklists
                     if (lblNew.Text.Length > LongestText.Length)
                         LongestText = lblNew.Text;
                 }
+            }
 
             SizeF sizeText = CreateGraphics().MeasureString(LongestText, Font);
             this.Size = new Size((int)sizeText.Width + 50, (LabelHeight * ItemCount) + (pnlHost.Padding.All*2));
@@ -86,7 +92,15 @@ namespace SimVoiceChecklists
 
         void lblNew_Click(object sender, EventArgs e)
         {
-            CLForm.ProcessPossibleChecklistCommand(((Label)sender).Text + " checklist");
+            if (mode == "procedure")
+            {
+                ProcForm.StartProcedure(((Label)sender).Text);
+            }
+            else
+            {
+                CLForm.ProcessPossibleChecklistCommand(((Label)sender).Text + " " + mode);
+            }
+            
             //throw new NotImplementedException();
         }
 
