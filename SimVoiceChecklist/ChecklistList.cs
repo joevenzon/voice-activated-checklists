@@ -94,7 +94,7 @@ namespace SimVoiceChecklists
         {
             if (mode == "procedure")
             {
-                ProcForm.StartProcedure(((Label)sender).Text);
+                ProcForm.StartProcedure(((Label)sender).Text.ToLower());
             }
             else
             {

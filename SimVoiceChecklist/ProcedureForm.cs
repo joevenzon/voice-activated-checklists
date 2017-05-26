@@ -85,7 +85,7 @@ namespace SimVoiceChecklists
             {    
                 foreach (XElement procedure in XElement.Load(CheckListFilename).Elements("procedure"))
                 {
-                    if (procedure.Attribute("name").Value == procname)
+                    if (procedure.Attribute("name").Value.ToLower() == procname)
                     {
                         ShowProcedure(procname);
                         activeProcedure.Clear();
@@ -157,7 +157,12 @@ namespace SimVoiceChecklists
         public void ShowProcedure(string procname)
         {
             if (checklistForm != null)
-                checklistForm.Say(procname);
+            {
+                if (procname.ToLower().Contains("gear") || procname.ToLower().Contains("flaps"))
+                    checklistForm.Say(procname);
+                else
+                    checklistForm.Say(procname + " procedure");
+            }
             lblProcedureHeader.Text = "Active Procedure: " + procname;
         }
 
@@ -179,7 +184,7 @@ namespace SimVoiceChecklists
                     this.CheckListFilename = CheckListFilename;
                     clID += 1;
 
-                    procedures.Add(procedure.Attribute("name").Value);
+                    procedures.Add(procedure.Attribute("name").Value.ToLower());
                 }
                 result = true;
             }
@@ -198,10 +203,38 @@ namespace SimVoiceChecklists
 
         private void fsExecute(string commandlist)
         {
+            bool success = true;
+
             string[] commands = commandlist.Split(new string[]{","}, StringSplitOptions.RemoveEmptyEntries);
+            List<Offset<int>> offsets = new List<Offset<int>>();
+
             foreach (string command in commands)
             {
-                fsExecuteCommand(command.Trim());
+                string[] symbols = command.Split(new string[] { "=" }, StringSplitOptions.None);
+                if (symbols.Length == 2)
+                {
+                    int address = stringToInt(symbols[0]);
+                    int value = stringToInt(symbols[1]);
+
+                    Offset<int> offset = new Offset<int>(address, true);
+                    offset.Value = value;
+                    offsets.Add(offset);
+                }
+            }
+
+            try
+            {
+                FSUIPCConnection.Process();
+            }
+            catch (Exception ex)
+            {
+                fsInitMessage = ex.Message;
+                success = false;
+            }
+
+            foreach (Offset<int> offset in offsets)
+            {
+                offset.Disconnect();
             }
         }
 

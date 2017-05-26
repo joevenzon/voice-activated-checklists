@@ -118,7 +118,7 @@ namespace SimVoiceChecklists
                 else
                 {
                     string procedure = VoiceCommand.ToLower().Replace("procedure", "").Trim();
-                    ProcForm.StartProcedure(procedure);
+                    result = ProcForm.StartProcedure(procedure);
                 }
             }
 
