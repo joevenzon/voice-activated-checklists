@@ -212,7 +212,7 @@ namespace SimVoiceChecklists
             OnTimedEvent(sender, e);
         }
 
-        private void fsExecute(string commandlist)
+        private bool fsExecute(string commandlist)
         {
             bool success = true;
 
@@ -247,6 +247,8 @@ namespace SimVoiceChecklists
             {
                 offset.Disconnect();
             }
+
+            return success;
         }
 
         int stringToInt(string str)
@@ -265,7 +267,7 @@ namespace SimVoiceChecklists
                     result = Convert.ToInt32(str);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 result = 0;
             }
