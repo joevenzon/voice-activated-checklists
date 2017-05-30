@@ -115,6 +115,11 @@ namespace SimVoiceChecklists
                     CLListForm.LoadChecklistFile(ActiveCLFilename, "procedure");
                     result = true;
                 }
+                else if (VoiceCommand.ToLower().Contains("abort"))
+                {
+                    ProcForm.EndProcedure();
+                    result = true;
+                }
                 else
                 {
                     string procedure = VoiceCommand.ToLower().Replace("procedure", "").Trim();
@@ -127,11 +132,21 @@ namespace SimVoiceChecklists
 
             if (!result)
             {
-                // it could be a procedure that doesn't have the word procedure in it (gear up, etc)
-                string procedure = VoiceCommand.ToLower();
-                if (procedure.Contains("gear") || procedure.Contains("flaps"))
+                // it could be a procedure vcommand that doesn't have the word procedure in it
+                foreach (XElement procedure in XElement.Load(ActiveCLFilename).Elements("procedure"))
                 {
-                    result = ProcForm.StartProcedure(procedure);
+                    if (!result && procedure.Attribute("vcommand") != null)
+                    {
+                        string[] voiceCommands = procedure.Attribute("vcommand").Value.ToLower().Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                        foreach (string command in voiceCommands)
+                        {
+                            if (command == VoiceCommand)
+                            {
+                                result = ProcForm.StartProcedure(procedure.Attribute("name").Value.ToLower());
+                                break;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -200,6 +215,7 @@ namespace SimVoiceChecklists
             AddGrammar("Abort Checklist");
             AddGrammar("Show Checklists");
             AddGrammar("Show Procedures");
+            AddGrammar("Abort Procedure");
             //AddGrammar("Thankyou");
             //AddGrammar("Thanks");
             AddGrammar("Repeat");
@@ -209,10 +225,16 @@ namespace SimVoiceChecklists
 
             foreach (XElement procedure in XElement.Load(ActiveCLFilename).Elements("procedure"))
             {
-                string grammar = procedure.Attribute("name").Value;
-                if (!grammar.ToLower().Contains("gear") && !grammar.ToLower().Contains("flaps"))
-                    grammar += " Procedure";
-                AddGrammar(grammar);
+                AddGrammar(procedure.Attribute("name").Value + " procedure");
+
+                if (procedure.Attribute("vcommand") != null)
+                {
+                    string[] voiceCommands = procedure.Attribute("vcommand").Value.ToLower().Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string command in voiceCommands)
+                    {
+                        AddGrammar(command);
+                    }
+                }
             }
 
             GrammarBuilder gbCurrent = new GrammarBuilder(grammarChoices);

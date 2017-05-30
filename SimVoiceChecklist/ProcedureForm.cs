@@ -15,6 +15,7 @@ namespace SimVoiceChecklists
     struct ProcedureItem
     {
         public string name;
+        public string say;
         public int time;
         public string fsuipc;
     }
@@ -90,11 +91,20 @@ namespace SimVoiceChecklists
                         ShowProcedure(procname);
                         activeProcedure.Clear();
 
+                        if (checklistForm != null)
+                        {
+                            if (procedure.Attribute("say") != null)
+                                checklistForm.Say(procedure.Attribute("say").Value);
+                            else
+                                checklistForm.Say(procname + " procedure");
+                        }
+
                         foreach (XElement items in procedure.Elements("item"))
                         {
                             string name = "";
                             int time = 2; // default to 2 seconds per item
                             string fsuipc = "";
+                            string say = "";
 
                             if (items.Attribute("name") != null)
                                 name = items.Attribute("name").Value;
@@ -102,11 +112,14 @@ namespace SimVoiceChecklists
                                 time = Convert.ToInt32(items.Attribute("time").Value);
                             if (items.Attribute("fsuipc") != null)
                                 fsuipc = items.Attribute("fsuipc").Value;
+                            if (items.Attribute("say") != null)
+                                say = items.Attribute("say").Value;
 
                             ProcedureItem item = new ProcedureItem();
                             item.name = name;
                             item.time = time;
                             item.fsuipc = fsuipc;
+                            item.say = say;
 
                             activeProcedure.Add(item);
                         }
@@ -136,6 +149,11 @@ namespace SimVoiceChecklists
                 Debug.Print(nextProcedureItem.Current.name);
                 fsExecute(nextProcedureItem.Current.fsuipc);
 
+                if (checklistForm != null && nextProcedureItem.Current.say != "")
+                {
+                    checklistForm.Say(nextProcedureItem.Current.say);
+                }
+
                 if (nextProcedureItem.MoveNext())
                 {
                     tmrNextItem.Interval = Math.Max(1, nextProcedureItem.Current.time) * 1000;
@@ -156,13 +174,6 @@ namespace SimVoiceChecklists
 
         public void ShowProcedure(string procname)
         {
-            if (checklistForm != null)
-            {
-                if (procname.ToLower().Contains("gear") || procname.ToLower().Contains("flaps"))
-                    checklistForm.Say(procname);
-                else
-                    checklistForm.Say(procname + " procedure");
-            }
             lblProcedureHeader.Text = "Active Procedure: " + procname;
         }
 
