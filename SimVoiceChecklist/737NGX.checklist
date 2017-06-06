@@ -1,13 +1,13 @@
 <checklists>
 	<procedure name="Electrical Power Up">
-		<item name="Battery switch guard closed" fsuipc="0x3110=69634,0x3114=1"/>
-		<item name="Standby power switch guard closed" fsuipc="0x3110=69643,0x3114=1"/>
-		<item name="Alternate flaps master switch guard closed" fsuipc="0x3110=69706,0x3114=1"/>
-		<item name="Electric hydraulic pumps switches off" fsuipc="0x3110=69799,0x3114=0"/>
-		<item name="Electric hydraulic pumps switches off" fsuipc="0x3110=69800,0x3114=0"/>
-		<item name="Windshield wiper selectors park" fsuipc="0x3110=69668,0x3114=0"/>
-		<item name="Windshield wiper selectors park" fsuipc="0x3110=69741,0x3114=0"/>
-		<Item name="External power on" fsuipc="0x3110=69649,0x3114=1"/>
+		<item name="Battery switch guard closed" fsuipc="0x3114=0x20000000,0x3110=69634"/>
+		<item name="Standby power switch guard closed" fsuipc="0x3114=0x20000000,0x3110=69643"/>
+		<item name="Alternate flaps master switch guard closed" fsuipc="0x3114=0x20000000,0x3110=69706"/>
+		<item name="Electric hydraulic pumps switches off" fsuipc="0x3114=0x20000000,0x3110=69799"/>
+		<item name="Electric hydraulic pumps switches off" fsuipc="0x3114=0x20000000,0x3110=69800"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x3114=0x20000000,0x3110=69668"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x3114=0x20000000,0x3110=69741"/>
+		<item name="External power on" fsuipc="0x3114=0x20000000,0x3110=69649" say="Electrical power up procedure complete"/>
 	</procedure>
 	<procedure name="Preflight">
 		<item name="Flight control switches guards closed"/>
