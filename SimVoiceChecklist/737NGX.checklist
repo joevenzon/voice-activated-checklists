@@ -1,11 +1,13 @@
 <checklists>
 	<procedure name="Electrical Power Up">
-		<item name="Battery switch guard closed"/>
-		<item name="Standbby power switch guard closed"/>
-		<item name="Alternate flaps master switch guard closed"/>
-		<item name="Electric hydraulic pumps switches off"/>
-		<item name="Windshield wiper selectors park"/>
-		<Item name="External power on"/>
+		<item name="Battery switch guard closed" fsuipc="0x3110=69634,0x3114=1"/>
+		<item name="Standby power switch guard closed" fsuipc="0x3110=69643,0x3114=1"/>
+		<item name="Alternate flaps master switch guard closed" fsuipc="0x3110=69706,0x3114=1"/>
+		<item name="Electric hydraulic pumps switches off" fsuipc="0x3110=69799,0x3114=0"/>
+		<item name="Electric hydraulic pumps switches off" fsuipc="0x3110=69800,0x3114=0"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x3110=69668,0x3114=0"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x3110=69741,0x3114=0"/>
+		<Item name="External power on" fsuipc="0x3110=69649,0x3114=1"/>
 	</procedure>
 	<procedure name="Preflight">
 		<item name="Flight control switches guards closed"/>
@@ -168,7 +170,7 @@
 	<procedure name="VNAV" vcommand="Engage V-Nav, Select V-Nav" say="V-Nav">
 		<item name="VNAV"/>
 	</procedure>
-	<procedure name="Heading select" vcommand="Engage heading select" say="Heading select">
+	<procedure name="Heading select" vcommand="Engage heading select,select heading select" say="Heading select">
 		<item name="Heading select"/>
 	</procedure>
 
