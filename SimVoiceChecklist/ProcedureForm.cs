@@ -219,18 +219,75 @@ namespace SimVoiceChecklists
             string[] commands = commandlist.Split(new string[]{","}, StringSplitOptions.RemoveEmptyEntries);
             List<Offset<int>> offsets = new List<Offset<int>>();
 
+            //process conditionals
+            bool conditional = true;
             foreach (string command in commands)
             {
-                string[] symbols = command.Split(new string[] { "=" }, StringSplitOptions.None);
-                if (symbols.Length == 2)
+                if (command.Contains("?"))
                 {
-                    int address = stringToInt(symbols[0]);
-                    int value = stringToInt(symbols[1]);
+                    string[] symbols = command.Trim(new char[] { '?' }).Split(new string[] { "=" }, StringSplitOptions.None);
+                    if (symbols.Length == 2)
+                    {
+                        bool invert = false;
+                        if (symbols[0].Last() == '!')
+                        {
+                            invert = true;
+                            symbols[0] = symbols[0].TrimEnd(new char[] { '!' });
+                        }
 
-                    Offset<int> offset = new Offset<int>(address, true);
-                    offset.Value = value;
-                    offsets.Add(offset);
+                        Debug.Print(symbols[0]);
+                        Debug.Print(symbols[1]);
+
+                        int address = stringToInt(symbols[0]);
+                        int value = stringToInt(symbols[1]);
+
+                        Offset<Byte> offset = new Offset<Byte>(address);
+                        
+                        try
+                        {
+                            FSUIPCConnection.Process();
+                        }
+                        catch (Exception ex)
+                        {
+                            fsInitMessage = ex.Message;
+                            success = false;
+                            conditional = false;
+                        }
+
+                        if (offset.Value != value ||
+                            (invert && offset.Value == value))
+                        {
+                            conditional = false;
+                        }
+
+                        offset.Disconnect();
+                    }
                 }
+            }
+
+            // process commands
+            if (conditional)
+            {
+                foreach (string command in commands)
+                {
+                    if (!command.Contains("?"))
+                    {
+                        string[] symbols = command.Split(new string[] { "=" }, StringSplitOptions.None);
+                        if (symbols.Length == 2)
+                        {
+                            int address = stringToInt(symbols[0]);
+                            int value = stringToInt(symbols[1]);
+
+                            Offset<int> offset = new Offset<int>(address, true);
+                            offset.Value = value;
+                            offsets.Add(offset);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Debug.Print("skipping previous step because conditional evaluated to false");
             }
 
             try

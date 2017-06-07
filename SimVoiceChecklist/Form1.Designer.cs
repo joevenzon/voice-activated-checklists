@@ -93,11 +93,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbxAcceptedCmds = new System.Windows.Forms.ListBox();
             this.lblAcceptedCommands = new System.Windows.Forms.Label();
+            this.tpConnections = new System.Windows.Forms.TabPage();
+            this.lblConnectionXP = new System.Windows.Forms.Label();
+            this.lblConnectionFS = new System.Windows.Forms.Label();
             this.ofdChecklistFile = new System.Windows.Forms.OpenFileDialog();
             this.fbdAudioPath = new System.Windows.Forms.FolderBrowserDialog();
-            this.tpConnections = new System.Windows.Forms.TabPage();
-            this.lblConnectionFS = new System.Windows.Forms.Label();
-            this.lblConnectionXP = new System.Windows.Forms.Label();
+            this.ShowProceduresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.tcStatus.SuspendLayout();
             this.tpOptions.SuspendLayout();
@@ -140,18 +141,19 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ListenMenuItem,
             this.ShowChecklistsMenuItem,
+            this.ShowProceduresMenuItem,
             this.OptionsMenuItem,
             this.toolStripSeparator2,
             this.AboutMenuItem,
             this.toolStripSeparator1,
             this.ExitMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 170);
             // 
             // ListenMenuItem
             // 
             this.ListenMenuItem.Name = "ListenMenuItem";
-            this.ListenMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ListenMenuItem.Size = new System.Drawing.Size(165, 22);
             this.ListenMenuItem.Text = "Listen";
             this.ListenMenuItem.Click += new System.EventHandler(this.btnListen_Click);
             // 
@@ -159,38 +161,38 @@
             // 
             this.ShowChecklistsMenuItem.Enabled = false;
             this.ShowChecklistsMenuItem.Name = "ShowChecklistsMenuItem";
-            this.ShowChecklistsMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ShowChecklistsMenuItem.Size = new System.Drawing.Size(165, 22);
             this.ShowChecklistsMenuItem.Text = "Show Checklists";
             this.ShowChecklistsMenuItem.Click += new System.EventHandler(this.ShowChecklistsMenuItem_Click);
             // 
             // OptionsMenuItem
             // 
             this.OptionsMenuItem.Name = "OptionsMenuItem";
-            this.OptionsMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.OptionsMenuItem.Size = new System.Drawing.Size(165, 22);
             this.OptionsMenuItem.Text = "Options";
             this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(156, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(162, 6);
             // 
             // AboutMenuItem
             // 
             this.AboutMenuItem.Name = "AboutMenuItem";
-            this.AboutMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.AboutMenuItem.Size = new System.Drawing.Size(165, 22);
             this.AboutMenuItem.Text = "About";
             this.AboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(156, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
             // 
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ExitMenuItem.Size = new System.Drawing.Size(165, 22);
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.Click += new System.EventHandler(this.OnExit);
             // 
@@ -705,12 +707,6 @@
             this.lblAcceptedCommands.Text = "Accepted Commands";
             this.lblAcceptedCommands.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ofdChecklistFile
-            // 
-            this.ofdChecklistFile.DefaultExt = "*.checklist";
-            this.ofdChecklistFile.FileName = "openFileDialog1";
-            this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
-            // 
             // tpConnections
             // 
             this.tpConnections.Controls.Add(this.lblConnectionXP);
@@ -723,6 +719,15 @@
             this.tpConnections.Text = "Connections";
             this.tpConnections.UseVisualStyleBackColor = true;
             // 
+            // lblConnectionXP
+            // 
+            this.lblConnectionXP.AutoSize = true;
+            this.lblConnectionXP.Location = new System.Drawing.Point(9, 165);
+            this.lblConnectionXP.Name = "lblConnectionXP";
+            this.lblConnectionXP.Size = new System.Drawing.Size(152, 13);
+            this.lblConnectionXP.TabIndex = 1;
+            this.lblConnectionXP.Text = "XPLM connection: uninitialized";
+            // 
             // lblConnectionFS
             // 
             this.lblConnectionFS.AutoSize = true;
@@ -733,14 +738,19 @@
             this.lblConnectionFS.Text = "FSUIPC connection: uninitialized";
             this.lblConnectionFS.Click += new System.EventHandler(this.label5_Click);
             // 
-            // lblConnectionXP
+            // ofdChecklistFile
             // 
-            this.lblConnectionXP.AutoSize = true;
-            this.lblConnectionXP.Location = new System.Drawing.Point(9, 165);
-            this.lblConnectionXP.Name = "lblConnectionXP";
-            this.lblConnectionXP.Size = new System.Drawing.Size(152, 13);
-            this.lblConnectionXP.TabIndex = 1;
-            this.lblConnectionXP.Text = "XPLM connection: uninitialized";
+            this.ofdChecklistFile.DefaultExt = "*.checklist";
+            this.ofdChecklistFile.FileName = "openFileDialog1";
+            this.ofdChecklistFile.Filter = "Checklist files|*.checklist|All files|*.*";
+            // 
+            // ShowProceduresMenuItem
+            // 
+            this.ShowProceduresMenuItem.Enabled = false;
+            this.ShowProceduresMenuItem.Name = "ShowProceduresMenuItem";
+            this.ShowProceduresMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.ShowProceduresMenuItem.Text = "Show Procedures";
+            this.ShowProceduresMenuItem.Click += new System.EventHandler(this.ShowProceduresMenuItem_Click);
             // 
             // MainFrm
             // 
@@ -846,6 +856,7 @@
         private System.Windows.Forms.TabPage tpConnections;
         private System.Windows.Forms.Label lblConnectionFS;
         private System.Windows.Forms.Label lblConnectionXP;
+        private System.Windows.Forms.ToolStripMenuItem ShowProceduresMenuItem;
     }
 }
 

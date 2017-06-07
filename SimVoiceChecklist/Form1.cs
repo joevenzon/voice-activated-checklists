@@ -331,6 +331,7 @@ namespace SimVoiceChecklists
                     btnListen.Tag = 1;
                     btnListen.Text = "Stop Listening";
                     ShowChecklistsMenuItem.Enabled = true;
+                    ShowProceduresMenuItem.Enabled = true;
                 }
                 else
                 {
@@ -344,6 +345,7 @@ namespace SimVoiceChecklists
                 btnListen.Text = "Start Listening";
                 StopListening();
                 ShowChecklistsMenuItem.Enabled = false;
+                ShowProceduresMenuItem.Enabled = false;
             }
         }
 
@@ -507,6 +509,7 @@ namespace SimVoiceChecklists
                 tcStatus.TabPages.Remove(tabDebug);
                 ListenMenuItem.Visible = false;
                 ShowChecklistsMenuItem.Enabled = true;
+                ShowProceduresMenuItem.Enabled = true;
             }
 
             foreach (CultureInfo ci in CultureInfo.GetCultures(CultureTypes.AllCultures))
@@ -708,6 +711,11 @@ namespace SimVoiceChecklists
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ShowProceduresMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessTopLevelVoiceCommand("show procedures");
         }
     }
 }
