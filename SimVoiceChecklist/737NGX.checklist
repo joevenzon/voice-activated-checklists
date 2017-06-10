@@ -1,33 +1,52 @@
 <checklists>
 	<procedure name="Electrical Power Up">
-		<item name="Battery switch guard closed" fsuipc="0x6475=0?,0x3114=0x20000000,0x3110=69634"/>
+		<item name="Battery switch guard closed" fsuipc="0x6475!=2?,0x3114=0x20000000,0x3110=69634"/>
 		<item name="Standby power switch guard closed" fsuipc="0x647D=1?,0x3114=0x20000000,0x3110=69643"/>
 		<item name="Alternate flaps master switch guard closed" fsuipc="0x6445=1?,0x3114=0x20000000,0x3110=69706"/>
 		<item name="Electric hydraulic pumps switches off" fsuipc="0x64C9=1?,0x3114=0x20000000,0x3110=69799"/>
 		<item name="Electric hydraulic pumps switches off" fsuipc="0x64CA=1?,0x3114=0x20000000,0x3110=69800"/>
 		<item name="Windshield wiper selectors park" fsuipc="0x6494!=0?,0x3114=0x20000000,0x3110=69668"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6494!=0?,0x3114=0x20000000,0x3110=69668"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6494!=0?,0x3114=0x20000000,0x3110=69668"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
 		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
 		<item name="External power on" fsuipc="0x3114=0x20000000,0x3110=69649" say="Electrical power up procedure complete"/>
 	</procedure>
 	<procedure name="Preflight">
-		<item name="Flight control switches guards closed"/>
-		<item name="Flight spoiler switches guards closed"/>
-		<item name="Yaw damper switch on"/>
-		<item name="Crossfeed selector closed"/>
-		<item name="Fuel pump switches off"/>
-		<item name="Battery switch guard closed"/>
-		<item name="Cab/util power switch on"/>
-		<item name="IFE/pass seat power switch on"/>
-		<item name="Standby power switch guard closed"/>
-		<item name="Generator driver disconnect switches guards closed"/>
-		<item name="Bus transfer switch guard closed"/>
-		<item name="One AC operator fuel pump on"/>
-		<item name="APU switch start"/>
-		<item name="APU generator bus switches on" time="30"/>
-		<item name="Equipment cooling switches norm"/>
-		<item name="Emergency exit lights switch guard closed"/>
-		<item name="Fasten seat belts switch auto"/>
-		<item name="Windshield wiper selectors park"/>
+		<item name="Flight control switches guards closed" fsuipc="0x6440!=2?,0x3114=0x20000000,0x3110=69711"/>
+		<item name="Flight control switches guards closed" fsuipc="0x6441!=2?,0x3114=0x20000000,0x3110=69713"/>
+		<item name="Flight spoiler switches guards closed" fsuipc="0x6442!=1?,0x3114=0x20000000,0x3110=69698"/>
+		<item name="Flight spoiler switches guards closed" fsuipc="0x6443!=1?,0x3114=0x20000000,0x3110=69700"/>
+		<item name="Yaw damper switch on" fsuipc="0x6444!=1?,0x3114=0x20000000,0x3110=69695"/>
+		<item name="Crossfeed selector closed" fsuipc="0x645C!=0?,0x3114=0x20000000,0x3110=69681"/>
+		<item name="Fuel pump switches off" fsuipc="0x645D!=0?,0x3114=0x20000000,0x3110=69670"/>
+		<item name="Fuel pump switches off" fsuipc="0x645E!=0?,0x3114=0x20000000,0x3110=69671"/>
+		<item name="Fuel pump switches off" fsuipc="0x645F!=0?,0x3114=0x20000000,0x3110=69669"/>
+		<item name="Fuel pump switches off" fsuipc="0x6460!=0?,0x3114=0x20000000,0x3110=69672"/>
+		<item name="Fuel pump switches off" fsuipc="0x6461!=0?,0x3114=0x20000000,0x3110=69677"/>
+		<item name="Fuel pump switches off" fsuipc="0x6462!=0?,0x3114=0x20000000,0x3110=69678"/>
+		<item name="Battery switch guard closed" fsuipc="0x6475!=2?,0x3114=0x20000000,0x3110=69634"/>
+		<item name="Cab/util power switch on" fsuipc="0x6476=0?,0x3114=0x20000000,0x3110=69637"/>
+		<item name="IFE/pass seat power switch on" fsuipc="0x6477=0?,0x3114=0x20000000,0x3110=69638"/>
+		<item name="Standby power switch guard closed" fsuipc="0x647D=1?,0x3114=0x20000000,0x3110=69643"/>
+		<item name="Generator driver disconnect switches guards closed" fsuipc="0x647B=1,0x3114=0x20000000,0x3110=69645"/>
+		<item name="Generator driver disconnect switches guards closed" fsuipc="0x647C=1,0x3114=0x20000000,0x3110=69647"/>
+		<item name="Bus transfer switch guard closed" fsuipc="0x6480=0,0x3114=0x20000000,0x3110=69651"/>
+		<item name="One AC operated fuel pump on" fsuipc="0x645E!=1?,0x3114=0x20000000,0x3110=69671"/>
+		<item name="APU switch start" fsuipc="0x3114=0x20000000,0x3110=69750"/>
+		<item name="APU generator bus switches on" time="30" fsuipc="0x6483!=1?,0x3114=0x20000000,0x3110=69660"/>
+		<item name="APU generator bus switches on" fsuipc="0x6484!=1?,0x3114=0x20000000,0x3110=69661"/>
+		<item name="Equipment cooling switches norm" fsuipc="0x6498!=1?,0x3114=0x20000000,0x3110=69728"/>
+		<item name="Equipment cooling switches norm" fsuipc="0x6499!=1?,0x3114=0x20000000,0x3110=69729"/>
+		<item name="Emergency exit lights switch guard closed" fsuipc="0x649D!=1?,0x3114=0x20000000,0x3110=69733"/>
+		<item name="Fasten seat belts switch auto" fsuipc="0x649F!=1?,0x3114=0x20000000,0x3110=69736"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6494!=0?,0x3114=0x20000000,0x3110=69668"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6494!=0?,0x3114=0x20000000,0x3110=69668"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6494!=0?,0x3114=0x20000000,0x3110=69668"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
+		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
 		<item name="Window heat switches on"/>
 		<item name="Probe heat switches off"/>
 		<item name="Wing anti-ice off"/>

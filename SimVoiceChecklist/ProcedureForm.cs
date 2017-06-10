@@ -102,7 +102,7 @@ namespace SimVoiceChecklists
                         foreach (XElement items in procedure.Elements("item"))
                         {
                             string name = "";
-                            int time = 2; // default to 2 seconds per item
+                            int time = 1; // default to 1 second per item
                             string fsuipc = "";
                             string say = "";
 
@@ -229,10 +229,25 @@ namespace SimVoiceChecklists
                     if (symbols.Length == 2)
                     {
                         bool invert = false;
-                        if (symbols[0].Last() == '!')
+                        bool lt = false;
+                        bool gt = false;
+
+                        if (symbols[0].Contains('!'))
                         {
                             invert = true;
-                            symbols[0] = symbols[0].TrimEnd(new char[] { '!' });
+                            symbols[0] = symbols[0].Replace("!", "");
+                        }
+
+                        if (symbols[0].Contains('<'))
+                        {
+                            lt = true;
+                            symbols[0] = symbols[0].Replace("<", "");
+                        }
+
+                        if (symbols[0].Contains('>'))
+                        {
+                            gt = true;
+                            symbols[0] = symbols[0].Replace(">", "");
                         }
 
                         Debug.Print(symbols[0]);
@@ -254,10 +269,18 @@ namespace SimVoiceChecklists
                             conditional = false;
                         }
 
-                        if (offset.Value != value ||
-                            (invert && offset.Value == value))
+                        if (success)
                         {
-                            conditional = false;
+                            conditional = (offset.Value == value);
+
+                            if (lt)
+                                conditional = (offset.Value <= value);
+
+                            if (gt)
+                                conditional = (offset.Value >= value);
+
+                            if (invert)
+                                conditional = !conditional;
                         }
 
                         offset.Disconnect();
