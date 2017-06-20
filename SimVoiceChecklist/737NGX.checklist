@@ -47,25 +47,49 @@
 		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
 		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
 		<item name="Windshield wiper selectors park" fsuipc="0x6495!=0?,0x3114=0x20000000,0x3110=69741"/>
-		<item name="Window heat switches on"/>
-		<item name="Probe heat switches off"/>
-		<item name="Wing anti-ice off"/>
-		<item name="Engine anti-ice off"/>
-		<item name="Engine hydraulic pump switches on"/>
-		<item name="Electric hydraulic pumps switches off"/>
-		<item name="Recirculation fan switch auto"/>
-		<item name="PACK switches auto"/>
-		<item name="Isolation valve switch open"/>
-		<item name="Engine bleed air switches on"/>
-		<item name="APU bleed air switch on"/>
-		<item name="Pressurization mode selector auto"/>
-		<item name="Landing light switches retract and off"/>
-		<item name="Runway turnoff light switches off"/>
-		<item name="Taxi light switch off"/>
-		<item name="Anti-collision light switch off"/>
-		<item name="Flight director switches on"/>
-		<item name="Autobrake RTO"/>
-		<item name="Stabilizer trim override switch guard closed" say="Ready for preflight checklist"/>
+		<item name="Window heat switches on" fsuipc="0x64AA!=1?,0x3114=0x20000000,0x3110=69767"/>
+		<item name="Window heat switches on" fsuipc="0x64AB!=1?,0x3114=0x20000000,0x3110=69768"/>
+		<item name="Window heat switches on" fsuipc="0x64AC!=1?,0x3114=0x20000000,0x3110=69770"/>
+		<item name="Window heat switches on" fsuipc="0x64AD!=1?,0x3114=0x20000000,0x3110=69771"/>
+		<item name="Probe heat switches off" fsuipc="0x64B6!=0?,0x3114=0x20000000,0x3110=69772"/>
+		<item name="Probe heat switches off" fsuipc="0x64B7!=0?,0x3114=0x20000000,0x3110=69773"/>
+		<item name="Wing anti-ice off" fsuipc="0x64BE!=0?,0x3114=0x20000000,0x3110=69788"/>
+		<item name="Engine anti-ice off" fsuipc="0x64BF!=0?,0x3114=0x20000000,0x3110=69789"/>
+		<item name="Engine anti-ice off" fsuipc="0x64C0!=0?,0x3114=0x20000000,0x3110=69790"/>
+		<item name="Engine hydraulic pump switches on" fsuipc="0x64C7!=1?,0x3114=0x20000000,0x3110=69797"/>
+		<item name="Engine hydraulic pump switches on" fsuipc="0x64C8!=1?,0x3114=0x20000000,0x3110=69798"/>
+		<item name="Electric hydraulic pumps switches off" fsuipc="0x64C9!=0?,0x3114=0x20000000,0x3110=69800"/>
+		<item name="Electric hydraulic pumps switches off" fsuipc="0x64CA!=0?,0x3114=0x20000000,0x3110=69799"/>
+		<item name="Recirculation fan switch auto" fsuipc="0x64D3!=1?,0x3114=0x20000000,0x3110=70504"/>
+		<item name="Recirculation fan switch auto" fsuipc="0x64D4!=1?,0x3114=0x20000000,0x3110=69828"/>
+		<item name="PACK switches auto" fsuipc="0x64D5=0?,0x3114=0x20000000,0x3110=69832"/>
+		<item name="PACK switches auto" fsuipc="0x64D5=2?,0x3114=0x80000000,0x3110=69832"/>
+		<item name="PACK switches auto" fsuipc="0x64D6=0?,0x3114=0x20000000,0x3110=69833"/>
+		<item name="PACK switches auto" fsuipc="0x64D6=2?,0x3114=0x80000000,0x3110=69833"/>
+		<item name="Isolation valve switch open" fsuipc="0x64DA=0?,0x3114=0x20000000,0x3110=69834"/>
+		<item name="Engine bleed air switches on" fsuipc="0x64D7!=1?,0x3114=0x20000000,0x3110=69842"/>
+		<item name="Engine bleed air switches on" fsuipc="0x64D8!=1?,0x3114=0x20000000,0x3110=69844"/>
+		<item name="APU bleed air switch on" fsuipc="0x64D9!=1?,0x3114=0x20000000,0x3110=69843"/>
+		<item name="Pressurization mode selector auto" fsuipc="0x64F0!=0?,0x3114=0x80000000,0x3110=69855"/>
+		<item name="Pressurization mode selector auto" fsuipc="0x64F0!=0?,0x3114=0x80000000,0x3110=69855"/>
+		<item name="Landing light switches retract" fsuipc="0x64F4!=0?,0x3114=0x80000000,0x3110=69743"/>
+		<item name="Landing light switches retract" fsuipc="0x64F4!=0?,0x3114=0x80000000,0x3110=69743"/>
+		<item name="Landing light switches retract" fsuipc="0x64F5!=0?,0x3114=0x80000000,0x3110=69744"/>
+		<item name="Landing light switches retract" fsuipc="0x64F5!=0?,0x3114=0x80000000,0x3110=69744"/>
+		<item name="Landing light switches off" fsuipc="0x64F6!=0?,0x3114=0x80000000,0x3110=69745"/>
+		<item name="Landing light switches off" fsuipc="0x64F7!=0?,0x3114=0x80000000,0x3110=69746"/>
+		<item name="Runway turnoff light switches off" fsuipc="0x64F8!=0?,0x3114=0x80000000,0x3110=69747"/>
+		<item name="Runway turnoff light switches off" fsuipc="0x64F9!=0?,0x3114=0x80000000,0x3110=69748"/>
+		<item name="Taxi light switch off" fsuipc="0x64FA!=0?,0x3114=0x80000000,0x3110=69749"/>
+		<item name="Anti-collision light switch off" fsuipc="0x6501!=0?,0x3114=0x80000000,0x3110=69756"/>
+		<item name="Flight director switches on" fsuipc="0x6533!=0?,0x3114=0x80000000,0x3110=70010"/>
+		<item name="Flight director switches on" fsuipc="0x6534!=0?,0x3114=0x80000000,0x3110=70039"/>
+		<item name="Autobrake RTO" fsuipc="0x6562!=0?,0x3114=0x80000000,0x3110=70092"/>
+		<item name="Autobrake RTO" fsuipc="0x6562!=0?,0x3114=0x80000000,0x3110=70092"/>
+		<item name="Autobrake RTO" fsuipc="0x6562!=0?,0x3114=0x80000000,0x3110=70092"/>
+		<item name="Autobrake RTO" fsuipc="0x6562!=0?,0x3114=0x80000000,0x3110=70092"/>
+		<item name="Autobrake RTO" fsuipc="0x6562!=0?,0x3114=0x80000000,0x3110=70092"/>
+		<item name="Stabilizer trim override switch guard closed" fsuipc="0x65D1!=1?,0x3114=0x20000000,0x3110=70462" say="Ready for preflight checklist"/>
 	</procedure>
 	<checklist name="Preflight">
 		<item name="Oxygen" vcommand="Checked,Tested,Tested One Hundred Percent"/>
