@@ -29,6 +29,7 @@ namespace SimVoiceChecklists
         IEnumerator<ProcedureItem> nextProcedureItem = null;
         public string fsInitMessage = "uninitialized";
         public string xpInitMessage = "uninitialized";
+        public bool singleStepMode = false;
 
         public frmProcedure()
         {
@@ -127,8 +128,13 @@ namespace SimVoiceChecklists
                         nextProcedureItem = activeProcedure.GetEnumerator();
                         if (nextProcedureItem.MoveNext())
                         {
-                            tmrNextItem.Interval = Math.Max(1, nextProcedureItem.Current.time) * 1000;
-                            tmrNextItem.Start();
+                            if (!singleStepMode)
+                            {
+                                tmrNextItem.Interval = Math.Max(1, nextProcedureItem.Current.time) * 1000;
+                                tmrNextItem.Start();
+                            }
+                            else
+                                tmrNextItem.Stop();
                             result = true;
                         }
                         else
@@ -144,6 +150,11 @@ namespace SimVoiceChecklists
 
         public void OnTimedEvent(Object source, EventArgs e)
         {
+            DoProcedureItem(true);
+        }
+
+        public void DoProcedureItem(bool advance)
+        {
             if (nextProcedureItem != null)
             {
                 Debug.Print(nextProcedureItem.Current.name);
@@ -154,13 +165,44 @@ namespace SimVoiceChecklists
                     checklistForm.Say(nextProcedureItem.Current.say);
                 }
 
-                if (nextProcedureItem.MoveNext())
+                if (advance)
                 {
-                    tmrNextItem.Interval = Math.Max(1, nextProcedureItem.Current.time) * 1000;
-                    tmrNextItem.Start();
+                    if (nextProcedureItem.MoveNext())
+                    {
+                        if (!singleStepMode)
+                        {
+                            tmrNextItem.Interval = Math.Max(1, nextProcedureItem.Current.time) * 1000;
+                            tmrNextItem.Start();
+                        }
+                        else
+                            tmrNextItem.Stop();
+                    }
+                    else
+                        EndProcedure();
                 }
-                else
-                    EndProcedure();
+            }
+        }
+
+        public void OnDebugKeyEvent(string key)
+        {
+            if (key == "D9")
+            {
+                singleStepMode = true;
+            }
+            else if (key == "D0")
+            {
+                singleStepMode = true;
+                EndProcedure();
+            }
+            else if (key == "D1")
+            {
+                singleStepMode = true;
+                DoProcedureItem(false);
+            }
+            else if (key == "D2")
+            {
+                singleStepMode = true;
+                DoProcedureItem(true);
             }
         }
 

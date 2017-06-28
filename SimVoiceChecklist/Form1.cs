@@ -477,6 +477,8 @@ namespace SimVoiceChecklists
                     CLForm.ProgressChecklist();
                 else if (e.KeyCode.ToString().Equals(RepeatCLIKeyBind))
                     CLForm.ReadActiveChecklistItem();
+                else if ((ProcForm != null) && (ProcForm.Visible))
+                    ProcForm.OnDebugKeyEvent(e.KeyCode.ToString());
             }
         }
         #endregion
