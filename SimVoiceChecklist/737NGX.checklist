@@ -1,6 +1,6 @@
 <checklists>
 	<procedure name="Electrical Power Up">
-		<item name="Battery switch guard closed" fsuipc="0x6475!=2?,0x3114=0x20000000,0x3110=69634"/>
+		<item name="Battery switch guard closed" fsuipc="0x6475!=1?,0x3114=0x20000000,0x3110=69634"/>
 		<item name="Standby power switch guard closed" fsuipc="0x647D=1?,0x3114=0x20000000,0x3110=69643"/>
 		<item name="Alternate flaps master switch guard closed" fsuipc="0x6445=1?,0x3114=0x20000000,0x3110=69706"/>
 		<item name="Electric hydraulic pumps switches off" fsuipc="0x64C9=1?,0x3114=0x20000000,0x3110=69799"/>
@@ -26,7 +26,7 @@
 		<item name="Fuel pump switches off" fsuipc="0x6460!=0?,0x3114=0x20000000,0x3110=69672"/>
 		<item name="Fuel pump switches off" fsuipc="0x6461!=0?,0x3114=0x20000000,0x3110=69677"/>
 		<item name="Fuel pump switches off" fsuipc="0x6462!=0?,0x3114=0x20000000,0x3110=69678"/>
-		<item name="Battery switch guard closed" fsuipc="0x6475!=2?,0x3114=0x20000000,0x3110=69634"/>
+		<item name="Battery switch guard closed" fsuipc="0x6475!=1?,0x3114=0x20000000,0x3110=69634"/>
 		<item name="Cab/util power switch on" fsuipc="0x6476=0?,0x3114=0x20000000,0x3110=69637"/>
 		<item name="IFE/pass seat power switch on" fsuipc="0x6477=0?,0x3114=0x20000000,0x3110=69638"/>
 		<item name="Standby power switch guard closed" fsuipc="0x647D=1?,0x3114=0x20000000,0x3110=69643"/>
