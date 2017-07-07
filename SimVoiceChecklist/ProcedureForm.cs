@@ -202,7 +202,17 @@ namespace SimVoiceChecklists
             else if (key == "D2")
             {
                 singleStepMode = true;
-                DoProcedureItem(true);
+
+                if (nextProcedureItem != null)
+                {
+                    if (nextProcedureItem.MoveNext())
+                    {
+                        tmrNextItem.Stop();
+                    }
+                    else
+                        EndProcedure();
+                }
+                DoProcedureItem(false);
             }
         }
 
