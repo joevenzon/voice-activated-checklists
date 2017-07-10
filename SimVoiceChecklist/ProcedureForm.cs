@@ -185,7 +185,7 @@ namespace SimVoiceChecklists
 
         public void OnDebugKeyEvent(string key)
         {
-            if (key == "D9")
+            /*if (key == "D9")
             {
                 singleStepMode = true;
             }
@@ -213,7 +213,7 @@ namespace SimVoiceChecklists
                         EndProcedure();
                 }
                 DoProcedureItem(false);
-            }
+            }*/
         }
 
         public void EndProcedure()
