@@ -79,6 +79,9 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetDataRefConnector">
+      <HintPath>.\DotNetDataRefConnector.dll</HintPath>
+    </Reference>
     <Reference Include="FSUIPCClient">
       <HintPath>.\FSUIPCClient.dll</HintPath>
     </Reference>

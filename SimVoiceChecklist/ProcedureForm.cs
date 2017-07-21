@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Xml.Linq;
 using FSUIPC;
+using DotNetDataRefConnector;
 
 namespace SimVoiceChecklists
 {
@@ -18,6 +19,7 @@ namespace SimVoiceChecklists
         public string say;
         public int time;
         public string fsuipc;
+        public string xplm;
     }
 
     public partial class frmProcedure : Form
@@ -30,6 +32,7 @@ namespace SimVoiceChecklists
         public string fsInitMessage = "uninitialized";
         public string xpInitMessage = "uninitialized";
         public bool singleStepMode = false;
+        private DotNetDataRefConnector.XPLMDataAccess xplm = new DotNetDataRefConnector.XPLMDataAccess();
 
         public frmProcedure()
         {
@@ -68,7 +71,22 @@ namespace SimVoiceChecklists
 
         private bool InitXP()
         {
-            return false;
+            bool success = true;
+
+            xpInitMessage = "connected";
+
+            try
+            {
+                // Attempt to open a connection to xplane shared memory
+                success = xplm.Open();
+            }
+            catch (Exception ex)
+            {
+                xpInitMessage = "exception: " + ex.Message;
+                success = false;
+            }
+
+            return success;
         }
 
         private bool InitFlightsim()
@@ -105,6 +123,7 @@ namespace SimVoiceChecklists
                             string name = "";
                             int time = 1; // default to 1 second per item
                             string fsuipc = "";
+                            string xplm = "";
                             string say = "";
 
                             if (items.Attribute("name") != null)
@@ -113,6 +132,8 @@ namespace SimVoiceChecklists
                                 time = Convert.ToInt32(items.Attribute("time").Value);
                             if (items.Attribute("fsuipc") != null)
                                 fsuipc = items.Attribute("fsuipc").Value;
+                            if (items.Attribute("xplm") != null)
+                                xplm = items.Attribute("xplm").Value;
                             if (items.Attribute("say") != null)
                                 say = items.Attribute("say").Value;
 
@@ -120,6 +141,7 @@ namespace SimVoiceChecklists
                             item.name = name;
                             item.time = time;
                             item.fsuipc = fsuipc;
+                            item.xplm = xplm;
                             item.say = say;
 
                             activeProcedure.Add(item);
@@ -159,6 +181,7 @@ namespace SimVoiceChecklists
             {
                 Debug.Print(nextProcedureItem.Current.name);
                 fsExecute(nextProcedureItem.Current.fsuipc);
+                xpExecute(nextProcedureItem.Current.xplm);
 
                 if (checklistForm != null && nextProcedureItem.Current.say != "")
                 {
@@ -383,6 +406,150 @@ namespace SimVoiceChecklists
             return success;
         }
 
+        private bool xpExecute(string commandlist)
+        {
+            bool success = true;
+
+            string[] commands = commandlist.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            
+            //process conditionals
+            bool conditional = true;
+            foreach (string command in commands)
+            {
+                if (command.Contains("?"))
+                {
+                    string[] symbols = command.Trim(new char[] { '?' }).Split(new string[] { "=" }, StringSplitOptions.None);
+                    if (symbols.Length == 2)
+                    {
+                        bool invert = false;
+                        bool lt = false;
+                        bool gt = false;
+
+                        if (symbols[0].Contains('!'))
+                        {
+                            invert = true;
+                            symbols[0] = symbols[0].Replace("!", "");
+                        }
+
+                        if (symbols[0].Contains('<'))
+                        {
+                            lt = true;
+                            symbols[0] = symbols[0].Replace("<", "");
+                        }
+
+                        if (symbols[0].Contains('>'))
+                        {
+                            gt = true;
+                            symbols[0] = symbols[0].Replace(">", "");
+                        }
+
+                        Debug.Print(symbols[0]);
+                        Debug.Print(symbols[1]);
+
+                        string refname = symbols[0];
+                        double value = stringToDouble(symbols[1]);
+
+                        double result = 0;
+
+                        try
+                        {
+                            uint handle = xplm.XPLMFindDataRef(refname);
+                            int type = xplm.XPLMGetDataRefTypes(handle);
+
+                            if (type == 1)
+                                result = xplm.XPLMGetDatai(handle);
+                            else if (type == 2)
+                                result = xplm.XPLMGetDataf(handle);
+                            else if (type == 4)
+                                result = xplm.XPLMGetDatad(handle);
+                            else
+                            {
+                                xpInitMessage = "Unknown type " + Convert.ToString(type) + ": " + refname;
+                                success = false;
+                                conditional = false;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            xpInitMessage = ex.Message;
+                            success = false;
+                            conditional = false;
+                        }
+
+                        if (success)
+                        {
+                            conditional = (result == value);
+
+                            if (lt)
+                                conditional = (result <= value);
+
+                            if (gt)
+                                conditional = (result >= value);
+
+                            if (invert)
+                                conditional = !conditional;
+                        }
+                    }
+                }
+            }
+
+            // process commands
+            if (conditional)
+            {
+                foreach (string command in commands)
+                {
+                    if (!command.Contains("?"))
+                    {
+                        string[] symbols = command.Split(new string[] { "=" }, StringSplitOptions.None);
+                        if (symbols.Length == 2)
+                        {
+                            string refname = symbols[0];
+                            double value = stringToDouble(symbols[1]);
+
+                            if (xplm.XPLMCanWriteDataRef(refname) > 0)
+                            {
+                                try
+                                {
+                                    uint handle = xplm.XPLMFindDataRef(refname);
+                                    int type = xplm.XPLMGetDataRefTypes(handle);
+
+                                    if (type == 1)
+                                        xplm.XPLMSetDatai(handle, Convert.ToInt16(value));
+                                    else if (type == 2)
+                                        xplm.XPLMSetDataf(handle, Convert.ToSingle(value));
+                                    else if (type == 4)
+                                        xplm.XPLMSetDatad(handle, value);
+                                    else
+                                    {
+                                        xpInitMessage = "Unknown type " + Convert.ToString(type) + ": " + refname;
+                                        success = false;
+                                    }
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    xpInitMessage = ex.Message;
+                                    success = false;
+                                }
+                            }
+                            else
+                            {
+                                xpInitMessage = "Not writeable: " + refname;
+                                Debug.Print(xpInitMessage);
+                                success = false;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Debug.Print("skipping previous step because conditional evaluated to false");
+            }
+
+            return success;
+        }
+
         int stringToInt(string str)
         {
             int result = 0;
@@ -402,6 +569,22 @@ namespace SimVoiceChecklists
             catch (Exception)
             {
                 result = 0;
+            }
+
+            return result;
+        }
+
+        double stringToDouble(string str)
+        {
+            double result = 0;
+
+            try
+            {
+                result = Convert.ToDouble(str);
+            }
+            catch (Exception)
+            {
+                result = 0.0;
             }
 
             return result;
