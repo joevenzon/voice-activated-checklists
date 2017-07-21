@@ -1,6 +1,6 @@
 <checklists>
 	<procedure name="Electrical Power Up">
-		<item name="Battery switch guard closed" fsuipc="0x6475!=1?,0x3114=0x20000000,0x3110=69634"/>
+		<item name="Battery switch guard closed" fsuipc="0x6475!=1?,0x3114=0x20000000,0x3110=69634" xplm="sim/cockpit/electrical/battery_on!=1?,sim/cockpit/electrical/battery_on=1"/>
 		<item name="Standby power switch guard closed" fsuipc="0x647D!=2?,0x3114=0x20000000,0x3110=69643"/>
 		<item name="Alternate flaps master switch guard closed" fsuipc="0x6445=1?,0x3114=0x20000000,0x3110=69706"/>
 		<item name="Electric hydraulic pumps switches off" fsuipc="0x64C9=1?,0x3114=0x20000000,0x3110=69799"/>

@@ -31,6 +31,8 @@ namespace SimVoiceChecklists
         IEnumerator<ProcedureItem> nextProcedureItem = null;
         public string fsInitMessage = "uninitialized";
         public string xpInitMessage = "uninitialized";
+        bool fsConnected = false;
+        bool xpConnected = false;
         public bool singleStepMode = false;
         private DotNetDataRefConnector.XPLMDataAccess xplm = new DotNetDataRefConnector.XPLMDataAccess();
 
@@ -91,9 +93,9 @@ namespace SimVoiceChecklists
 
         private bool InitFlightsim()
         {
-            bool fs = InitFS();
-            bool xp = InitXP();
-            return fs || xp;
+            fsConnected = InitFS();
+            xpConnected = InitXP();
+            return fsConnected || xpConnected;
         }
 
         public bool StartProcedure(string procname)
@@ -180,8 +182,9 @@ namespace SimVoiceChecklists
             if (nextProcedureItem != null)
             {
                 Debug.Print(nextProcedureItem.Current.name);
-                fsExecute(nextProcedureItem.Current.fsuipc);
-                xpExecute(nextProcedureItem.Current.xplm);
+
+                if (fsConnected) fsExecute(nextProcedureItem.Current.fsuipc);
+                if (xpConnected) xpExecute(nextProcedureItem.Current.xplm);
 
                 if (checklistForm != null && nextProcedureItem.Current.say != "")
                 {
@@ -453,18 +456,18 @@ namespace SimVoiceChecklists
 
                         try
                         {
-                            uint handle = xplm.XPLMFindDataRef(refname);
-                            int type = xplm.XPLMGetDataRefTypes(handle);
+                            int type = xplm.XPLMGetDataRefTypes(refname);
 
                             if (type == 1)
-                                result = xplm.XPLMGetDatai(handle);
+                                result = xplm.XPLMGetDatai(refname);
                             else if (type == 2)
-                                result = xplm.XPLMGetDataf(handle);
+                                result = xplm.XPLMGetDataf(refname);
                             else if (type == 4)
-                                result = xplm.XPLMGetDatad(handle);
+                                result = xplm.XPLMGetDatad(refname);
                             else
                             {
                                 xpInitMessage = "Unknown type " + Convert.ToString(type) + ": " + refname;
+                                Debug.Print(xpInitMessage);
                                 success = false;
                                 conditional = false;
                             }
@@ -510,18 +513,18 @@ namespace SimVoiceChecklists
                             {
                                 try
                                 {
-                                    uint handle = xplm.XPLMFindDataRef(refname);
-                                    int type = xplm.XPLMGetDataRefTypes(handle);
+                                    int type = xplm.XPLMGetDataRefTypes(refname);
 
                                     if (type == 1)
-                                        xplm.XPLMSetDatai(handle, Convert.ToInt16(value));
+                                        xplm.XPLMSetDatai(refname, Convert.ToInt16(value));
                                     else if (type == 2)
-                                        xplm.XPLMSetDataf(handle, Convert.ToSingle(value));
+                                        xplm.XPLMSetDataf(refname, Convert.ToSingle(value));
                                     else if (type == 4)
-                                        xplm.XPLMSetDatad(handle, value);
+                                        xplm.XPLMSetDatad(refname, value);
                                     else
                                     {
                                         xpInitMessage = "Unknown type " + Convert.ToString(type) + ": " + refname;
+                                        Debug.Print(xpInitMessage);
                                         success = false;
                                     }
 
@@ -529,6 +532,7 @@ namespace SimVoiceChecklists
                                 catch (Exception ex)
                                 {
                                     xpInitMessage = ex.Message;
+                                    Debug.Print(xpInitMessage);
                                     success = false;
                                 }
                             }
