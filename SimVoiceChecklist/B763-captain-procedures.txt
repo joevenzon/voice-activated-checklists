@@ -1,0 +1,77 @@
+Amplified procedures
+
+Preliminary preflight procedure
+
+IRS mode selectors... OFF then NAV
+Parking brake... as needed
+
+CDU Preflight
+
+POS INIT using SET IRS POS
+RTE page: enter route, flight number, activate and execute
+DEPARTURES page: select runway and departure routing, execute
+Check RTE and LEGS pages
+PERF INIT page: enter ZFW, verify fuel, verify gross weight
+TAKEOFF REF page: enter CG, enter takeoff V speeds
+
+Preflight
+
+VOR/DME to AUTO
+Flight director on
+Autothrottle arm switch ARM
+Bank limit as needed
+Autopilot disengage bar UP
+Reserve brakes and steering switch off
+Standby engine indicator selector auto
+Autobrakes RTO
+Alternate stab trim switches neutral
+Speedbrake lever down
+Reverse thrust levers down and closed
+Set flap lever to agree with flap position
+Set parking brake
+Stab trim cutout switches gaurds closed
+Fuel control switches cutoff
+Call for preflight checklist
+
+Before start procedure
+
+Set MCP IAS to V2
+Arm LNAV
+Set initial heading and altitude
+Obtain start clearance
+Set stabilizer trim
+Call for before start checklist
+
+Pushback procedure
+
+Establish communications with ground handling personnel
+
+Engine start procedure
+
+Call start right engine
+When N2 at 15%, fuel control switch to run
+Call start left engine
+When N2 at 15%, fuel control switch to run
+
+Before taxi procedure
+
+Call before taxi checklist
+
+Before takeoff procedure
+
+Call before takeoff checklist
+
+Takeoff procedure
+
+Align airplane with the runway
+Set takeoff thrust
+Verify 80 knots and call "check"
+Verify v1 speed
+At VR, rotate toward 15 degrees pitch attitude
+Verify positive rate of climb and call gear up
+Above 400 feet radio altitude, call for a roll mode as needed
+At thrust reduction height, call VNAV
+Verify climb thrust is set
+Call flaps __ according to the flap retraction schedule
+Engage autopilot after a roll mode and VNAV are engaged
+Call after takeoff checklist

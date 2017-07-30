@@ -1,0 +1,194 @@
+<checklists>
+	<procedure name="Preflight">
+		<item name="Yaw damper switches on"/>
+		<item name="Antiskid switch on"/>
+		<item name="Electronic engine control switches norm"/>
+		<item name="Hydraulic L engine primary pump on"/>
+		<item name="Hydraulic R engine primary pump on"/>
+		<item name="Hydraulic center 1 electric primary pump off"/>
+		<item name="Hydraulic center 2 electric primary pump off"/>
+		<item name="Hydraulic demand pump selectors off"/>
+		<item name="Window heat switches on"/>
+		<item name="Battery switch on"/>
+		<item name="Standby power selector auto"/>
+		<item name="APU generator switch on"/>
+		<item name="Bus tie switches auto"/>
+		<item name="Utility bus witches on"/>
+		<item name="Generator control switches on"/>
+		<item name="APU selector start, then on"/>
+		<item name="Taxi light off"/>
+		<item name="Runway turnoff lights off"/>
+		<item name="Emergency lights guard closed"/>
+		<item name="Engine ignition selector 1/2/single"/>
+		<item name="Engine start selectors auto"/>
+		<item name="Fuel jettison nozzle switches off"/>
+		<item name="Fuel jettison selector off"/>
+		<item name="Fuel crossfeed switches off"/>
+		<item name="Fuel pump switches off"/>
+		<item name="Wing anti ice off"/>
+		<item name="Engine anti ice off"/>
+		<item name="Wipers off"/>
+		<item name="Position light as needed"/>
+		<item name="Anti collision light switches off"/>
+		<item name="Wing light switch as needed"/>
+		<item name="Landing light switches off"/>
+		<item name="Cargo heat switches on"/>
+		<item name="Window heat switches on"/>
+		<item name="No smoking selector auto"/>
+		<item name="Seatbelts selector auto"/>
+		<item name="Cabin altitude mode selector auto 1/2"/>
+		<item name="Equipment cooling mode auto"/>
+		<item name="Forward cargo air conditioning auto"/>
+		<item name="Cabin temp auto"/>
+		<item name="Trim air on"/>
+		<item name="Recirc fan on"/>
+		<item name="Flight deck temperature auto"/>
+		<item name="Pack control selectors auto"/>
+		<item name="Left bleed air iso switch on"/>
+		<item name="Center bleed air iso switch on"/>
+		<item name="Right bleed air iso switch on"/>
+		<item name="Engine bleed air switch on"/>
+		<item name="APU bleed air switch on"/>
+		<item name="Flight director switch on"/>
+		<item name="VOR/DME switch auto"/>
+		<item name="Landing gear lever down"/>
+		<item name="Alternate gear extend switch guard closed"/>
+		<item name="Heading reference switch norm"/>
+		<item name="Alternate flaps selector norm"/>
+		<item name="Alternate flaps switches off"/>
+		<item name="Cargo fire arm switches off" say="Ready for preflight checklist"/>
+	</procedure>
+	<checklist name="Preflight">
+		<item name="Oxygen" vcommand="Checked,Tested One Hundred Percent"/>
+		<item name="Flight instruments" vcommand="Checked,Altimeter"/>
+		<item name="Parking brake" vcommand="Checked,Set"/>
+		<item name="Fuel control switches" vcommand="Checked,Cutoff"/>
+	</checklist>
+	<procedure name="Before start procedure">
+		<item name="Hydraulic R electric demand pump AUTO"/>
+		<item name="Hydraulic center 1 electric primary pump switch on"/>
+		<item name="Hydraulic center 2 electric primary pump switch on"/>
+		<item name="Hydraulic L electric demand pump AUTO"/>
+		<item name="Hydraulic C air demand pump AUTO"/>
+		<item name="Left fuel pump switch on"/>
+		<item name="Right fuel pump switch on"/>
+		<item name="Red anti-collision light switch on"/>
+		<item name="Push recall switch" say="Ready for before start checklist"/>
+	</procedure>
+	<checklist name="Before start">
+		<item name="Flight deck door" vcommand="Checked,Closed and locked"/>
+		<item name="Passenger signs" vcommand="Checked,On,Off,Auto"/>
+		<item name="Windows" vcommand="Checked,Locked"/>
+		<item name="MCP" vcommand="Checked,Altitude"/>
+		<item name="Takeoff speeds" vcommand="Checked,V2"/>
+		<item name="CDU preflight" vcommand="Checked,Completed"/>
+		<item name="Trim" vcommand="Checked,Units Zero Zero"/>
+		<item name="Taxi and takeoff briefing" vcommand="Checked,Completed"/>
+		<item name="Red anti collision light" vcommand="Checked,On"/>
+	</checklist>
+	<procedure name="Engine start">
+		<item name="Pack control selectors off"/>
+		<item name="Push cancel switch" say="Ready for engine start"/>
+	</procedure>
+	<procedure name="Left engine start" vcommand="Start number one,Start left engine,Start engine one">
+		<item name="Left engine start selector to ground"/>
+	</procedure>
+	<procedure name="Right engine start" vcommand="Start number two,Start right engine,Start engine two">
+		<item name="Right engine start selector to ground"/>
+	</procedure>
+	<procedure name="Before taxi procedure">
+		<item name="APU selector off"/>
+		<item name="Pack selectors auto"/>
+		<item name="Left isolation switch off"/>
+		<item name="Right isolation switch off"/>
+		<item name="Select status display" say="Ready for before taxi checklist"/>
+	</procedure>
+	<procedure name="Flaps 0" vcommand="flaps up, flaps zero" say="flaps up">
+		<item name="Flaps up"/>
+	</procedure>
+	<procedure name="Flaps 1" vcommand="flaps one" say="flaps one">
+		<item name="Flaps one"/>
+	</procedure>
+	<procedure name="Flaps 5" vcommand="flaps five" say="flaps five">
+		<item name="Flaps five"/>
+	</procedure>
+	<procedure name="Flaps 15" vcommand="flaps fifteen" say="flaps fifteen">
+		<item name="Flaps fifteen"/>
+	</procedure>
+	<procedure name="Flaps 20" vcommand="flaps twenty" say="flaps twenty">
+		<item name="Flaps twenty"/>
+	</procedure>
+	<procedure name="Flaps 25" vcommand="flaps twenty-five" say="flaps twenty-five">
+		<item name="Flaps twenty-five"/>
+	</procedure>
+	<procedure name="Flaps 30" vcommand="flaps thirty" say="flaps thirty">
+		<item name="Flaps thirty"/>
+	</procedure>
+	<checklist name="Before taxi">
+		<item name="Anti-ice" vcommand="Checked,On,Off"/>
+		<item name="L and R isolation switches" vcommand="Checked,Off"/>
+		<item name="Recall" vcommand="Checked"/>
+		<item name="Autobrake" vcommand="Checked,RTO"/>
+		<item name="Flight controls" vcommand="Checked"/>
+		<item name="Ground equipment" vcommand="Checked,Clear"/>
+	</checklist>
+	<checklist name="Before takeoff">
+		<item name="Flaps" vcommand="Checked,Five,Fifteen,Twenty"/>
+	</checklist>
+	<procedure name="Takeoff">
+		<item name="White anti collision light switch on"/>
+		<item name="Transponder to TA/RA"/>
+		<item name="Wing landing light switches on"/>
+	</procedure>
+	<procedure name="Gear Up" vcommand="gear up" say="gear up">
+		<item name="Gear up"/>
+	</procedure>
+	<procedure name="Gear Down" vcommand="gear down" say="gear down">
+		<item name="Gear down"/>
+	</procedure>
+	<procedure name="LNAV" vcommand="Engage L-Nav, Select L-Nav" say="L-Nav">
+		<item name="LNAV"/>
+	</procedure>
+	<procedure name="VNAV" vcommand="Engage V-Nav, Select V-Nav" say="V-Nav">
+		<item name="VNAV"/>
+	</procedure>
+	<procedure name="Heading select" vcommand="Engage heading select,select heading select" say="Heading select">
+		<item name="Heading select"/>
+	</procedure>
+	<checklist name="After takeoff">
+		<item name="Landing gear" vcommand="Checked,Up and off"/>
+		<item name="Flaps" vcommand="Checked,Up"/>
+	</checklist>
+	<procedure name="">
+		<item name=""/>
+	</procedure>
+	<checklist name="Descent">
+		<item name="Pressurization" vcommand="Checked,Landing altitude"/>
+		<item name="Recall" vcommand="Checked"/>
+		<item name="Autobrake" vcommand="Checked,Off,One,Two,Three,Four"/>
+		<item name="Landing data" vcommand="Checked,minimums"/>
+		<item name="Approach briefing" vcommand="Checked,completed"/>
+	</checklist>
+	<checklist name="Approach">
+		<item name="Altimeters" vcommand="Checked"/>
+	</checklist>
+	<checklist name="Landing">
+		<item name="Speedbrake" vcommand="Checked,armed"/>
+		<item name="Landing gear" vcommand="Checked,down"/>
+		<item name="Flaps" vcommand="Checked,One,Five,Fifteen,Twenty,Twenty five, Thirty"/>
+	</checklist>
+	<checklist name="Shutdown">
+		<item name="Hydraulic panel" vcommand="Checked,Set"/>
+		<item name="Fuel pumps" vcommand="Checked,off"/>
+		<item name="Flaps" vcommand="Checked,Up"/>
+		<item name="Parking brake" vcommand="Checked,Set,off"/>
+		<item name="Fuel control switches" vcommand="Checked,cutoff"/>
+		<item name="Weather radar" vcommand="Checked,off"/>
+	</checklist>
+	<checklist name="Secure">
+		<item name="IRS" vcommand="Checked,off"/>
+		<item name="Emergency lights" vcommand="Checked,off"/>
+		<item name="Window heat" vcommand="Checked,off"/>
+		<item name="Packs" vcommand="Checked,off"/>
+	</checklist>
+</checklists>
