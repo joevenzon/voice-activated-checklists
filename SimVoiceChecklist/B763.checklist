@@ -104,25 +104,25 @@
 		<item name="Select status display" say="Ready for before taxi checklist"/>
 	</procedure>
 	<procedure name="Flaps 0" vcommand="flaps up, flaps zero" say="flaps up">
-		<item name="Flaps up"/>
+		<item name="Flaps up" xplm="sim/cockpit2/controls/flap_ratio=0"/>
 	</procedure>
 	<procedure name="Flaps 1" vcommand="flaps one" say="flaps one">
-		<item name="Flaps one"/>
+		<item name="Flaps one" xplm="sim/cockpit2/controls/flap_ratio=0.166667"/>
 	</procedure>
 	<procedure name="Flaps 5" vcommand="flaps five" say="flaps five">
-		<item name="Flaps five"/>
+		<item name="Flaps five" xplm="sim/cockpit2/controls/flap_ratio=0.333333"/>
 	</procedure>
 	<procedure name="Flaps 15" vcommand="flaps fifteen" say="flaps fifteen">
-		<item name="Flaps fifteen"/>
+		<item name="Flaps fifteen" xplm="sim/cockpit2/controls/flap_ratio=0.5"/>
 	</procedure>
 	<procedure name="Flaps 20" vcommand="flaps twenty" say="flaps twenty">
-		<item name="Flaps twenty"/>
+		<item name="Flaps twenty" xplm="sim/cockpit2/controls/flap_ratio=0.666667"/>
 	</procedure>
 	<procedure name="Flaps 25" vcommand="flaps twenty-five" say="flaps twenty-five">
-		<item name="Flaps twenty-five"/>
+		<item name="Flaps twenty-five" xplm="sim/cockpit2/controls/flap_ratio=0.833333"/>
 	</procedure>
 	<procedure name="Flaps 30" vcommand="flaps thirty" say="flaps thirty">
-		<item name="Flaps thirty"/>
+		<item name="Flaps thirty" xplm="sim/cockpit2/controls/flap_ratio=1"/>
 	</procedure>
 	<checklist name="Before taxi">
 		<item name="Anti-ice" vcommand="Checked,On,Off"/>
@@ -141,19 +141,19 @@
 		<item name="Wing landing light switches on"/>
 	</procedure>
 	<procedure name="Gear Up" vcommand="gear up" say="gear up">
-		<item name="Gear up"/>
+		<item name="Gear up" xplm="1-sim/cockpit/switches/gear_handle=0"/>
 	</procedure>
 	<procedure name="Gear Down" vcommand="gear down" say="gear down">
-		<item name="Gear down"/>
+		<item name="Gear down" xplm="1-sim/cockpit/switches/gear_handle=1"/>
 	</procedure>
 	<procedure name="LNAV" vcommand="Engage L-Nav, Select L-Nav" say="L-Nav">
-		<item name="LNAV"/>
+		<item name="LNAV" xplm="1-sim/AP/vnavButton=1"/>
 	</procedure>
 	<procedure name="VNAV" vcommand="Engage V-Nav, Select V-Nav" say="V-Nav">
-		<item name="VNAV"/>
+		<item name="VNAV" xplm="1-sim/AP/lnavButton=1"/>
 	</procedure>
 	<procedure name="Heading select" vcommand="Engage heading select,select heading select" say="Heading select">
-		<item name="Heading select"/>
+		<item name="Heading select" xplm="1-sim/AP/hdgHoldButton=1"/>
 	</procedure>
 	<checklist name="After takeoff">
 		<item name="Landing gear" vcommand="Checked,Up and off"/>

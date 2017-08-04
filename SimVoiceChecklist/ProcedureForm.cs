@@ -509,7 +509,14 @@ namespace SimVoiceChecklists
                             string refname = symbols[0];
                             double value = stringToDouble(symbols[1]);
 
-                            if (xplm.XPLMCanWriteDataRef(refname) > 0)
+                            bool canWrite = false;
+
+                            for (int i = 0; i < 2 && !canWrite; i++)
+                            {
+                                canWrite = (xplm.XPLMCanWriteDataRef(refname) > 0);
+                            }
+
+                            if (canWrite)
                             {
                                 try
                                 {
